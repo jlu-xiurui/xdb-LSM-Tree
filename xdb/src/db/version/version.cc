@@ -5,6 +5,8 @@
 
 #include "db/version/version.h"
 #include "db/version/version_edit.h"
+#include "include/env.h"
+#include "util/filename.h"
 
 namespace xdb {
     Version::~Version() {
@@ -147,7 +149,12 @@ namespace xdb {
         Builder builder(this, current_);
         builder.Apply(edit);
         builder.SaveTo(v);
+        Status s;
+        if (meta_log_writer_ == nullptr) {
+            assert(meta_log_file_ == nullptr);
+            std::string meta_file_name = MetaFileName(name_, meta_file_number_);
 
-        
+            env_->NewWritableFile();
+        }
     }
 }

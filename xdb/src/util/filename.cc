@@ -60,4 +60,8 @@ bool ParseNumder(Slice* input, uint64_t* num) {
     return num_length != 0; 
 }
 
+std::string MetaFileName(const std::string& dbname, uint64_t number) {
+    return MakeFileName(dbname, number, "meta");
+}
+
 }

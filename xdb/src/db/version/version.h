@@ -63,7 +63,8 @@ class VersionSet {
     uint64_t log_number_;
     SequenceNum last_sequence_;
     uint64_t next_file_number_;
-
+    uint64_t meta_file_number_;
+    
     WritableFile* meta_log_file_;
     log::Writer* meta_log_writer_;
 };
