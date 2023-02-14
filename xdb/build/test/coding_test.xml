@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="6" failures="0" disabled="0" errors="0" time="0.008" timestamp="2023-02-13T16:26:11.342" name="AllTests">
+  <testsuite name="CodingTest" tests="6" failures="0" disabled="0" skipped="0" errors="0" time="0.008" timestamp="2023-02-13T16:26:11.342">
+    <testcase name="Fixed32" file="/home/xiurui/xdb/test/coding_test.cc" line="6" status="run" result="completed" time="0" timestamp="2023-02-13T16:26:11.342" classname="CodingTest" />
+    <testcase name="Fixed64" file="/home/xiurui/xdb/test/coding_test.cc" line="19" status="run" result="completed" time="0" timestamp="2023-02-13T16:26:11.342" classname="CodingTest" />
+    <testcase name="Varint32" file="/home/xiurui/xdb/test/coding_test.cc" line="32" status="run" result="completed" time="0.003" timestamp="2023-02-13T16:26:11.342" classname="CodingTest" />
+    <testcase name="Varint64" file="/home/xiurui/xdb/test/coding_test.cc" line="51" status="run" result="completed" time="0.004" timestamp="2023-02-13T16:26:11.346" classname="CodingTest" />
+    <testcase name="Varint32Overflow" file="/home/xiurui/xdb/test/coding_test.cc" line="70" status="run" result="completed" time="0" timestamp="2023-02-13T16:26:11.350" classname="CodingTest" />
+    <testcase name="LengthPrefixed" file="/home/xiurui/xdb/test/coding_test.cc" line="76" status="run" result="completed" time="0" timestamp="2023-02-13T16:26:11.350" classname="CodingTest" />
+  </testsuite>
+</testsuites>

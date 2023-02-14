@@ -1,0 +1,862 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c1a6e/fast && /usr/bin/make -f CMakeFiles/cmTC_c1a6e.dir/build.make CMakeFiles/cmTC_c1a6e.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_c1a6e.dir/src.c.o
+/usr/bin/clang   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_c1a6e.dir/src.c.o   -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c1a6e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1a6e.dir/link.txt --verbose=1
+/usr/bin/clang  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_c1a6e.dir/src.c.o  -o cmTC_c1a6e 
+/usr/bin/ld: CMakeFiles/cmTC_c1a6e.dir/src.c.o: in function `main':
+src.c:(.text+0x35): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x41): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x53): undefined reference to `pthread_join'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_c1a6e.dir/build.make:87：cmTC_c1a6e] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_c1a6e/fast] 错误 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cfebd/fast && /usr/bin/make -f CMakeFiles/cmTC_cfebd.dir/build.make CMakeFiles/cmTC_cfebd.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_cfebd.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_cfebd.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cfebd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cfebd.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_cfebd.dir/CheckFunctionExists.c.o  -o cmTC_cfebd  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_cfebd.dir/build.make:87：cmTC_cfebd] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_cfebd/fast] 错误 2
+
+
+
+Performing C++ SOURCE FILE Test HAVE_ARM64_CRC32C failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bb527/fast && /usr/bin/make -f CMakeFiles/cmTC_bb527.dir/build.make CMakeFiles/cmTC_bb527.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_bb527.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_ARM64_CRC32C  -march=armv8-a+crc+crypto   -std=gnu++11 -o CMakeFiles/cmTC_bb527.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+error: unknown target CPU 'armv8-a+crc+crypto'
+note: valid target CPU values are: nocona, core2, penryn, bonnell, atom, silvermont, slm, goldmont, goldmont-plus, tremont, nehalem, corei7, westmere, sandybridge, corei7-avx, ivybridge, core-avx-i, haswell, core-avx2, broadwell, skylake, skylake-avx512, skx, cascadelake, cooperlake, cannonlake, icelake-client, icelake-server, tigerlake, knl, knm, k8, athlon64, athlon-fx, opteron, k8-sse3, athlon64-sse3, opteron-sse3, amdfam10, barcelona, btver1, btver2, bdver1, bdver2, bdver3, bdver4, znver1, znver2, x86-64
+make[1]: *** [CMakeFiles/cmTC_bb527.dir/build.make:66：CMakeFiles/cmTC_bb527.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_bb527/fast] 错误 2
+
+
+Source file was:
+
+#include <arm_acle.h>
+#include <arm_neon.h>
+
+int main() {
+  __crc32cb(0, 0); __crc32ch(0, 0); __crc32cw(0, 0); __crc32cd(0, 0);
+  vmull_p64(0, 0);
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_STRONG_GETAUXVAL failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_80947/fast && /usr/bin/make -f CMakeFiles/cmTC_80947.dir/build.make CMakeFiles/cmTC_80947.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_80947.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_STRONG_GETAUXVAL   -std=gnu++11 -o CMakeFiles/cmTC_80947.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+In file included from /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:14:2: error: "ACLE intrinsics support not enabled."
+#error "ACLE intrinsics support not enabled."
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:35:3: error: use of undeclared identifier '__builtin_arm_wfi'; did you mean '__builtin_dwarf_cfa'?
+  __builtin_arm_wfi();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:35:3: note: '__builtin_dwarf_cfa' declared here
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:39:3: error: use of undeclared identifier '__builtin_arm_wfe'; did you mean '__builtin_dwarf_cfa'?
+  __builtin_arm_wfe();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:35:3: note: '__builtin_dwarf_cfa' declared here
+  __builtin_arm_wfi();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:43:3: error: use of undeclared identifier '__builtin_arm_sev'
+  __builtin_arm_sev();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:47:3: error: use of undeclared identifier '__builtin_arm_sevl'
+  __builtin_arm_sevl();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:51:3: error: use of undeclared identifier '__builtin_arm_yield'; did you mean '__builtin_ia32_xend'?
+  __builtin_arm_yield();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:43:3: note: '__builtin_ia32_xend' declared here
+  __builtin_arm_sev();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:64:9: error: use of undeclared identifier '__builtin_arm_ldrex'
+    v = __builtin_arm_ldrex(__p);
+        ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:65:10: error: use of undeclared identifier '__builtin_arm_strex'
+  while (__builtin_arm_strex(__x, __p));
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:95:3: error: use of undeclared identifier '__builtin_arm_nop'; did you mean '__builtin_coro_noop'?
+  __builtin_arm_nop();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:95:3: note: '__builtin_coro_noop' declared here
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:147:10: error: use of undeclared identifier '__builtin_arm_cls'
+  return __builtin_arm_cls(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:155:10: error: use of undeclared identifier '__builtin_arm_cls64'
+  return __builtin_arm_cls64(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:161:10: error: use of undeclared identifier '__builtin_arm_cls64'
+  return __builtin_arm_cls64(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:213:10: error: use of undeclared identifier '__builtin_arm_rbit'
+  return __builtin_arm_rbit(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:222:10: error: use of undeclared identifier '__builtin_arm_rbit64'
+  return __builtin_arm_rbit64(__t);
+         ^
+In file included from /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:3:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:28:2: error: "NEON support not enabled"
+#error "NEON support not enabled"
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:48:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int8_t int8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:49:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) int8_t int8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:50:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int16_t int16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:51:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int16_t int16x8_t;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[1]: *** [CMakeFiles/cmTC_80947.dir/build.make:66：CMakeFiles/cmTC_80947.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_80947/fast] 错误 2
+
+
+Source file was:
+
+#include <arm_acle.h>
+#include <arm_neon.h>
+#include <sys/auxv.h>
+
+int main() {
+  getauxval(AT_HWCAP);
+  return 0;
+}
+
+Determining if the include file ext/hash_map exists failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_937d7/fast && /usr/bin/make -f CMakeFiles/cmTC_937d7.dir/build.make CMakeFiles/cmTC_937d7.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_937d7.dir/CheckIncludeFile.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti  -fPIE   -o CMakeFiles/cmTC_937d7.dir/CheckIncludeFile.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+In file included from /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/ext/hash_map:60:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward/backward_warning.h:32:2: error: This file includes at least one deprecated or antiquated header which   may be removed without further notice at a future date. Please use a   non-deprecated interface with equivalent functionality instead. For a   listing of replacement headers and interfaces, consult the file   backward_warning.h. To disable this warning use -Wno-deprecated. [-Werror,-W#warnings]
+#warning \
+ ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_937d7.dir/build.make:66：CMakeFiles/cmTC_937d7.dir/CheckIncludeFile.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_937d7/fast] 错误 2
+
+
+
+Determining if the include file ext/hash_set exists failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bcc1b/fast && /usr/bin/make -f CMakeFiles/cmTC_bcc1b.dir/build.make CMakeFiles/cmTC_bcc1b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_bcc1b.dir/CheckIncludeFile.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti  -fPIE   -o CMakeFiles/cmTC_bcc1b.dir/CheckIncludeFile.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+In file included from /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx:1:
+In file included from /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/ext/hash_set:60:
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward/backward_warning.h:32:2: error: This file includes at least one deprecated or antiquated header which   may be removed without further notice at a future date. Please use a   non-deprecated interface with equivalent functionality instead. For a   listing of replacement headers and interfaces, consult the file   backward_warning.h. To disable this warning use -Wno-deprecated. [-Werror,-W#warnings]
+#warning \
+ ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_bcc1b.dir/build.make:66：CMakeFiles/cmTC_bcc1b.dir/CheckIncludeFile.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_bcc1b/fast] 错误 2
+
+
+
+Determining size of unsigned __int16 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9810e/fast && /usr/bin/make -f CMakeFiles/cmTC_9810e.dir/build.make CMakeFiles/cmTC_9810e.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_9810e.dir/HAVE___UINT16.cpp.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti  -fPIE   -o CMakeFiles/cmTC_9810e.dir/HAVE___UINT16.cpp.o -c /home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:25:12: error: expected ')'
+  ('0' + ((SIZE / 10000)%10)),
+           ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:25:12: note: to match this '('
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:26:12: error: expected ')'
+  ('0' + ((SIZE / 1000)%10)),
+           ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:26:12: note: to match this '('
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:27:12: error: expected ')'
+  ('0' + ((SIZE / 100)%10)),
+           ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:27:12: note: to match this '('
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:28:12: error: expected ')'
+  ('0' + ((SIZE / 10)%10)),
+           ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:28:12: note: to match this '('
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:29:12: error: expected ')'
+  ('0' +  (SIZE    % 10)),
+           ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:31: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                              ^
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:29:12: note: to match this '('
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:23:21: note: expanded from macro 'SIZE'
+#define SIZE (sizeof(unsigned __int16))
+                    ^
+5 errors generated.
+make[1]: *** [CMakeFiles/cmTC_9810e.dir/build.make:66：CMakeFiles/cmTC_9810e.dir/HAVE___UINT16.cpp.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_9810e/fast] 错误 2
+
+
+/home/xiurui/xdb/build/CMakeFiles/CheckTypeSize/HAVE___UINT16.cpp:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#elif defined(__aarch64__)
+# define KEY '_','_','a','a','r','c','h','6','4','_','_'
+#elif defined(__ARM_ARCH_7A__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','A','_','_'
+#elif defined(__ARM_ARCH_7S__)
+# define KEY '_','_','A','R','M','_','A','R','C','H','_','7','S','_','_'
+#endif
+
+#define SIZE (sizeof(unsigned __int16))
+static char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the function dladdr exists failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_476e5/fast && /usr/bin/make -f CMakeFiles/cmTC_476e5.dir/build.make CMakeFiles/cmTC_476e5.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_476e5.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=dladdr -fPIE   -o CMakeFiles/cmTC_476e5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_476e5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_476e5.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=dladdr    -rdynamic CMakeFiles/cmTC_476e5.dir/CheckFunctionExists.c.o  -o cmTC_476e5 
+/usr/bin/ld: CMakeFiles/cmTC_476e5.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x17): undefined reference to `dladdr'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_476e5.dir/build.make:87：cmTC_476e5] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_476e5/fast] 错误 2
+
+
+
+Determining if the pthread_threadid_np exist failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4b4fe/fast && /usr/bin/make -f CMakeFiles/cmTC_4b4fe.dir/build.make CMakeFiles/cmTC_4b4fe.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_4b4fe.dir/CheckSymbolExists.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti  -fPIE   -o CMakeFiles/cmTC_4b4fe.dir/CheckSymbolExists.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'pthread_threadid_np'; did you mean 'pthread_tryjoin_np'?
+  return ((int*)(&pthread_threadid_np))[argc];
+                  ^~~~~~~~~~~~~~~~~~~
+                  pthread_tryjoin_np
+/usr/include/pthread.h:220:12: note: 'pthread_tryjoin_np' declared here
+extern int pthread_tryjoin_np (pthread_t __th, void **__thread_return) __THROW;
+           ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_4b4fe.dir/build.make:66：CMakeFiles/cmTC_4b4fe.dir/CheckSymbolExists.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_4b4fe/fast] 错误 2
+
+
+File /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_threadid_np
+  return ((int*)(&pthread_threadid_np))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function UnDecorateSymbolName exists in the dbghelp failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_234cc/fast && /usr/bin/make -f CMakeFiles/cmTC_234cc.dir/build.make CMakeFiles/cmTC_234cc.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_234cc.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=UnDecorateSymbolName -fPIE   -o CMakeFiles/cmTC_234cc.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_234cc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_234cc.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=UnDecorateSymbolName    CMakeFiles/cmTC_234cc.dir/CheckFunctionExists.c.o  -o cmTC_234cc  -ldbghelp 
+/usr/bin/ld: 找不到 -ldbghelp
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_234cc.dir/build.make:87：cmTC_234cc] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_234cc/fast] 错误 2
+
+
+
+Performing C++ SOURCE FILE Test HAVE___ATTRIBUTE__VISIBILITY_DEFAULT failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_69b08/fast && /usr/bin/make -f CMakeFiles/cmTC_69b08.dir/build.make CMakeFiles/cmTC_69b08.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_69b08.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE___ATTRIBUTE__VISIBILITY_DEFAULT -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_69b08.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:3:13: error: unused function 'foo' [-Werror,-Wunused-function]
+static void foo(void) __attribute__ ((visibility("default")));
+            ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_69b08.dir/build.make:66：CMakeFiles/cmTC_69b08.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_69b08/fast] 错误 2
+
+
+Source file was:
+
+#include <cstdlib>
+static void foo(void) __attribute__ ((visibility("default")));
+int main(void) { return 0; }
+
+Performing C++ SOURCE FILE Test HAVE___ATTRIBUTE__VISIBILITY_HIDDEN failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2e650/fast && /usr/bin/make -f CMakeFiles/cmTC_2e650.dir/build.make CMakeFiles/cmTC_2e650.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_2e650.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE___ATTRIBUTE__VISIBILITY_HIDDEN -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_2e650.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:3:13: error: unused function 'foo' [-Werror,-Wunused-function]
+static void foo(void) __attribute__ ((visibility("hidden")));
+            ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_2e650.dir/build.make:66：CMakeFiles/cmTC_2e650.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_2e650/fast] 错误 2
+
+
+Source file was:
+
+#include <cstdlib>
+static void foo(void) __attribute__ ((visibility("hidden")));
+int main(void) { return 0; }
+
+Performing C++ SOURCE FILE Test HAVE_RWLOCK failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1f8f1/fast && /usr/bin/make -f CMakeFiles/cmTC_1f8f1.dir/build.make CMakeFiles/cmTC_1f8f1.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_1f8f1.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_RWLOCK -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_1f8f1.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_1f8f1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f8f1.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_RWLOCK    CMakeFiles/cmTC_1f8f1.dir/src.cxx.o  -o cmTC_1f8f1 
+/usr/bin/ld: CMakeFiles/cmTC_1f8f1.dir/src.cxx.o: in function `main':
+src.cxx:(.text+0x18): undefined reference to `pthread_rwlock_init'
+/usr/bin/ld: src.cxx:(.text+0x24): undefined reference to `pthread_rwlock_rdlock'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_1f8f1.dir/build.make:87：cmTC_1f8f1] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_1f8f1/fast] 错误 2
+
+
+Source file was:
+
+#define _XOPEN_SOURCE 500
+#include <pthread.h>
+int main(void)
+{
+  pthread_rwlock_t l;
+  pthread_rwlock_init(&l, NULL);
+  pthread_rwlock_rdlock(&l);
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE___DECLSPEC failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5deee/fast && /usr/bin/make -f CMakeFiles/cmTC_5deee.dir/build.make CMakeFiles/cmTC_5deee.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_5deee.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE___DECLSPEC -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_5deee.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:1: error: '__declspec' attributes are not enabled; use '-fdeclspec' or '-fms-extensions' to enable support for __declspec attributes
+__declspec(selectany) int a;
+^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_5deee.dir/build.make:66：CMakeFiles/cmTC_5deee.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_5deee/fast] 错误 2
+
+
+Source file was:
+
+__declspec(selectany) int a;
+int main(void) { return 0; }
+
+Performing C++ SOURCE FILE Test STL_NO_NAMESPACE failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ade64/fast && /usr/bin/make -f CMakeFiles/cmTC_ade64.dir/build.make CMakeFiles/cmTC_ade64.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_ade64.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSTL_NO_NAMESPACE -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_ade64.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:3:1: error: no template named 'vector'; did you mean 'std::vector'?
+vector<int> t; int main() { }
+^~~~~~
+std::vector
+/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/bits/stl_vector.h:386:11: note: 'std::vector' declared here
+    class vector : protected _Vector_base<_Tp, _Alloc>
+          ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_ade64.dir/build.make:66：CMakeFiles/cmTC_ade64.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_ade64/fast] 错误 2
+
+
+Source file was:
+
+#include <vector>
+vector<int> t; int main() { }
+
+Performing C++ SOURCE FILE Test HAVE_MSVC_TLS failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_96fe2/fast && /usr/bin/make -f CMakeFiles/cmTC_96fe2.dir/build.make CMakeFiles/cmTC_96fe2.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_96fe2.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_MSVC_TLS -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_96fe2.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:1: error: '__declspec' attributes are not enabled; use '-fdeclspec' or '-fms-extensions' to enable support for __declspec attributes
+__declspec(thread) int tls;
+^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_96fe2.dir/build.make:66：CMakeFiles/cmTC_96fe2.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_96fe2/fast] 错误 2
+
+
+Source file was:
+
+__declspec(thread) int tls;
+int main() { }
+
+Performing C++ SOURCE FILE Test HAVE_CXX11_CONSTEXPR failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6208b/fast && /usr/bin/make -f CMakeFiles/cmTC_6208b.dir/build.make CMakeFiles/cmTC_6208b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_6208b.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_CXX11_CONSTEXPR -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_6208b.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:15: error: unused variable 'x' [-Werror,-Wunused-const-variable]
+constexpr int x = 0;
+              ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_6208b.dir/build.make:66：CMakeFiles/cmTC_6208b.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_6208b/fast] 错误 2
+
+
+Source file was:
+
+constexpr int x = 0;
+int main() { }
+
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED_ATTR failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8552c/fast && /usr/bin/make -f CMakeFiles/cmTC_8552c.dir/build.make CMakeFiles/cmTC_8552c.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_8552c.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCOMPILER_HAS_DEPRECATED_ATTR -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_8552c.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:25: error: 'somefunc' is deprecated [-Werror,-Wdeprecated-declarations]
+    int main() { return somefunc();}
+                        ^
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:1:16: note: 'somefunc' has been explicitly marked deprecated here
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+               ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_8552c.dir/build.make:66：CMakeFiles/cmTC_8552c.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_8552c/fast] 错误 2
+
+
+Source file was:
+__attribute__((__deprecated__)) int somefunc() { return 0; }
+    int main() { return somefunc();}
+Performing C++ SOURCE FILE Test COMPILER_HAS_DEPRECATED failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_97e8d/fast && /usr/bin/make -f CMakeFiles/cmTC_97e8d.dir/build.make CMakeFiles/cmTC_97e8d.dir/build
+make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_97e8d.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCOMPILER_HAS_DEPRECATED -fPIE   -std=gnu++11 -o CMakeFiles/cmTC_97e8d.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:1:1: error: '__declspec' attributes are not enabled; use '-fdeclspec' or '-fms-extensions' to enable support for __declspec attributes
+__declspec(deprecated) int somefunc() { return 0; }
+^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_97e8d.dir/build.make:66：CMakeFiles/cmTC_97e8d.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_97e8d/fast] 错误 2
+
+
+Source file was:
+__declspec(deprecated) int somefunc() { return 0; }
+    int main() { return somefunc();}
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_773a0/fast && /usr/bin/make -f CMakeFiles/cmTC_773a0.dir/build.make CMakeFiles/cmTC_773a0.dir/build
+make[1]: Entering directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_773a0.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow -DHAVE_CXX_FLAG_WSUGGEST_OVERRIDE  -Wsuggest-override   -Wsuggest-override -std=gnu++11 -o CMakeFiles/cmTC_773a0.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+error: unknown warning option '-Wsuggest-override'; did you mean '-Wshift-overflow'? [-Werror,-Wunknown-warning-option]
+error: unknown warning option '-Wsuggest-override'; did you mean '-Wshift-overflow'? [-Werror,-Wunknown-warning-option]
+make[1]: *** [CMakeFiles/cmTC_773a0.dir/build.make:66: CMakeFiles/cmTC_773a0.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_773a0/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WD654 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f8015/fast && /usr/bin/make -f CMakeFiles/cmTC_f8015.dir/build.make CMakeFiles/cmTC_f8015.dir/build
+make[1]: Entering directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f8015.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions  -Wstrict-aliasing -DHAVE_CXX_FLAG_WD654  -wd654   -wd654 -std=gnu++11 -o CMakeFiles/cmTC_f8015.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-wd654'
+clang: error: unknown argument: '-wd654'
+make[1]: *** [CMakeFiles/cmTC_f8015.dir/build.make:66: CMakeFiles/cmTC_f8015.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_f8015/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Determining if the include file windows.h exists failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8df29/fast && make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_8df29.dir/build.make CMakeFiles/cmTC_8df29.dir/build
+make[2]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_8df29.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_8df29.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: 'windows.h' file not found
+#include <windows.h>
+         ^~~~~~~~~~~
+1 error generated.
+make[2]: *** [CMakeFiles/cmTC_8df29.dir/build.make:66：CMakeFiles/cmTC_8df29.dir/CheckIncludeFile.c.o] 错误 1
+make[2]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make[1]: *** [Makefile:121：cmTC_8df29/fast] 错误 2
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the function lzo1x_1_15_compress exists in the lzo2 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_643da/fast && make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_643da.dir/build.make CMakeFiles/cmTC_643da.dir/build
+make[2]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_643da.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=lzo1x_1_15_compress   -o CMakeFiles/cmTC_643da.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_643da
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_643da.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=lzo1x_1_15_compress    CMakeFiles/cmTC_643da.dir/CheckFunctionExists.c.o  -o cmTC_643da  -llzo2 
+/usr/bin/ld: 找不到 -llzo2
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[2]: *** [CMakeFiles/cmTC_643da.dir/build.make:87：cmTC_643da] 错误 1
+make[2]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make[1]: *** [Makefile:121：cmTC_643da/fast] 错误 2
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the function LZ4_compress_default exists in the lz4 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_27e6e/fast && make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_27e6e.dir/build.make CMakeFiles/cmTC_27e6e.dir/build
+make[2]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_27e6e.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=LZ4_compress_default   -o CMakeFiles/cmTC_27e6e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_27e6e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27e6e.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=LZ4_compress_default    CMakeFiles/cmTC_27e6e.dir/CheckFunctionExists.c.o  -o cmTC_27e6e  -llz4 
+/usr/bin/ld: 找不到 -llz4
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[2]: *** [CMakeFiles/cmTC_27e6e.dir/build.make:87：cmTC_27e6e] 错误 1
+make[2]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make[1]: *** [Makefile:121：cmTC_27e6e/fast] 错误 2
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Performing C++ SOURCE FILE Test HAVE_VISUAL_STUDIO_ARCH_AVX failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_61a6c/fast && make[1]: Entering directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_61a6c.dir/build.make CMakeFiles/cmTC_61a6c.dir/build
+make[2]: Entering directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_61a6c.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_VISUAL_STUDIO_ARCH_AVX   /arch:AVX -std=gnu++11 -o CMakeFiles/cmTC_61a6c.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: no such file or directory: '/arch:AVX'
+make[2]: *** [CMakeFiles/cmTC_61a6c.dir/build.make:66: CMakeFiles/cmTC_61a6c.dir/src.cxx.o] Error 1
+make[2]: Leaving directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+make[1]: *** [Makefile:121: cmTC_61a6c/fast] Error 2
+make[1]: Leaving directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_VISUAL_STUDIO_ARCH_AVX2 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ff205/fast && make[1]: Entering directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ff205.dir/build.make CMakeFiles/cmTC_ff205.dir/build
+make[2]: Entering directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ff205.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_VISUAL_STUDIO_ARCH_AVX2   /arch:AVX2 -std=gnu++11 -o CMakeFiles/cmTC_ff205.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: no such file or directory: '/arch:AVX2'
+make[2]: *** [CMakeFiles/cmTC_ff205.dir/build.make:66: CMakeFiles/cmTC_ff205.dir/src.cxx.o] Error 1
+make[2]: Leaving directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+make[1]: *** [Makefile:121: cmTC_ff205/fast] Error 2
+make[1]: Leaving directory '/home/xiurui/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_SSSE3 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f0e9a/fast && make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_f0e9a.dir/build.make CMakeFiles/cmTC_f0e9a.dir/build
+make[2]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_f0e9a.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_SSSE3   -std=gnu++11 -o CMakeFiles/cmTC_f0e9a.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:8:27: error: always_inline function '_mm_shuffle_epi8' requires target feature 'ssse3', but would be inlined into function 'main' that is compiled without support for 'ssse3'
+  const __m128i pattern = _mm_shuffle_epi8(_mm_loadl_epi64(src), shuffle_mask);
+                          ^
+1 error generated.
+make[2]: *** [CMakeFiles/cmTC_f0e9a.dir/build.make:66：CMakeFiles/cmTC_f0e9a.dir/src.cxx.o] 错误 1
+make[2]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make[1]: *** [Makefile:121：cmTC_f0e9a/fast] 错误 2
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+#include <tmmintrin.h>
+
+int main() {
+  const __m128i *src = 0;
+  __m128i dest;
+  const __m128i shuffle_mask = _mm_load_si128(src);
+  const __m128i pattern = _mm_shuffle_epi8(_mm_loadl_epi64(src), shuffle_mask);
+  _mm_storeu_si128(&dest, pattern);
+  return 0;
+}
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_BMI2 failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9e1f6/fast && make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_9e1f6.dir/build.make CMakeFiles/cmTC_9e1f6.dir/build
+make[2]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_9e1f6.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_BMI2   -std=gnu++11 -o CMakeFiles/cmTC_9e1f6.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:4:10: error: always_inline function '_bzhi_u32' requires target feature 'bmi2', but would be inlined into function 'main' that is compiled without support for 'bmi2'
+  return _bzhi_u32(0, 1);
+         ^
+1 error generated.
+make[2]: *** [CMakeFiles/cmTC_9e1f6.dir/build.make:66：CMakeFiles/cmTC_9e1f6.dir/src.cxx.o] 错误 1
+make[2]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make[1]: *** [Makefile:121：cmTC_9e1f6/fast] 错误 2
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+#include <immintrin.h>
+int main() {
+  return _bzhi_u32(0, 1);
+}
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_NEON failed with the following output:
+Change Dir: /home/xiurui/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0c88b/fast && make[1]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+/usr/bin/make -f CMakeFiles/cmTC_0c88b.dir/build.make CMakeFiles/cmTC_0c88b.dir/build
+make[2]: 进入目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_0c88b.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_NEON   -std=gnu++11 -o CMakeFiles/cmTC_0c88b.dir/src.cxx.o -c /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+In file included from /home/xiurui/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:28:2: error: "NEON support not enabled"
+#error "NEON support not enabled"
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:48:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int8_t int8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:49:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) int8_t int8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:50:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int16_t int16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:51:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int16_t int16x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:52:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int32_t int32x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:53:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int32_t int32x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:54:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) int64_t int64x1_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:55:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int64_t int64x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:56:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint8_t uint8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:57:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) uint8_t uint8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:58:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint16_t uint16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:59:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint16_t uint16x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:60:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint32_t uint32x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:61:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint32_t uint32x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:62:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) uint64_t uint64x1_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:63:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint64_t uint64x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:64:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) float16_t float16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:65:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) float16_t float16x8_t;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[2]: *** [CMakeFiles/cmTC_0c88b.dir/build.make:66：CMakeFiles/cmTC_0c88b.dir/src.cxx.o] 错误 1
+make[2]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+make[1]: *** [Makefile:121：cmTC_0c88b/fast] 错误 2
+make[1]: 离开目录“/home/xiurui/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+#include <arm_neon.h>
+int main() {
+  uint8_t val = 3, dup[8];
+  uint8x16_t v = vld1q_dup_u8(&val);
+  vst1q_u8(dup, v);
+  return 0;
+}
