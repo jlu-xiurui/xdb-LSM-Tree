@@ -48,6 +48,9 @@ class VersionEdit {
     void DeleteFile(int level, uint64_t file_number) {
         delete_files_.emplace(level, file_number);
     }
+    void EncodeTo(std::string* dst);
+
+    Status DecodeFrom(const Slice& src);
  private:
     friend class VersionSet;
     using DeleteSet = std::set<std::pair<int, uint64_t>>;

@@ -1,0 +1,107 @@
+#include "db/version/version_edit.h" 
+#include "include/status.h"
+#include "db/format/dbformat.h"
+
+namespace xdb {
+
+enum Tag {
+    KLogNumber = 1,
+    KLastSequence = 2,
+    KNextFileNumber= 3,
+    KComparatorName = 4,
+    KNewFiles = 5,
+    KDeleteFiles = 6
+};
+
+void VersionEdit::EncodeTo(std::string* dst) {
+    if (has_log_number_) {
+        PutVarint32(dst, KLogNumber);
+        PutVarint64(dst, log_number_);
+    }
+    if (has_last_sequence_) {
+        PutVarint32(dst, KLastSequence);
+        PutVarint64(dst, last_sequence_);
+    }
+    if (has_next_file_number_) {
+        PutVarint32(dst, KNextFileNumber);
+        PutVarint64(dst, next_file_number_);
+    }
+    if (has_comparator_name_) {
+        PutVarint32(dst, KComparatorName);
+        PutLengthPrefixedSlice(dst, comparator_name_);
+    }
+    for (size_t i = 0; i < new_files_.size(); i++) {
+        const FileMeta& meta = new_files_[i].second;
+        PutVarint32(dst, KNewFiles);
+        PutVarint32(dst, new_files_[i].first);
+        PutVarint64(dst, meta.number);
+        PutVarint64(dst, meta.file_size);
+        PutLengthPrefixedSlice(dst, meta.smallest.Encode());
+        PutLengthPrefixedSlice(dst, meta.largest.Encode());
+    }
+}
+
+bool GetLevel(Slice* input, int* value) {
+    uint32_t v;
+    if (GetVarint32(input,&v) && v < config::KNumLevels) {
+        *value = v;
+        return true;
+    }
+    return false;
+}
+
+bool GetInternalKey(Slice* input, InternalKey* key) {
+    Slice str;
+    if (GetLengthPrefixedSlice(input, &str)) {
+        key->DecodeFrom(str);
+        return true;
+    } 
+    return false;
+}
+
+Status VersionEdit::DecodeFrom(const Slice& src) {
+    Slice input = src;
+    int level;
+    uint32_t tag;
+    uint64_t number;
+    Slice str;
+    FileMeta meta;
+
+    while(GetVarint32(&input, &tag)) {
+        switch(tag) {
+            case KComparatorName:
+                if (!GetLengthPrefixedSlice(&input, &str)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: comparator");
+                }
+                comparator_name_ = str.ToString();
+                has_comparator_name_ = true;
+                break;
+            case KLastSequence:
+                if (!GetVarint64(&input, &number)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: last_sequence");
+                }
+                last_sequence_ = number;
+                has_last_sequence_ = true;
+                break;
+            case KLogNumber:
+                if (!GetVarint64(&input, &number)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: log_number");
+                }
+                log_number_ = number;
+                has_log_number_ = true;
+                break;
+            case KNextFileNumber:
+                if (!GetVarint64(&input, &number)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: next_file_number");
+                }
+                next_file_number_ = number;
+                has_next_file_number_ = true;
+                break;
+            case KNewFiles:
+                if (!GetLevel(&input, &level) ||
+                    !GetVarint64(&input, meta))
+        }
+    }
+}
+
+};

@@ -50,8 +50,11 @@ class VersionSet {
     uint64_t LogNumber() const { return log_number_; }
  private:
     class Builder;
-
+    
     friend class Version;
+
+    Status WriteSnapShot(log::Writer* writer);
+
     const std::string name_;
     const Option* option_;
     Env* env_;

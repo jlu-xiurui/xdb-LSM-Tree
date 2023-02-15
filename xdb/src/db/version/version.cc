@@ -149,12 +149,21 @@ namespace xdb {
         Builder builder(this, current_);
         builder.Apply(edit);
         builder.SaveTo(v);
+
         Status s;
+        bool initialize = false;
         if (meta_log_writer_ == nullptr) {
             assert(meta_log_file_ == nullptr);
+            initialize = true;
             std::string meta_file_name = MetaFileName(name_, meta_file_number_);
-
-            env_->NewWritableFile();
+            s = env_->NewWritableFile(meta_file_name, &meta_log_file_);
+            if (s.ok()) {
+                meta_log_writer_ = new log::Writer(meta_log_file_);
+            }
         }
+    }
+
+    Status WriteSnapShot(log::Writer* writer) {
+        
     }
 }

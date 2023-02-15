@@ -7,6 +7,7 @@
 #include "include/slice.h"
 #include "util/coding.h"
 #include "include/comparator.h"
+#include "include/status.h"
 
 namespace xdb {
 
