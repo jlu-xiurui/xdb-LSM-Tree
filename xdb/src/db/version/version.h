@@ -43,6 +43,8 @@ class VersionSet {
     Status LogAndApply(VersionEdit* edit, Mutex* mu) 
         EXCLUSIVE_LOCKS_REQUIRED(mu);
     
+    Status Recover();
+    
     uint64_t NextFileNumber() { return next_file_number_++; }
 
     uint64_t LastSequence() const { return last_sequence_; }
@@ -54,6 +56,8 @@ class VersionSet {
     friend class Version;
 
     Status WriteSnapShot(log::Writer* writer);
+    
+    void AppendVersion(Version* v);
 
     const std::string name_;
     const Option* option_;

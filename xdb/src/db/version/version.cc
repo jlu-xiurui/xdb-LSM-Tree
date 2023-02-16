@@ -153,18 +153,50 @@ namespace xdb {
         builder.SaveTo(v);
 
         Status s;
+        std::string meta_file_name;
+
         bool initialize = false;
         if (meta_log_writer_ == nullptr) {
             assert(meta_log_file_ == nullptr);
             initialize = true;
-            std::string meta_file_name = MetaFileName(name_, meta_file_number_);
+            meta_file_name = MetaFileName(name_, meta_file_number_);
             s = env_->NewWritableFile(meta_file_name, &meta_log_file_);
             if (s.ok()) {
                 meta_log_writer_ = new log::Writer(meta_log_file_);
                 s = WriteSnapShot(meta_log_writer_);
             }
         }
-        
+
+        {
+            // NOTE: Only one Compaction is running at some time
+            // so unlock is safe here;
+            mu->Unlock();
+            if (s.ok()) {
+                std::string record;
+                edit->EncodeTo(&record);
+                s = meta_log_writer_->AddRecord(record);
+                if (s.ok()) {
+                    s = meta_log_file_->Sync();
+                }
+            }
+            if (s.ok() && initialize) {
+                s = SetCurrentFile(env_, name_, meta_file_number_);
+            }
+            mu->Lock();
+        }
+
+        if (s.ok()) {
+            AppendVersion(v);
+            log_number_ = edit->log_number_;
+        } else {
+            delete v;
+            if (initialize) {
+                delete meta_log_file_;
+                delete meta_log_writer_;
+                env_->RemoveFile(meta_file_name);
+            }
+        }
+        return s;
     }
 
     Status VersionSet::WriteSnapShot(log::Writer* writer) {
@@ -183,5 +215,21 @@ namespace xdb {
         std::string record;
         edit.EncodeTo(&record);
         return writer->AddRecord(record);
+    }
+
+    void VersionSet::AppendVersion(Version* v) {
+        assert(v->refs_ == 0);
+        assert(current_ != v);
+
+        if (current_ != nullptr) {
+            current_->Unref();
+        }
+        v->Ref();
+        current_ = v;
+
+        v->next_ = &dummy_head_;
+        v->prev_ = dummy_head_.prev_;
+        v->next_->prev_ = v;
+        v->prev_->next_ = v;
     }
 }

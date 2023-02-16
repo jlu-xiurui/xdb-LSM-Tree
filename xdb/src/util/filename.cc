@@ -1,6 +1,8 @@
 #include <limits>
 
 #include "util/filename.h"
+#include "include/status.h"
+#include "include/env.h"
 
 namespace xdb { 
 static std::string MakeFileName(const std::string& dbname, uint64_t number, const char* suffix) {
@@ -64,4 +66,39 @@ std::string MetaFileName(const std::string& dbname, uint64_t number) {
     return MakeFileName(dbname, number, "meta");
 }
 
+std::string TmpFileName(const std::string& dbname, uint64_t number) {
+    return MakeFileName(dbname, number, "tmp");
+}
+
+std::string CurrentFileName(const std::string& dbname) {
+    return dbname + "/CURRENT";
+}
+
+Status SetCurrentFile(Env* env, const std::string& dbname, uint64_t number) {
+    Slice meta_file_name = MetaFileName(dbname, number);
+    meta_file_name.remove_prefix(dbname.size() + 1);
+    std::string tmp = TmpFileName(dbname, number);
+
+}
+
+Status WriteStringToFileSync(Env* env, const Slice& str, const std::string& filename) {
+    WritableFile* file;
+    Status s = env->NewWritableFile(filename, &file);
+    if (!s.ok()) {
+        return s;
+    }
+    s = file->Append(str);
+    if (s.ok()) {
+        s = file->Sync();
+    }
+    if (s.ok()) {
+        s = file->Close();
+    }
+    delete file;
+    if (!s.ok()) {
+        env->RemoveFile(filename);
+    }
+    return s;
+    
+}
 }
