@@ -140,6 +140,8 @@ namespace xdb {
         if (edit->has_log_number_) {
             assert(edit->log_number_ >= log_number_);
             assert(edit->log_number_ < next_file_number_);
+        } else {
+            edit->SetLogNumber(log_number_);
         }
         edit->SetLastSequence(last_sequence_);
         edit->SetNextFileNumber(next_file_number_);
@@ -159,11 +161,27 @@ namespace xdb {
             s = env_->NewWritableFile(meta_file_name, &meta_log_file_);
             if (s.ok()) {
                 meta_log_writer_ = new log::Writer(meta_log_file_);
+                s = WriteSnapShot(meta_log_writer_);
             }
         }
+        
     }
 
-    Status WriteSnapShot(log::Writer* writer) {
-        
+    Status VersionSet::WriteSnapShot(log::Writer* writer) {
+        VersionEdit edit;
+
+        edit.SetComparatorName(icmp_.UserComparator()->Name());
+
+        for (int level = 0; level < config::KNumLevels; level++) {
+            const std::vector<FileMeta*>& files = current_->files_[level];
+            for (const FileMeta* meta : files) {
+                edit.AddFile(level, meta->number, meta->file_size,
+                        meta->smallest, meta->largest);
+            }
+        }
+
+        std::string record;
+        edit.EncodeTo(&record);
+        return writer->AddRecord(record);
     }
 }

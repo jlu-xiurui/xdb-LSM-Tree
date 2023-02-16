@@ -39,6 +39,11 @@ void VersionEdit::EncodeTo(std::string* dst) {
         PutLengthPrefixedSlice(dst, meta.smallest.Encode());
         PutLengthPrefixedSlice(dst, meta.largest.Encode());
     }
+    for (const auto& delete_file : delete_files_) {
+        PutVarint32(dst, KDeleteFiles);
+        PutVarint32(dst, delete_file.first);
+        PutVarint64(dst, delete_file.second);
+    }
 }
 
 bool GetLevel(Slice* input, int* value) {
@@ -99,9 +104,25 @@ Status VersionEdit::DecodeFrom(const Slice& src) {
                 break;
             case KNewFiles:
                 if (!GetLevel(&input, &level) ||
-                    !GetVarint64(&input, meta))
+                        !GetVarint64(&input, &meta.number) ||
+                        !GetVarint64(&input, &meta.file_size) ||
+                        !GetInternalKey(&input, &meta.smallest) ||
+                        !GetInternalKey(&input, &meta.largest)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: new_fhttps://github.com/ByteTech-7355608/douyin-server/pull/64iles");
+                }
+                new_files_.emplace_back(level, meta);
+                break;
+            case KDeleteFiles:
+                if (!GetLevel(&input, &level) || !GetVarint64(&input, &number)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: new_files");
+                }
+                delete_files_.emplace(level, number);
+                break;
+            default:
+                return Status::Corruption("VersionEdit DecodeFrom: unknown tag");
         }
     }
+    return Status::OK();
 }
 
 };
