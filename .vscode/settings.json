@@ -58,6 +58,16 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeinfo": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "any": "cpp",
+        "bitset": "cpp",
+        "codecvt": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "forward_list": "cpp",
+        "regex": "cpp",
+        "iomanip": "cpp",
+        "shared_mutex": "cpp",
+        "variant": "cpp"
     }
 }

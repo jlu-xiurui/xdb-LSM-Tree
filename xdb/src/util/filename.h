@@ -29,5 +29,9 @@ bool ParseNumder(Slice* input, uint64_t* num);
 
 Status SetCurrentFile(Env* env, const std::string& dbname, uint64_t number);
 
+Status ReadStringFromFile(Env* env, std::string* str, const std::string& filename);
+
+Status WriteStringToFileSync(Env* env, const Slice& str, const std::string& filename);
+
 }
 #endif // STORAGE_XDB_UTIL_FILENAME_H_

@@ -50,6 +50,12 @@ class VersionSet {
     uint64_t LastSequence() const { return last_sequence_; }
 
     uint64_t LogNumber() const { return log_number_; }
+
+    void MarkFileNumberUsed(uint64_t number) {
+      if (number >= next_file_number_) {
+         next_file_number_ = number + 1;
+      }
+    }
  private:
     class Builder;
     

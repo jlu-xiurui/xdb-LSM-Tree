@@ -7,6 +7,7 @@
 #include "db/version/version_edit.h"
 #include "include/env.h"
 #include "util/filename.h"
+#include "db/log/log_reader.h"
 
 namespace xdb {
     Version::~Version() {
@@ -135,6 +136,88 @@ namespace xdb {
         VersionSet* vset_;
         LevelState level_[config::KNumLevels];
     };
+
+    Status VersionSet::Recover() {
+        std::string current;
+        Status s = ReadStringFromFile(env_, &current, CurrentFileName(name_));
+        if (!s.ok()) {
+            return s;
+        }
+        SequentialFile* file;
+        s = env_->NewSequentialFile(current, &file);
+        if (!s.ok()) {
+            if (s.IsNotFound()) {
+                return Status::Corruption("CURRENT file points to a not-existing Meta file");
+            }
+            return s;
+        }
+        uint64_t log_number = 0;
+        SequenceNum last_sequence = 0;
+        uint64_t next_file_number = 0;
+        std::string comparator_name = 0;
+        bool has_log_number = false;
+        bool has_last_sequence = false;
+        bool has_next_file_number = false;
+        bool has_comparator_name = false;
+        Builder builder(this, current_);
+
+        {
+            log::Reader reader(file, true, 0);
+            Slice slice;
+            std::string buffer;
+            while(reader.ReadRecord(&slice, &buffer) && s.ok()) {
+                VersionEdit edit;
+                s = edit.DecodeFrom(slice);
+                if (s.ok()) {
+                    if (edit.has_comparator_name_ &&
+                            edit.comparator_name_ != icmp_.UserComparator()->Name()) {
+                        s = Status::Corruption(edit.comparator_name_ + "don't match" +
+                                icmp_.UserComparator()->Name());
+                    }
+                }
+                if (s.ok()) {
+                    builder.Apply(&edit);
+                }
+                if (edit.has_log_number_) {
+                    has_log_number = true;
+                    log_number = edit.log_number_;
+                }
+                if (edit.has_last_sequence_) {
+                    has_last_sequence = true;
+                    last_sequence = edit.last_sequence_;
+                }
+                if (edit.has_next_file_number_) {
+                    has_next_file_number = true;
+                    next_file_number = edit.next_file_number_;
+                }
+            }
+        }
+        delete file;
+
+        if (s.ok()) {
+            if (!has_log_number) {
+                s = Status::Corruption("no log_number in meta file");
+            }
+            if (!has_last_sequence) {
+                s = Status::Corruption("no last_sequence in meta file");
+            }
+            if (!has_next_file_number) {
+                s = Status::Corruption("no next_file_number in meta file");
+            }
+            MarkFileNumberUsed(log_number);
+        }
+
+        if (s.ok()) {
+            Version* v = new Version(this);
+            builder.SaveTo(v);
+            AppendVersion(v);
+            log_number_ = log_number;
+            meta_file_number_ = next_file_number;
+            last_sequence_ = last_sequence;
+            next_file_number_ = next_file_number + 1;
+        }
+        return s;
+    }
 
     Status VersionSet::LogAndApply(VersionEdit* edit, Mutex* mu) {
         if (edit->has_log_number_) {

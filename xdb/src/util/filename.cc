@@ -76,9 +76,38 @@ std::string CurrentFileName(const std::string& dbname) {
 
 Status SetCurrentFile(Env* env, const std::string& dbname, uint64_t number) {
     Slice meta_file_name = MetaFileName(dbname, number);
-    meta_file_name.remove_prefix(dbname.size() + 1);
     std::string tmp = TmpFileName(dbname, number);
+    Status s = WriteStringToFileSync(env, meta_file_name, tmp);
+    if (s.ok()) {
+        s = env->RenameFile(tmp, CurrentFileName(dbname));
+    } else {
+        env->RemoveFile(tmp);
+    }
+    return s;
+}
 
+Status ReadStringFromFile(Env* env, std::string* str, const std::string& filename) {
+    str->clear();
+    SequentialFile* file;
+    Status s = env->NewSequentialFile(filename, &file);
+    if (!s.ok()) {
+        return s;
+    }
+    static const size_t KBufSize = 4096;
+    char* buf = new char[KBufSize];
+    while(true) {
+        Slice slice;
+        s = file->Read(KBufSize, &slice, buf);
+        if (s.ok()) {
+            str->append(slice.data(), slice.size());
+        }
+        if (!s.ok() || slice.empty()) {
+            break;
+        }
+    }
+    delete[] buf;
+    delete file;
+    return s;
 }
 
 Status WriteStringToFileSync(Env* env, const Slice& str, const std::string& filename) {
