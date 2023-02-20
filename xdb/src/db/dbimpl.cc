@@ -19,11 +19,12 @@ namespace xdb {
     DBImpl::DBImpl(const Option& option, const std::string& name) 
         : name_(name), 
           internal_comparator_(option.comparator),
+          option_(option),
           file_lock_(nullptr),
           env_(option.env),
           mem_(nullptr),
           log_(nullptr),
-          last_seq_(0),
+          vset_(new VersionSet(name, &option_)),
           tmp_batch_(new WriteBatch) {}
     DBImpl::~DBImpl() {
         if (file_lock_ != nullptr) {
@@ -32,6 +33,7 @@ namespace xdb {
         if(mem_ != nullptr) {
             mem_->Unref();
         }
+        delete vset_;
         delete tmp_batch_;
         delete log_;
         delete logfile_;
@@ -81,7 +83,7 @@ namespace xdb {
     Status DBImpl::Get(const Slice& key, std::string* value) {
         Status status;
         MutexLock l(&mu_);
-        SequenceNum seq = last_seq_;
+        SequenceNum seq = vset_->LastSequence();
         mem_->Ref();
         {
             mu_.Unlock();
@@ -151,10 +153,10 @@ namespace xdb {
         // merge the writebatch
         Status status;
         Writer* last_writer = &w;
-        SequenceNum last_seq = last_seq_;
+        SequenceNum last_seq = vset_->LastSequence();
         if (batch != nullptr) {
             WriteBatch* merged_batch = MergeBatchGroup(&last_writer);
-            WriteBatchHelper::SetSequenceNum(merged_batch, last_seq_);
+            WriteBatchHelper::SetSequenceNum(merged_batch, last_seq + 1);
             last_seq += WriteBatchHelper::GetCount(merged_batch);
             {
                 // only one thread can reach here once time 
@@ -171,7 +173,7 @@ namespace xdb {
             if (merged_batch == tmp_batch_) {
                 tmp_batch_->Clear();
             }
-            last_seq_ = last_seq;
+            vset_->SetLastSequence(last_seq);
         }
         while (true) {
             Writer* done_writer = writers_.front();
@@ -189,9 +191,11 @@ namespace xdb {
         //std::cout<<"thread "<< std::this_thread::get_id() <<"done" <<std::endl;
         return status;
     }
+
     Status DBImpl::Recover() {
         mu_.AssertHeld();
 
+        // Check if the DB is locked, to avoid multi-user access.
         env_->CreatDir(name_);
         Status s = env_->LockFile(LockFileName(name_), &file_lock_);
         if (!s.ok()) {
@@ -202,6 +206,13 @@ namespace xdb {
         if (!s.ok()) {
             return s;
         }
+
+        // check if the DB has been opened
+        if (!env_->FileExist(CurrentFileName(name_))) {
+            
+        }
+
+        s = vset_->Recover();
         uint64_t number;
         FileType type;
         std::vector<uint64_t> log_numbers;
@@ -220,10 +231,18 @@ namespace xdb {
                 return s;
             }
         }
-        if (last_seq_ < max_sequence) {
-            last_seq_ = max_sequence;
+        if (vset_->LastSequence() < max_sequence) {
+            vset_->SetLastSequence(max_sequence);
         }
         return Status::OK();
+    }
+
+    Status DBImpl::Initialize() {
+        VersionEdit edit;
+        edit.SetComparatorName(internal_comparator_.UserComparator()->Name());
+        edit.SetLastSequence(0);
+        edit.SetLogNumber(0);
+        edit.SetNextFileNumber(2);
     }
 
     Status DBImpl::RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence) {

@@ -152,6 +152,9 @@ class EnvImpl : public Env {
         return Status::OK();
     }
 
+    bool FileExist(const std::string& filename) {
+        return ::access(filename.c_str(), F_OK) == 0;
+    }
     Status LockFile(const std::string& filename, FileLock** lock) override {
         *lock = nullptr;
         int fd = ::open(filename.data(), O_CREAT | O_RDWR, 0644);

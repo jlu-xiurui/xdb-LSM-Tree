@@ -7,6 +7,7 @@
 #include "include/env.h"
 #include "db/memtable/memtable.h"
 #include "db/log/log_writer.h"
+#include "db/version/version.h"
 
 namespace xdb {
 
@@ -31,20 +32,26 @@ class DBImpl : public DB {
 
     WriteBatch* MergeBatchGroup(Writer** last_writer);
     
-    Status Recover();
+    Status Recover() EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
+    Status Initialize();
     
     Status RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence);
 
     const std::string name_;
     const InternalKeyComparator internal_comparator_;
+    const Option option_;
+
     FileLock* file_lock_;
     Env* env_;
+    // in memory cache and its write-ahead logger
     MemTable* mem_;
     log::Writer* log_;
     WritableFile* logfile_;
     SequenceNum last_seq_;
     Mutex mu_;
     
+    VersionSet* vset_;
     WriteBatch* tmp_batch_ GUARDED_BY(mu_);
     std::deque<Writer*> writers_ GUARDED_BY(mu_);
 };

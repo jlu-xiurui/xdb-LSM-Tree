@@ -46,6 +46,8 @@ class Env {
 
     virtual Status RemoveFile(const std::string& filename) = 0;
 
+    virtual bool FileExist(const std::string& filename) = 0;
+
     virtual Status LockFile(const std::string& filename, FileLock** lock) = 0;
     
     virtual Status UnlockFile(FileLock* lock) = 0;

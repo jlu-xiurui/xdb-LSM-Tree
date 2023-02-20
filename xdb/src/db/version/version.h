@@ -1,6 +1,8 @@
 #ifndef STORAGE_XDB_DB_VERSION_VERSION_H_
 #define STORAGE_XDB_DB_VERSION_VERSION_H_
 
+#include <cassert>
+
 #include "db/version/version_edit.h"
 #include "include/iterator.h"
 #include "include/comparator.h"
@@ -55,6 +57,11 @@ class VersionSet {
       if (number >= next_file_number_) {
          next_file_number_ = number + 1;
       }
+    }
+
+    void SetLastSequence(uint64_t s) {
+      assert(s >= last_sequence_);
+      last_sequence_ = s;
     }
  private:
     class Builder;
