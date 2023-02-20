@@ -105,7 +105,8 @@ namespace xdb {
         Status s = impl->Recover();
         if (s.ok() && impl->mem_ == nullptr) {
             WritableFile* log_file;
-            s = option.env->NewWritableFile(LogFileName(name,0), &log_file);
+            uint64_t log_number = impl->vset_->NextFileNumber();
+            s = option.env->NewWritableFile(LogFileName(name,log_number), &log_file);
             if (s.ok()) {
                 impl->logfile_ = log_file;
                 impl->log_ = new log::Writer(log_file);
@@ -192,7 +193,7 @@ namespace xdb {
         return status;
     }
 
-    Status DBImpl::Recover() {
+    Status DBImpl::Recover(VersionEdit* edit) {
         mu_.AssertHeld();
 
         // Check if the DB is locked, to avoid multi-user access.
@@ -201,29 +202,37 @@ namespace xdb {
         if (!s.ok()) {
             return s;
         }
+        // check if the DB has been opened
+        if (!env_->FileExist(CurrentFileName(name_))) {
+            // if not opened, initialize the CURRENT.
+            s = Initialize();
+            if (!s.ok()) {
+                return Status::Corruption("DB initialize fail");
+            }
+        }
+
+        s = vset_->Recover();
+        if (!s.ok()) {
+            return s;
+        }
+        uint64_t min_log = vset_->LogNumber();
+        uint64_t number;
+        FileType type;
+        std::vector<uint64_t> log_numbers;
         std::vector<std::string> filenames;
         s = env_->GetChildren(name_, &filenames);
         if (!s.ok()) {
             return s;
         }
-
-        // check if the DB has been opened
-        if (!env_->FileExist(CurrentFileName(name_))) {
-            
-        }
-
-        s = vset_->Recover();
-        uint64_t number;
-        FileType type;
-        std::vector<uint64_t> log_numbers;
         for (auto& filename : filenames) {
             if (ParseFilename(filename,&number,&type)) {
-                if (type == KLogFile) {
+                if (type == KLogFile && (number >= min_log)) {
                     log_numbers.push_back(number);
                 }
             }
         }
         std::sort(log_numbers.begin(),log_numbers.end());
+
         SequenceNum max_sequence(0);
         for (size_t i = 0; i < log_numbers.size(); i++) {
             s = RecoverLogFile(log_numbers[i], (i == log_numbers.size() - 1), &max_sequence);
@@ -243,6 +252,29 @@ namespace xdb {
         edit.SetLastSequence(0);
         edit.SetLogNumber(0);
         edit.SetNextFileNumber(2);
+
+       
+        std::string meta_file_name = MetaFileName(name_, 1);
+        WritableFile* file = nullptr;
+        Status s = env_->NewWritableFile(meta_file_name, &file);
+        if (!s.ok()) {
+            return s;
+        }
+
+        log::Writer writer(file);
+        std::string record;
+        edit.EncodeTo(&record);
+        s = writer.AddRecord(record);
+        if (s.ok()) {
+            s = file->Sync();
+        }
+        delete file;
+        if (s.ok()) {
+            s = SetCurrentFile(env_, name_, 1);
+        } else {
+            env_->RemoveFile(meta_file_name);
+        }
+        return s;
     }
 
     Status DBImpl::RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence) {

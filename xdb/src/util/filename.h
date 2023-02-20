@@ -11,7 +11,10 @@ class Status;
 
 enum FileType {
     KLogFile = 0,
-    KLockFile = 1
+    KLockFile = 1,
+    KCurrentFile = 2,
+    KMetaFile = 3,
+    KTmpFile = 4
 };
 std::string LogFileName(const std::string& dbname, uint64_t number);
 

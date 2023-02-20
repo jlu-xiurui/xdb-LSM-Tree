@@ -25,6 +25,9 @@ bool ParseFilename(const std::string& filename, uint64_t* number, FileType* type
     if (filename == "LOCK") {
         *number = 0;
         *type = KLockFile;
+    } else if (filename == "CURRENT"){
+        *number = 0;
+        *type = KCurrentFile;
     } else {
         uint64_t num;
         if(!ParseNumder(&rest,&num)) {
@@ -32,6 +35,10 @@ bool ParseFilename(const std::string& filename, uint64_t* number, FileType* type
         }
         if(rest == ".log") {
             *type = KLogFile;
+        } else if (rest == ".meta"){
+            *type = KMetaFile;
+        } else if (rest == ".tmp") {
+            *type = KTmpFile;
         } else {
             return false;
         }

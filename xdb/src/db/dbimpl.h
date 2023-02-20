@@ -32,7 +32,7 @@ class DBImpl : public DB {
 
     WriteBatch* MergeBatchGroup(Writer** last_writer);
     
-    Status Recover() EXCLUSIVE_LOCKS_REQUIRED(mu_);
+    Status Recover(VersionEdit* edit) EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
     Status Initialize();
     
