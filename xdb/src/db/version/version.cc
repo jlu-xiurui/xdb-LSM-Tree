@@ -10,6 +10,27 @@
 #include "db/log/log_reader.h"
 
 namespace xdb {
+    VersionSet::VersionSet(const std::string name, const Option* option)
+        : name_(name),
+          option_(option),
+          env_(option->env),
+          icmp_(option->comparator),
+          dummy_head_(this),
+          current_(nullptr),
+          log_number_(0),
+          last_sequence_(0),
+          next_file_number_(2),
+          meta_file_number_(0),
+          meta_log_file_(nullptr),
+          meta_log_writer_(nullptr) {
+        AppendVersion(new Version(this));
+    }
+    VersionSet::~VersionSet() {
+        current_->Unref();
+        assert(dummy_head_.next_ == &dummy_head_);
+        delete meta_log_file_;
+        delete meta_log_writer_;
+    }
     Version::~Version() {
         assert(refs_ == 0);
         next_->prev_ = prev_;
@@ -74,7 +95,8 @@ namespace xdb {
             for (const auto& file : edit->new_files_) {
                 const int level = file.first;
                 FileMeta* meta = new FileMeta(file.second);
-                meta->refs = 1;
+                meta->refs = 1; {
+    }
                 level_[level].deleted_files.erase(meta->number);
                 level_[level].add_files_->insert(meta);
             }

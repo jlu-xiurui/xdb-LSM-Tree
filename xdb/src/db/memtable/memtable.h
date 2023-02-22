@@ -23,11 +23,12 @@ class MemTable {
             delete this;
         }
     }
-
     void Put(SequenceNum seq, RecordType type,
         const Slice& key, const Slice& value);
     
     bool Get(const LookupKey& key, std::string* result, Status* status);
+
+    Iterator* NewIterator();
 
     size_t ApproximateSize() { return mem_buffer_.MemoryUsed(); }
  private:
@@ -38,6 +39,8 @@ class MemTable {
     };
 
     typedef SkipList<const char*, KeyComparator> Table;
+
+    friend class MemTableIterator;
 
     ~MemTable() { assert(refs_ == 0); };
 

@@ -1,12 +1,20 @@
 #include "db/memtable/memtable.h"
 #include "util/coding.h"
+#include "include/iterator.h"
 
 namespace xdb {
 
-Slice DecodeLengthPrefixedSlice(const char* p) {
+static Slice DecodeLengthPrefixedSlice(const char* p) {
     uint32_t len;
     const char* q = DecodeVarint32(p, p + 5, &len);
     return Slice(q, len);
+}
+
+static const char* MakeKey(std::string* buf,const Slice& s) {
+    buf->clear();
+    PutVarint32(buf, s.size());
+    buf->append(s.data(),s.size());
+    return buf->data();
 }
 
 int MemTable::KeyComparator::operator()(const char* a, const char* b) const {
@@ -71,4 +79,44 @@ bool MemTable::Get(const LookupKey& key, std::string* result, Status* status) {
     return false;
 }
 
+class MemTableIterator : public Iterator {
+ public:
+    explicit MemTableIterator(MemTable::Table* table)
+        : iter_(table) {}
+
+    MemTableIterator(const MemTableIterator&) = delete;
+    MemTableIterator& operator=(const MemTableIterator&) = delete;
+
+    ~MemTableIterator() = default;
+
+    bool Valid() const { iter_.Valid(); }
+
+    Slice Key() const { return DecodeLengthPrefixedSlice(iter_.key()); }
+
+    Slice Value() const {
+        Slice key = DecodeLengthPrefixedSlice(iter_.key());
+        return DecodeLengthPrefixedSlice(key.data() + key.size());
+    }
+
+    void Next() { iter_.Next(); }
+
+    void Prev() { iter_.Prev(); }
+
+    void Seek(const Slice& key) {
+        iter_.Seek(MakeKey(&buf_, key));
+    }
+
+    void SeekToFirst() { iter_.SeekToFirst(); }
+
+    void SeekToLast() { iter_.SeekToLast();}
+
+    Status status() { return Status::OK(); }
+ private:
+    MemTable::Table::Iterator iter_;
+    std::string buf_;
+};
+
+Iterator* MemTable::NewIterator() {
+    return new MemTableIterator(&table_);
+}
 }

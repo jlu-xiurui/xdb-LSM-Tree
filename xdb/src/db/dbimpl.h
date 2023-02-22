@@ -32,11 +32,16 @@ class DBImpl : public DB {
 
     WriteBatch* MergeBatchGroup(Writer** last_writer);
     
-    Status Recover(VersionEdit* edit) EXCLUSIVE_LOCKS_REQUIRED(mu_);
+    Status Recover(VersionEdit* edit)
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
     Status Initialize();
     
-    Status RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence);
+    Status RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence, VersionEdit* edit)
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+      
+    Status WriteLevel0SSTable(MemTable* mem, VersionEdit* edit)
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
     const std::string name_;
     const InternalKeyComparator internal_comparator_;

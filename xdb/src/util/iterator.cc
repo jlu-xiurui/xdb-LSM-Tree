@@ -74,6 +74,7 @@ namespace xdb {
     }
 
     using BlockFunction = Iterator* (*)(void* arg, const ReadOption& option, const Slice& handle_contents);
+    
     class TwoLevelIterator : public Iterator {
      public:
         TwoLevelIterator(Iterator* index_iter, BlockFunction block_funtion,

@@ -24,6 +24,8 @@ std::string MetaFileName(const std::string& dbname, uint64_t number);
 
 std::string TmpFileName(const std::string& dbname, uint64_t number);
 
+std::string SSTableFileName(const std::string& dbname, uint64_t number);
+
 std::string CurrentFileName(const std::string& dbname);
 
 bool ParseFilename(const std::string& filename, uint64_t* number, FileType* type);

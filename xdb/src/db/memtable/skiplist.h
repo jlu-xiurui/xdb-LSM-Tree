@@ -40,7 +40,13 @@ class SkipList {
             node_ = node_->next[0]; 
         }
 
-        void Prev();
+        void Prev() {
+            assert(Valid());
+            node_ = FindLess(node_->key);
+            if (node_ == list_->head_) {
+                node_ == nullptr;
+            }
+        }
 
         void Seek(const Key& key);
 
@@ -190,7 +196,6 @@ void SkipList<Key,Comparator>::Insert(const Key& key) {
         }
         max_height_.store(height,std::memory_order_relaxed);
     }
-
     // (1) RelaxedSetNext is ok, because the node hasn't been add to SkipList.
     //     Other users won't see the change.
     // (2) RelaxedNext is ok, "prev[i]->SetNext(i, node)"

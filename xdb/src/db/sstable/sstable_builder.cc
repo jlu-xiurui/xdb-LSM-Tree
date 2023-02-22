@@ -5,12 +5,57 @@
 #include "include/sstable_builder.h"
 #include "include/option.h"
 #include "include/comparator.h"
+#include "include/iterator.h"
 #include "db/sstable/block_builder.h"
 #include "db/sstable/block_format.h"
 #include "db/filter/filter_block.h"
 #include "util/coding.h"
+#include "util/filename.h"
+#include "db/version/version_edit.h"
+
 namespace xdb {
 
+Status BuildSSTable(const std::string name, const Option& option, 
+      Iterator* iter, FileMeta* meta) {
+    Status s;
+    meta->file_size = 0;
+    iter->SeekToFirst();
+    std::string filename = SSTableFileName(name, meta->number);
+
+    if (iter->Valid()) {
+        WritableFile* file;
+        s = option.env->NewWritableFile(filename, &file);
+        if (!s.ok()) {
+            return s;
+        }
+        SSTableBuilder* builder = new SSTableBuilder(option, file);
+        meta->smallest.DecodeFrom(iter->Key());
+        Slice key;
+        for (;iter->Valid(); iter->Next()) {
+            key = iter->Key();
+            builder->Add(key, iter->Value());
+        }
+        meta->largest.DecodeFrom(key);
+
+        s = builder->Finish();
+        if (s.ok()) {
+            meta->file_size = builder->FileSize();
+        }
+        delete builder;
+        if (s.ok()) {
+            s = file->Sync();
+        }
+        delete file;
+    }
+
+    if (!iter->status().ok()) {
+        s = iter->status();
+    }
+    if (!s.ok() || meta->file_size == 0) {
+        option.env->RemoveFile(filename);
+    }
+    return s;
+}
 struct SSTableBuilder::Rep {
     Rep(const Option& option,WritableFile* file)
         : data_block_option_(option),

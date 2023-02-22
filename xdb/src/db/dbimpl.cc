@@ -4,6 +4,7 @@
 #include "db/writebatch/writebatch_helper.h"
 #include "util/filename.h"
 #include "db/log/log_reader.h"
+#include "include/sstable_builder.h"
 
 namespace xdb {
     struct DBImpl::Writer {
@@ -102,7 +103,8 @@ namespace xdb {
 
         DBImpl* impl = new DBImpl(option, name);
         impl->mu_.Lock();
-        Status s = impl->Recover();
+        VersionEdit edit;
+        Status s = impl->Recover(&edit);
         if (s.ok() && impl->mem_ == nullptr) {
             WritableFile* log_file;
             uint64_t log_number = impl->vset_->NextFileNumber();
@@ -235,7 +237,7 @@ namespace xdb {
 
         SequenceNum max_sequence(0);
         for (size_t i = 0; i < log_numbers.size(); i++) {
-            s = RecoverLogFile(log_numbers[i], (i == log_numbers.size() - 1), &max_sequence);
+            s = RecoverLogFile(log_numbers[i], (i == log_numbers.size() - 1), &max_sequence, edit);
             if (!s.ok()) {
                 return s;
             }
@@ -277,7 +279,8 @@ namespace xdb {
         return s;
     }
 
-    Status DBImpl::RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence) {
+    Status DBImpl::RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence
+            ,VersionEdit* edit) {
         mu_.AssertHeld();
 
         std::string filename = LogFileName(name_, number);
@@ -354,6 +357,27 @@ namespace xdb {
         env->UnlockFile(lock);
         env->RemoveFile(lock_filename);
         env->RemoveDir(name);
+        return s;
+    }
+
+    Status DBImpl::WriteLevel0SSTable(MemTable* mem, VersionEdit* edit) {
+        mu_.AssertHeld();
+        FileMeta meta;
+        meta.number = vset_->NextFileNumber();
+        Iterator* iter = mem->NewIterator();
+
+        Status s;
+        {
+            mu_.Unlock();
+            s = BuildSSTable(name_, option_, iter, &meta);
+            mu_.Lock();
+        }
+        delete iter;
+        
+        if (s.ok() && meta.file_size > 0) {
+            edit->AddFile(0, meta.number, meta.file_size,
+                    meta.smallest, meta.largest);
+        }
         return s;
     }
 }

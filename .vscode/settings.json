@@ -68,6 +68,8 @@
         "regex": "cpp",
         "iomanip": "cpp",
         "shared_mutex": "cpp",
-        "variant": "cpp"
-    }
+        "variant": "cpp",
+        "cassert": "cpp"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/xdb"
 }

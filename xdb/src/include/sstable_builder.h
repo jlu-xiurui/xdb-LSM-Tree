@@ -3,10 +3,13 @@
 
 #include "include/option.h"
 #include "util/file.h"
+
 namespace xdb {
 
 class BlockBuilder;
 class BlockHandle;
+class Iterator;
+class FileMeta;
 
 class SSTableBuilder {
  public:
@@ -36,6 +39,8 @@ class SSTableBuilder {
     Rep* rep_;
 };
 
+Status BuildSSTable(const std::string name, const Option& option, 
+      Iterator* iter, FileMeta* meta);
 }
 
 #endif // STORAGE_XDB_INCLUDE_SSTABLE_BUILDER_H_

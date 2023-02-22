@@ -3,12 +3,17 @@
 
 
 #include "include/cache.h"
+#include "include/env.h"
+#include "include/option.h"
 
 namespace xdb {
 
 class TableCache {
  public:
  private:
+    const std::string name_;
+    const Option* option_;
+    Env* env_;
     Cache* cache_;
 };
 

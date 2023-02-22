@@ -40,8 +40,13 @@ class Version {
 
 class VersionSet {
  public:
-    VersionSet(const std::string name_, const Option* option);
+    VersionSet(const std::string name, const Option* option);
     
+    VersionSet(const VersionSet&) = delete;
+    VersionSet& operator=(const VersionSet&) = delete;
+
+    ~VersionSet();
+
     Status LogAndApply(VersionEdit* edit, Mutex* mu) 
         EXCLUSIVE_LOCKS_REQUIRED(mu);
     

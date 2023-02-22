@@ -81,6 +81,10 @@ std::string CurrentFileName(const std::string& dbname) {
     return dbname + "/CURRENT";
 }
 
+std::string SSTableFileName(const std::string& dbname, uint64_t number) {
+    return MakeFileName(dbname, number, "sst");
+}
+
 Status SetCurrentFile(Env* env, const std::string& dbname, uint64_t number) {
     Slice meta_file_name = MetaFileName(dbname, number);
     std::string tmp = TmpFileName(dbname, number);
