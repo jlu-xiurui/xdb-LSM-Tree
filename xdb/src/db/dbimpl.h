@@ -37,7 +37,7 @@ class DBImpl : public DB {
 
     Status Initialize();
     
-    Status RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence, VersionEdit* edit)
+    Status RecoverLogFile(uint64_t number, SequenceNum* max_sequence, VersionEdit* edit)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
       
     Status WriteLevel0SSTable(MemTable* mem, VersionEdit* edit)
@@ -53,6 +53,7 @@ class DBImpl : public DB {
     MemTable* mem_;
     log::Writer* log_;
     WritableFile* logfile_;
+    uint64_t logfile_number_ GUARDED_BY(mu_);
     SequenceNum last_seq_;
     Mutex mu_;
     

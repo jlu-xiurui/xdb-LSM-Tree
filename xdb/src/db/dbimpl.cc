@@ -105,16 +105,20 @@ namespace xdb {
         impl->mu_.Lock();
         VersionEdit edit;
         Status s = impl->Recover(&edit);
-        if (s.ok() && impl->mem_ == nullptr) {
+        if (s.ok()) {
             WritableFile* log_file;
             uint64_t log_number = impl->vset_->NextFileNumber();
             s = option.env->NewWritableFile(LogFileName(name,log_number), &log_file);
             if (s.ok()) {
+                edit.SetLogNumber(log_number);
                 impl->logfile_ = log_file;
                 impl->log_ = new log::Writer(log_file);
                 impl->mem_ = new MemTable(impl->internal_comparator_);
                 impl->mem_->Ref();
             }
+        }
+        if (s.ok()) {
+            s = impl->vset_->LogAndApply(&edit, &impl->mu_);
         }
         impl->mu_.Unlock();
         if (s.ok()) {
@@ -144,7 +148,7 @@ namespace xdb {
         w.sync = option.sync;
 
         MutexLock l(&mu_);
-        //std::cout<<"thread "<< std::this_thread::get_id() <<"start" <<std::endl;
+
         writers_.push_back(&w);
         while (!w.done && &w != writers_.front()) {
             w.cv.Wait();
@@ -237,10 +241,11 @@ namespace xdb {
 
         SequenceNum max_sequence(0);
         for (size_t i = 0; i < log_numbers.size(); i++) {
-            s = RecoverLogFile(log_numbers[i], (i == log_numbers.size() - 1), &max_sequence, edit);
+            s = RecoverLogFile(log_numbers[i], &max_sequence, edit);
             if (!s.ok()) {
                 return s;
             }
+            vset_->MarkFileNumberUsed(log_numbers[i]);
         }
         if (vset_->LastSequence() < max_sequence) {
             vset_->SetLastSequence(max_sequence);
@@ -279,7 +284,7 @@ namespace xdb {
         return s;
     }
 
-    Status DBImpl::RecoverLogFile(uint64_t number, bool last_log, SequenceNum* max_sequence
+    Status DBImpl::RecoverLogFile(uint64_t number, SequenceNum* max_sequence
             ,VersionEdit* edit) {
         mu_.AssertHeld();
 
@@ -310,22 +315,12 @@ namespace xdb {
                 *max_sequence = last_seq;
             }
         }
-        if (s.ok() && last_log) {
-            assert(mem_ == nullptr);
-            assert(log_ == nullptr);
-            uint64_t logfile_size;
-            if (env_->FileSize(filename, &logfile_size).ok() &&
-                env_->NewAppendableFile(filename, &logfile_).ok()) {
-                log_ = new log::Writer(logfile_, logfile_size);
-                if (mem != nullptr) {
-                    mem_ = mem;
-                    mem = nullptr;
-                } else {
-                    mem_ = new MemTable(internal_comparator_);
-                    mem_->Ref();
-                }
+
+        if (mem != nullptr) {
+            if (s.ok()) {
+                s = WriteLevel0SSTable(mem, edit);
             }
-        } 
+        }
         delete file;
         return s;
     }
