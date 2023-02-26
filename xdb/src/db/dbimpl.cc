@@ -25,6 +25,7 @@ namespace xdb {
           env_(option.env),
           mem_(nullptr),
           log_(nullptr),
+          cv_(&mu_),
           vset_(new VersionSet(name, &option_)),
           tmp_batch_(new WriteBatch) {}
     DBImpl::~DBImpl() {
@@ -313,6 +314,15 @@ namespace xdb {
                                     + WriteBatchHelper::GetCount(&batch);
             if (last_seq > *max_sequence) {
                 *max_sequence = last_seq;
+            }
+
+            if (mem->ApproximateSize() > option_.write_mem_size) {
+                s = WriteLevel0SSTable(mem, edit);
+                mem->Unref();
+                mem = nullptr;
+                if (!s.ok()) {
+                    break;
+                }
             }
         }
 

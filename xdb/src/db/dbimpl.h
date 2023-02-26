@@ -43,6 +43,11 @@ class DBImpl : public DB {
     Status WriteLevel0SSTable(MemTable* mem, VersionEdit* edit)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
+    void MayScheduleCompaction() 
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
+    void BackgroundCompaction()
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
     const std::string name_;
     const InternalKeyComparator internal_comparator_;
     const Option option_;
@@ -56,6 +61,7 @@ class DBImpl : public DB {
     uint64_t logfile_number_ GUARDED_BY(mu_);
     SequenceNum last_seq_;
     Mutex mu_;
+    CondVar cv_;
     
     VersionSet* vset_;
     WriteBatch* tmp_batch_ GUARDED_BY(mu_);

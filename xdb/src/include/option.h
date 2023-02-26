@@ -38,12 +38,20 @@ struct Option {
     //            keys is stored a full key.
     int block_restart_interval = 16;
 
-    // the approximate size of block that store the user data.
+    // the approximate size of block(unit of sstable) that 
+    // store the user data. A access to SSTable will return
+    // a block_size memory.
+    // default : 4KB
     size_t block_size = 4 * 1024;
 
     // if true, while check the block of sstable is whether complete.
     // when one record is break, it may cause all the block is unseenable. 
     bool check_crc = false;
+
+    // when memtable's size greater than this,
+    // memtable will be writen to disk as SStable.
+    // default : 4MB
+    size_t write_mem_size = 4 * 1024 * 1024; 
 };
 
 struct WriteOption {
