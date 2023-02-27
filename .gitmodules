@@ -1,3 +1,9 @@
 [submodule "xdb/third_party/googletest"]
 	path = xdb/third_party/googletest
 	url = https://github.com/google/googletest
+[submodule "xdb/third_party/crc32c"]
+	path = xdb/third_party/crc32c
+	url = https://github.com/google/crc32c
+[submodule "xdb/third_party/snappy"]
+	path = xdb/third_party/snappy
+	url = https://github.com/google/snappy

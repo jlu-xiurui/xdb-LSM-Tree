@@ -1,0 +1,1 @@
+/usr/bin/clang++ -fPIC  -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g  -shared -Wl,-soname,libcrc32c.so.1 -o libcrc32c.so.1.1.0 CMakeFiles/crc32c.dir/src/crc32c_portable.cc.o CMakeFiles/crc32c.dir/src/crc32c.cc.o CMakeFiles/crc32c_arm64.dir/src/crc32c_arm64.cc.o CMakeFiles/crc32c_sse42.dir/src/crc32c_sse42.cc.o 

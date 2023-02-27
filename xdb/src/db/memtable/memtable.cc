@@ -89,7 +89,7 @@ class MemTableIterator : public Iterator {
 
     ~MemTableIterator() = default;
 
-    bool Valid() const { iter_.Valid(); }
+    bool Valid() const { return iter_.Valid(); }
 
     Slice Key() const { return DecodeLengthPrefixedSlice(iter_.key()); }
 

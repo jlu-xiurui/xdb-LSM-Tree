@@ -5,6 +5,7 @@
 #include "db/memtable/membuffer.h"
 #include "db/memtable/skiplist.h"
 #include "include/status.h"
+#include "include/iterator.h"
 
 namespace xdb {
 

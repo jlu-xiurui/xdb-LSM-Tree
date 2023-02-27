@@ -152,7 +152,7 @@ class EnvImpl : public Env {
         return Status::OK();
     }
 
-    bool FileExist(const std::string& filename) {
+    bool FileExist(const std::string& filename) override {
         return ::access(filename.c_str(), F_OK) == 0;
     }
     Status LockFile(const std::string& filename, FileLock** lock) override {

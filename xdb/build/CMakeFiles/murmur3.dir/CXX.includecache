@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xiurui/xdb-LSM-Tree/xdb/third_party/murmur3/MurmurHash3.cc
+MurmurHash3.h
+/home/xiurui/xdb-LSM-Tree/xdb/third_party/murmur3/MurmurHash3.h
+stdlib.h
+-
+
+/home/xiurui/xdb-LSM-Tree/xdb/third_party/murmur3/MurmurHash3.h
+string
+-
+stdint.h
+-
+

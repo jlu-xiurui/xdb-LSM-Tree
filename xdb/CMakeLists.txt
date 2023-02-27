@@ -14,19 +14,8 @@ project(xdb
         VERSION 2022.12
         LANGUAGES C CXX)
 
-
-set(XDB_BUILD_SUPPORT_DIR "${CMAKE_SOURCE_DIR}/build_support")
-
 enable_testing()
 
-# Auto build the gtest
-configure_file("${PROJECT_SOURCE_DIR}/build_support/gtest_CMakeLists.txt.in" googletest-download/CMakeLists.txt)
-execute_process(COMMAND "${CMAKE_COMMAND}" -G "${CMAKE_GENERATOR}" .
-        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
-execute_process(COMMAND "${CMAKE_COMMAND}" --build .
-        WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/googletest-download")
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)  # don't override our compiler/linker options when building gtest
-add_subdirectory("${CMAKE_BINARY_DIR}/googletest-src" "${CMAKE_BINARY_DIR}/googletest-build")
 
 # Test whether -Wthread-safety is available. See
 # https://clang.llvm.org/docs/ThreadSafetyAnalysis.html
@@ -107,6 +96,9 @@ target_link_libraries(xdb crc32c)
 
 add_subdirectory(third_party/snappy)
 target_link_libraries(xdb snappy)
+
+add_subdirectory(third_party/googletest)
+target_link_libraries(xdb gtest)
 
 target_include_directories(xdb PUBLIC 
     ${PROJECT_SOURCE_DIR}/src ${XDB_THIRD_PARTY_INCLUDE_DIR} ${XDB_CRC32C_INCLUDE_DIR})

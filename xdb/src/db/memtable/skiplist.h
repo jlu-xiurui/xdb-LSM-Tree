@@ -37,16 +37,10 @@ class SkipList {
 
         void Next() {
             assert(Valid());
-            node_ = node_->next[0]; 
+            node_ = node_->next_[0]; 
         }
 
-        void Prev() {
-            assert(Valid());
-            node_ = FindLess(node_->key);
-            if (node_ == list_->head_) {
-                node_ == nullptr;
-            }
-        }
+        void Prev();
 
         void Seek(const Key& key);
 
