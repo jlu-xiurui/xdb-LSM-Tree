@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g  -shared -Wl,-soname,libmurmur3.so -o libmurmur3.so CMakeFiles/murmur3.dir/third_party/murmur3/MurmurHash3.cc.o 
