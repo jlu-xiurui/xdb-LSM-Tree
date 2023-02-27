@@ -45,6 +45,9 @@ Status BuildSSTable(const std::string name, const Option& option,
         if (s.ok()) {
             s = file->Sync();
         }
+        if (s.ok()) {
+            s = file->Close();
+        }
         delete file;
     }
 

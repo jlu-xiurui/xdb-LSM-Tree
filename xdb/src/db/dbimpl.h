@@ -46,8 +46,15 @@ class DBImpl : public DB {
     void MayScheduleCompaction() 
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
+    void CompactionSchedule()
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
     void BackgroundCompaction()
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
+    void RecordBackgroundError(Status s)
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+      
     const std::string name_;
     const InternalKeyComparator internal_comparator_;
     const Option option_;
@@ -62,7 +69,8 @@ class DBImpl : public DB {
     SequenceNum last_seq_;
     Mutex mu_;
     CondVar cv_;
-    
+    Status background_status_;
+
     VersionSet* vset_;
     WriteBatch* tmp_batch_ GUARDED_BY(mu_);
     std::deque<Writer*> writers_ GUARDED_BY(mu_);

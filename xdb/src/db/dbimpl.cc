@@ -170,13 +170,20 @@ namespace xdb {
                 // only one thread can reach here once time 
                 mu_.Unlock();
                 status = log_->AddRecord(WriteBatchHelper::GetContent(merged_batch));
+                bool sync_error = false;
                 if (status.ok() && option.sync) {
                     status = logfile_->Sync();
+                    if (!status.ok()) {
+                        sync_error = true;
+                    }
                 }
                 if (status.ok()) {
                     status = WriteBatchHelper::InsertMemTable(merged_batch, mem_);
                 }
                 mu_.Lock();
+                if (sync_error) {
+                    RecordBackgroundError(status);
+                }
             }
             if (merged_batch == tmp_batch_) {
                 tmp_batch_->Clear();
@@ -275,6 +282,9 @@ namespace xdb {
         s = writer.AddRecord(record);
         if (s.ok()) {
             s = file->Sync();
+        }
+        if (s.ok()) {
+            s = file->Close();
         }
         delete file;
         if (s.ok()) {
@@ -384,5 +394,9 @@ namespace xdb {
                     meta.smallest, meta.largest);
         }
         return s;
+    }
+
+    void DBImpl::MayScheduleCompaction() {
+
     }
 }
