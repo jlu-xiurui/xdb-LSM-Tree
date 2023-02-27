@@ -1,0 +1,3 @@
+[submodule "xdb/third_party/googletest"]
+	path = xdb/third_party/googletest
+	url = https://github.com/google/googletest
