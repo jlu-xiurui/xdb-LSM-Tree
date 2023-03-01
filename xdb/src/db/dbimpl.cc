@@ -24,16 +24,23 @@ namespace xdb {
           file_lock_(nullptr),
           env_(option.env),
           mem_(nullptr),
+          imm_(nullptr),
           log_(nullptr),
-          cv_(&mu_),
+          background_cv_(&mu_),
+          background_scheduled_(false),
+          closed_(false),
           vset_(new VersionSet(name, &option_)),
           tmp_batch_(new WriteBatch) {}
     DBImpl::~DBImpl() {
+        closed_.store(true, std::memory_order_release);
         if (file_lock_ != nullptr) {
             env_->UnlockFile(file_lock_);
         }
         if(mem_ != nullptr) {
             mem_->Unref();
+        }
+        if(imm_ != nullptr) {
+            imm_->Unref();
         }
         delete vset_;
         delete tmp_batch_;
@@ -113,6 +120,7 @@ namespace xdb {
             if (s.ok()) {
                 edit.SetLogNumber(log_number);
                 impl->logfile_ = log_file;
+                impl->logfile_number_ = log_number;
                 impl->log_ = new log::Writer(log_file);
                 impl->mem_ = new MemTable(impl->internal_comparator_);
                 impl->mem_->Ref();
@@ -379,6 +387,7 @@ namespace xdb {
         mu_.AssertHeld();
         FileMeta meta;
         meta.number = vset_->NextFileNumber();
+        files_writing_.insert(meta.number);
         Iterator* iter = mem->NewIterator();
 
         Status s;
@@ -388,15 +397,128 @@ namespace xdb {
             mu_.Lock();
         }
         delete iter;
-        
+        files_writing_.erase(meta.number);
+
         if (s.ok() && meta.file_size > 0) {
             edit->AddFile(0, meta.number, meta.file_size,
                     meta.smallest, meta.largest);
         }
         return s;
     }
-
     void DBImpl::MayScheduleCompaction() {
+        mu_.AssertHeld();
+        if (closed_.load(std::memory_order_acquire)) {
+            // DB is being deleted
+        } else if (background_scheduled_) {
+            // only one compaction could running
+        } else if (!background_status_.ok()) {
+            // compaction cause a error
+        } else if (imm_ == nullptr 
+            /*&& version need compaction*/) {
+            // noting to do
+        } else {
+            background_scheduled_ = true;
+            env_->Schedule(&DBImpl::CompactionSchedule, this);
+        }
 
+    }
+
+    void DBImpl::CompactionSchedule(void* db) {
+        reinterpret_cast<DBImpl*>(db)->BackgroundCompactionCall();
+    }
+
+    void DBImpl::BackgroundCompactionCall() {
+        MutexLock l(&mu_);
+        if (closed_.load(std::memory_order_acquire)) {
+            // DB is being deleted
+        } else if (!background_status_.ok()) {
+            // compaction cause a error
+        } else {
+            BackgroundCompaction();
+        }
+    }
+
+    void DBImpl::BackgroundCompaction() {
+        mu_.AssertHeld();
+        if (imm_ != nullptr) {
+            CompactionMemtable();
+        }
+    }
+
+    void DBImpl::CompactionMemtable() {
+        mu_.AssertHeld();
+        VersionEdit edit;
+        Status s = WriteLevel0SSTable(imm_, &edit);
+
+        if (s.ok() && closed_.load(std::memory_order_acquire)) {
+            s = Status::Corruption("DB is closed during compaction memtable");
+        }
+        if (s.ok()) {
+            // early log is unuseful
+            edit.SetLogNumber(logfile_number_);
+            s = vset_->LogAndApply(&edit, &mu_);
+        }
+        if (s.ok()) {
+            imm_->Unref();
+            imm_ = nullptr;
+            GarbageFilesClean();
+        } else {
+            RecordBackgroundError(s);
+        }
+    } 
+
+    void DBImpl::RecordBackgroundError(Status s) {
+        mu_.AssertHeld();
+        if (background_status_.ok()) {
+            background_status_ = s;
+            background_cv_.SignalAll();
+        }
+    }
+
+    void DBImpl::GarbageFilesClean() {
+        mu_.AssertHeld();
+        if (!background_status_.ok()) {
+            return;
+        }
+        std::set<uint64_t> live;
+        vset_->AddLiveFiles(&live);
+
+        std::vector<std::string> filenames;
+        env_->GetChildren(name_, &filenames);
+        uint64_t number;
+        FileType type;
+        std::vector<std::string> file_delete;
+
+        for (const std::string& filename : filenames) {
+            if (ParseFilename(filename, &number, &type)) {
+                bool keep = true;
+                switch(type) {
+                    case KLogFile:
+                        keep = number >= vset_->LogNumber();
+                        break;
+                    case KMetaFile:
+                        keep = number >= vset_->MetaFileNumber();
+                        break;
+                    case KSSTableFile:
+                        keep = live.find(number) != live.end();
+                        break;
+                    case KTmpFile:
+                        keep = false;
+                        break;
+                    case KCurrentFile:
+                    case KLockFile:
+                        keep = true;
+                        break;
+                }
+                if (!keep) {
+                    file_delete.push_back(filename);
+                }
+            }
+        }
+        mu_.Unlock();
+        for (const std::string& filename : file_delete) {
+            env_->RemoveFile(name_ + "/" + filename);
+        }
+        mu_.Lock();
     }
 }

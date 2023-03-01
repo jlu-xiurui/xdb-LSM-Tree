@@ -167,6 +167,35 @@ CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o: ../src/util/mutex.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o: ../src/util/thread_annotations.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o: ../src/db/sstable/sstable_reader.cc
 
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/format/dbformat.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/format/internal_key.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/log/log_format.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/log/log_reader.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/log/log_writer.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/version/version.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/version/version_edit.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/comparator.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/env.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/iterator.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/option.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/slice.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/status.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/util/coding.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/util/file.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/util/filename.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/util/mutex.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/util/thread_annotations.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/version/version.cc
+
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/format/dbformat.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/format/internal_key.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/version/version_edit.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/comparator.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/slice.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/status.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/util/coding.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/version/version_edit.cc
+
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/format/internal_key.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/memtable/membuffer.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/memtable/memtable.h

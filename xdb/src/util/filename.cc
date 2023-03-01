@@ -39,6 +39,8 @@ bool ParseFilename(const std::string& filename, uint64_t* number, FileType* type
             *type = KMetaFile;
         } else if (rest == ".tmp") {
             *type = KTmpFile;
+        } else if (rest == ".sst") {
+            *type = KSSTableFile;
         } else {
             return false;
         }

@@ -167,6 +167,35 @@ CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o
  ../src/util/mutex.h
  ../src/util/thread_annotations.h
  /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_reader.cc
+CMakeFiles/xdb.dir/src/db/version/version.cc.o
+ ../src/db/format/dbformat.h
+ ../src/db/format/internal_key.h
+ ../src/db/log/log_format.h
+ ../src/db/log/log_reader.h
+ ../src/db/log/log_writer.h
+ ../src/db/version/version.h
+ ../src/db/version/version_edit.h
+ ../src/include/comparator.h
+ ../src/include/env.h
+ ../src/include/iterator.h
+ ../src/include/option.h
+ ../src/include/slice.h
+ ../src/include/status.h
+ ../src/util/coding.h
+ ../src/util/file.h
+ ../src/util/filename.h
+ ../src/util/mutex.h
+ ../src/util/thread_annotations.h
+ /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version.cc
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o
+ ../src/db/format/dbformat.h
+ ../src/db/format/internal_key.h
+ ../src/db/version/version_edit.h
+ ../src/include/comparator.h
+ ../src/include/slice.h
+ ../src/include/status.h
+ ../src/util/coding.h
+ /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version_edit.cc
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o
  ../src/db/format/internal_key.h
  ../src/db/memtable/membuffer.h

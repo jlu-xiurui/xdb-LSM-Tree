@@ -57,7 +57,8 @@ class VersionSet {
     uint64_t LastSequence() const { return last_sequence_; }
 
     uint64_t LogNumber() const { return log_number_; }
-
+    
+    uint64_t MetaFileNumber() const { return meta_file_number_; }
     void MarkFileNumberUsed(uint64_t number) {
       if (number >= next_file_number_) {
          next_file_number_ = number + 1;
@@ -68,6 +69,8 @@ class VersionSet {
       assert(s >= last_sequence_);
       last_sequence_ = s;
     }
+
+    void AddLiveFiles(std::set<uint64_t>* live);
  private:
     class Builder;
     

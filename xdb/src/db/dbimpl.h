@@ -46,15 +46,22 @@ class DBImpl : public DB {
     void MayScheduleCompaction() 
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
-    void CompactionSchedule()
-      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+    static void CompactionSchedule(void* db);
+
+    void BackgroundCompactionCall();
 
     void BackgroundCompaction()
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
+    void CompactionMemtable()
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+    
     void RecordBackgroundError(Status s)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
-      
+    
+    void GarbageFilesClean()
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
     const std::string name_;
     const InternalKeyComparator internal_comparator_;
     const Option option_;
@@ -63,13 +70,19 @@ class DBImpl : public DB {
     Env* env_;
     // in memory cache and its write-ahead logger
     MemTable* mem_;
+    MemTable* imm_;
     log::Writer* log_;
     WritableFile* logfile_;
     uint64_t logfile_number_ GUARDED_BY(mu_);
     SequenceNum last_seq_;
     Mutex mu_;
-    CondVar cv_;
-    Status background_status_;
+
+    CondVar background_cv_;
+    Status background_status_ GUARDED_BY(mu_);
+    bool background_scheduled_  GUARDED_BY(mu_);
+    std::atomic<bool> closed_;
+
+    std::set<uint64_t> files_writing_ GUARDED_BY(mu_);
 
     VersionSet* vset_;
     WriteBatch* tmp_batch_ GUARDED_BY(mu_);

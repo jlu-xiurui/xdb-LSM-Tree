@@ -79,7 +79,7 @@ block_test_EXTERNAL_OBJECTS =
 
 test/block_test: CMakeFiles/block_test.dir/test/block_test.cc.o
 test/block_test: CMakeFiles/block_test.dir/build.make
-test/block_test: libxdb.a
+test/block_test: libxdb.so
 test/block_test: lib/libgmock_main.so.1.13.0
 test/block_test: libmurmur3.so
 test/block_test: third_party/crc32c/libcrc32c.so.1.1.0

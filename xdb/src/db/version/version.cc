@@ -337,4 +337,15 @@ namespace xdb {
         v->next_->prev_ = v;
         v->prev_->next_ = v;
     }
+
+    void VersionSet::AddLiveFiles(std::set<uint64_t>* live) {
+        for (Version* v = dummy_head_.next_;v != &dummy_head_; v = v->next_ ) {
+            for (int level = 0; level < config::KNumLevels; level++) {
+                const std::vector<FileMeta*>& files_ = v->files_[level];
+                for (const FileMeta* file : files_) {
+                    live->insert(file->number);
+                }
+            }
+        }
+    }
 }

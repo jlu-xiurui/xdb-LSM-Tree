@@ -79,7 +79,7 @@ sstable_test_EXTERNAL_OBJECTS =
 
 test/sstable_test: CMakeFiles/sstable_test.dir/test/sstable_test.cc.o
 test/sstable_test: CMakeFiles/sstable_test.dir/build.make
-test/sstable_test: libxdb.a
+test/sstable_test: libxdb.so
 test/sstable_test: lib/libgmock_main.so.1.13.0
 test/sstable_test: libmurmur3.so
 test/sstable_test: third_party/crc32c/libcrc32c.so.1.1.0

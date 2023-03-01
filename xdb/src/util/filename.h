@@ -14,7 +14,8 @@ enum FileType {
     KLockFile = 1,
     KCurrentFile = 2,
     KMetaFile = 3,
-    KTmpFile = 4
+    KTmpFile = 4,
+    KSSTableFile = 5,
 };
 std::string LogFileName(const std::string& dbname, uint64_t number);
 

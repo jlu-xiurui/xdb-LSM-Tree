@@ -827,6 +827,60 @@ src/db/sstable/sstable_reader.cc.s:
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.s
 .PHONY : src/db/sstable/sstable_reader.cc.s
 
+src/db/version/version.o: src/db/version/version.cc.o
+
+.PHONY : src/db/version/version.o
+
+# target to build an object file
+src/db/version/version.cc.o:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/version.cc.o
+.PHONY : src/db/version/version.cc.o
+
+src/db/version/version.i: src/db/version/version.cc.i
+
+.PHONY : src/db/version/version.i
+
+# target to preprocess a source file
+src/db/version/version.cc.i:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/version.cc.i
+.PHONY : src/db/version/version.cc.i
+
+src/db/version/version.s: src/db/version/version.cc.s
+
+.PHONY : src/db/version/version.s
+
+# target to generate assembly for a file
+src/db/version/version.cc.s:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/version.cc.s
+.PHONY : src/db/version/version.cc.s
+
+src/db/version/version_edit.o: src/db/version/version_edit.cc.o
+
+.PHONY : src/db/version/version_edit.o
+
+# target to build an object file
+src/db/version/version_edit.cc.o:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o
+.PHONY : src/db/version/version_edit.cc.o
+
+src/db/version/version_edit.i: src/db/version/version_edit.cc.i
+
+.PHONY : src/db/version/version_edit.i
+
+# target to preprocess a source file
+src/db/version/version_edit.cc.i:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/version_edit.cc.i
+.PHONY : src/db/version/version_edit.cc.i
+
+src/db/version/version_edit.s: src/db/version/version_edit.cc.s
+
+.PHONY : src/db/version/version_edit.s
+
+# target to generate assembly for a file
+src/db/version/version_edit.cc.s:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/version_edit.cc.s
+.PHONY : src/db/version/version_edit.cc.s
+
 src/db/writebatch/writebatch.o: src/db/writebatch/writebatch.cc.o
 
 .PHONY : src/db/writebatch/writebatch.o
@@ -1390,6 +1444,12 @@ help:
 	@echo "... src/db/sstable/sstable_reader.o"
 	@echo "... src/db/sstable/sstable_reader.i"
 	@echo "... src/db/sstable/sstable_reader.s"
+	@echo "... src/db/version/version.o"
+	@echo "... src/db/version/version.i"
+	@echo "... src/db/version/version.s"
+	@echo "... src/db/version/version_edit.o"
+	@echo "... src/db/version/version_edit.i"
+	@echo "... src/db/version/version_edit.s"
 	@echo "... src/db/writebatch/writebatch.o"
 	@echo "... src/db/writebatch/writebatch.i"
 	@echo "... src/db/writebatch/writebatch.s"
