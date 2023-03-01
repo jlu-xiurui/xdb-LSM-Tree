@@ -167,7 +167,7 @@ namespace xdb {
         }
         
         // merge the writebatch
-        Status status;
+        Status status = MakeRoomForWrite();
         Writer* last_writer = &w;
         SequenceNum last_seq = vset_->LastSequence();
         if (batch != nullptr) {
@@ -213,6 +213,44 @@ namespace xdb {
         }
         //std::cout<<"thread "<< std::this_thread::get_id() <<"done" <<std::endl;
         return status;
+    }
+
+    Status DBImpl::MakeRoomForWrite() {
+        mu_.AssertHeld();
+        Status s;
+        while(true) {
+            if (!background_status_.ok()) {
+                s = background_status_;
+                break;
+            } else if (mem_->ApproximateSize() <= option_.write_mem_size) {
+                // there is enough room for write
+                break;
+            } else if (imm_ != nullptr) {
+                // a memtable is being compact as SStable
+                background_cv_.Wait();
+            } else {
+                uint64_t log_number = vset_->NextFileNumber();
+                WritableFile* file;
+                s = env_->NewWritableFile(LogFileName(name_, log_number), &file);
+                if (!s.ok()) {
+                    break;
+                }
+                delete log_;
+                s = logfile_->Close();
+                if (!s.ok()) {
+                    RecordBackgroundError(s);
+                }
+                delete logfile_;
+
+                logfile_ = file;
+                log_ = new log::Writer(file);
+                imm_ = mem_;
+                mem_ = new MemTable(internal_comparator_);
+                mem_->Ref();
+                MayScheduleCompaction();
+            }
+        }
+        return s;
     }
 
     Status DBImpl::Recover(VersionEdit* edit) {
@@ -436,6 +474,8 @@ namespace xdb {
         } else {
             BackgroundCompaction();
         }
+        background_scheduled_ = false;
+        background_cv_.SignalAll();
     }
 
     void DBImpl::BackgroundCompaction() {

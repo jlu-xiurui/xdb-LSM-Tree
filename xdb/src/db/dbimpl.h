@@ -37,6 +37,9 @@ class DBImpl : public DB {
 
     Status Initialize();
     
+    Status MakeRoomForWrite() 
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+      
     Status RecoverLogFile(uint64_t number, SequenceNum* max_sequence, VersionEdit* edit)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
       
