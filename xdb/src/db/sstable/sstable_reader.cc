@@ -147,5 +147,34 @@ Iterator* SSTableReader::NewIterator(const ReadOption& option) const {
     );
 }
 
+Status SSTableReader::InternalGet(const ReadOption& option, const Slice& key, void* arg,
+             void (*handle_result)(void*, const Slice&, const Slice&)) {
+    Status s;
+    Iterator* index_iter = rep_->index_block->NewIterator(rep_->option.comparator);
+    index_iter->Seek(key);
+    if (index_iter->Valid()) {
+        Slice handle_content = index_iter->Value();
+        BlockHandle handle;
+        FilterBlockReader* filter;
+        if (filter != nullptr && handle.DecodeFrom(&handle_content).ok() 
+                && filter->KeyMayMatch(handle.GetOffset(), key)) {
+            // key is not found.
+        } else {
+            Iterator* block_iter = ReadBlockHandle(this, option, handle_content);
+            block_iter->Seek(key);
+            if (block_iter->Valid()) {
+                (*handle_result)(arg, block_iter->Key(), block_iter->Value());
+            }
+            s = block_iter->status();
+            delete block_iter;
+        }
+    }
+    if (s.ok()) {
+        s = index_iter->status();
+    }
+    delete index_iter;
+    return s;
+}
+
 }
 

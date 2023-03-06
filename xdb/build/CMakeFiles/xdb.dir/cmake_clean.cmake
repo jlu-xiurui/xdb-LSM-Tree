@@ -23,8 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/xdb.dir/src/util/filename.cc.o"
   "CMakeFiles/xdb.dir/src/util/iterator.cc.o"
   "CMakeFiles/xdb.dir/src/util/status.cc.o"
+  "libxdb.a"
   "libxdb.pdb"
-  "libxdb.so"
 )
 
 # Per-language clean rules from dependency scanning.

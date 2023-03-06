@@ -8,6 +8,7 @@
 #include "db/memtable/memtable.h"
 #include "db/log/log_writer.h"
 #include "db/version/version.h"
+#include "db/sstable/table_cache.h"
 
 namespace xdb {
 
@@ -17,7 +18,7 @@ class DBImpl : public DB {
 
     ~DBImpl() override;
 
-    Status Get(const Slice& key, std::string* value) override;
+    Status Get(const ReadOption& option, const Slice& key, std::string* value) override;
 
     Status Put(const WriteOption& option,const Slice& key, const Slice& value) override;
 
@@ -87,6 +88,7 @@ class DBImpl : public DB {
 
     std::set<uint64_t> files_writing_ GUARDED_BY(mu_);
 
+    TableCache* table_cache_;
     VersionSet* vset_;
     WriteBatch* tmp_batch_ GUARDED_BY(mu_);
     std::deque<Writer*> writers_ GUARDED_BY(mu_);

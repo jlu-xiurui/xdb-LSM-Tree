@@ -22,6 +22,8 @@ add_test(memtable_test "/home/xiurui/xdb-LSM-Tree/xdb/build/test/memtable_test" 
 set_tests_properties(memtable_test PROPERTIES  _BACKTRACE_TRIPLES "/home/xiurui/xdb-LSM-Tree/xdb/CMakeLists.txt;157;add_test;/home/xiurui/xdb-LSM-Tree/xdb/CMakeLists.txt;0;")
 add_test(sstable_test "/home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_test" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_test.xml")
 set_tests_properties(sstable_test PROPERTIES  _BACKTRACE_TRIPLES "/home/xiurui/xdb-LSM-Tree/xdb/CMakeLists.txt;157;add_test;/home/xiurui/xdb-LSM-Tree/xdb/CMakeLists.txt;0;")
+add_test(sstable_write_test "/home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_write_test" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_write_test.xml")
+set_tests_properties(sstable_write_test PROPERTIES  _BACKTRACE_TRIPLES "/home/xiurui/xdb-LSM-Tree/xdb/CMakeLists.txt;157;add_test;/home/xiurui/xdb-LSM-Tree/xdb/CMakeLists.txt;0;")
 subdirs("third_party/crc32c")
 subdirs("third_party/snappy")
 subdirs("third_party/googletest")

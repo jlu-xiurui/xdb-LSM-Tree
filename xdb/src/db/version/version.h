@@ -10,6 +10,7 @@
 #include "db/log/log_writer.h"
 #include "util/mutex.h"
 #include "include/option.h"
+#include "db/sstable/table_cache.h"
 
 namespace xdb {
 
@@ -19,6 +20,8 @@ class Version {
  public:
     void Ref();
     void Unref();
+
+    Status Get(const ReadOption& option, const LookupKey& key, std::string* result);
  private:
     friend class VersionSet;
 
@@ -29,7 +32,8 @@ class Version {
     Version& operator=(const Version&) = delete;
 
     ~Version();
-
+    
+    
     VersionSet* vset_;
     Version* next_;
     Version* prev_;
@@ -40,7 +44,8 @@ class Version {
 
 class VersionSet {
  public:
-    VersionSet(const std::string name, const Option* option);
+    VersionSet(const std::string name, const Option* option, 
+         TableCache* cache);
     
     VersionSet(const VersionSet&) = delete;
     VersionSet& operator=(const VersionSet&) = delete;
@@ -59,6 +64,7 @@ class VersionSet {
     uint64_t LogNumber() const { return log_number_; }
     
     uint64_t MetaFileNumber() const { return meta_file_number_; }
+    
     void MarkFileNumberUsed(uint64_t number) {
       if (number >= next_file_number_) {
          next_file_number_ = number + 1;
@@ -85,6 +91,7 @@ class VersionSet {
     Env* env_;
     const InternalKeyComparator icmp_;
 
+    TableCache* table_cache_;
     Version dummy_head_;
     Version* current_;
 

@@ -10,9 +10,22 @@ namespace xdb {
 
 class TableCache {
  public:
+    TableCache(const std::string name, const Option& option, size_t capacity)
+            : name_(name), option_(option),
+              env_(option.env), cache_(NewLRUCache(capacity)) {}
+
+    ~TableCache() { delete cache_; }
+    
+    Status Get(const ReadOption& option, uint64_t file_number, uint64_t file_size,
+            const Slice& key, void* arg, void (*handle_result)(void*, const Slice&, const Slice&));
+
+    void Evict(uint64_t file_number);
+
  private:
+    Status FindTable(uint64_t file_number, uint64_t file_size, Cache::Handle** handle);
+    
     const std::string name_;
-    const Option* option_;
+    const Option& option_;
     Env* env_;
     Cache* cache_;
 };

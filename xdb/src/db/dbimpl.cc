@@ -89,7 +89,7 @@ namespace xdb {
         return ret;
     }
 
-    Status DBImpl::Get(const Slice& key, std::string* value) {
+    Status DBImpl::Get(const ReadOption& option,const Slice& key, std::string* value) {
         Status status;
         MutexLock l(&mu_);
         SequenceNum seq = vset_->LastSequence();

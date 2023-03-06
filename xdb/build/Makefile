@@ -70,35 +70,13 @@ install/strip/fast: preinstall/fast
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Development\" \"Unspecified\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	/usr/bin/cpack --config ./CPackSourceConfig.cmake /home/xiurui/xdb-LSM-Tree/xdb/build/CPackSourceConfig.cmake
-.PHONY : package_source
-
-# Special rule for the target package_source
-package_source/fast: package_source
-
-.PHONY : package_source/fast
 
 # Special rule for the target install
 install: preinstall
@@ -111,6 +89,17 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -145,17 +134,6 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
-
-# Special rule for the target package
-package: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	/usr/bin/cpack --config ./CPackConfig.cmake
-.PHONY : package
-
-# Special rule for the target package
-package/fast: package
-
-.PHONY : package/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -268,6 +246,19 @@ coding_test/fast:
 .PHONY : coding_test/fast
 
 #=============================================================================
+# Target rules for targets named db_test
+
+# Build rule for target.
+db_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 db_test
+.PHONY : db_test
+
+# fast build rule for target.
+db_test/fast:
+	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/build
+.PHONY : db_test/fast
+
+#=============================================================================
 # Target rules for targets named env_test
 
 # Build rule for target.
@@ -279,6 +270,19 @@ env_test: cmake_check_build_system
 env_test/fast:
 	$(MAKE) -f CMakeFiles/env_test.dir/build.make CMakeFiles/env_test.dir/build
 .PHONY : env_test/fast
+
+#=============================================================================
+# Target rules for targets named sstable_write_test
+
+# Build rule for target.
+sstable_write_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sstable_write_test
+.PHONY : sstable_write_test
+
+# fast build rule for target.
+sstable_write_test/fast:
+	$(MAKE) -f CMakeFiles/sstable_write_test.dir/build.make CMakeFiles/sstable_write_test.dir/build
+.PHONY : sstable_write_test/fast
 
 #=============================================================================
 # Target rules for targets named example_test
@@ -320,19 +324,6 @@ memtable_test/fast:
 .PHONY : memtable_test/fast
 
 #=============================================================================
-# Target rules for targets named db_test
-
-# Build rule for target.
-db_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 db_test
-.PHONY : db_test
-
-# fast build rule for target.
-db_test/fast:
-	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/build
-.PHONY : db_test/fast
-
-#=============================================================================
 # Target rules for targets named crc32c
 
 # Build rule for target.
@@ -370,19 +361,6 @@ crc32c_arm64: cmake_check_build_system
 crc32c_arm64/fast:
 	$(MAKE) -f third_party/crc32c/CMakeFiles/crc32c_arm64.dir/build.make third_party/crc32c/CMakeFiles/crc32c_arm64.dir/build
 .PHONY : crc32c_arm64/fast
-
-#=============================================================================
-# Target rules for targets named glog
-
-# Build rule for target.
-glog: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 glog
-.PHONY : glog
-
-# fast build rule for target.
-glog/fast:
-	$(MAKE) -f third_party/crc32c/third_party/glog/CMakeFiles/glog.dir/build.make third_party/crc32c/third_party/glog/CMakeFiles/glog.dir/build
-.PHONY : glog/fast
 
 #=============================================================================
 # Target rules for targets named snappy
@@ -1340,6 +1318,33 @@ test/sstable_test.cc.s:
 	$(MAKE) -f CMakeFiles/sstable_test.dir/build.make CMakeFiles/sstable_test.dir/test/sstable_test.cc.s
 .PHONY : test/sstable_test.cc.s
 
+test/sstable_write_test.o: test/sstable_write_test.cc.o
+
+.PHONY : test/sstable_write_test.o
+
+# target to build an object file
+test/sstable_write_test.cc.o:
+	$(MAKE) -f CMakeFiles/sstable_write_test.dir/build.make CMakeFiles/sstable_write_test.dir/test/sstable_write_test.cc.o
+.PHONY : test/sstable_write_test.cc.o
+
+test/sstable_write_test.i: test/sstable_write_test.cc.i
+
+.PHONY : test/sstable_write_test.i
+
+# target to preprocess a source file
+test/sstable_write_test.cc.i:
+	$(MAKE) -f CMakeFiles/sstable_write_test.dir/build.make CMakeFiles/sstable_write_test.dir/test/sstable_write_test.cc.i
+.PHONY : test/sstable_write_test.cc.i
+
+test/sstable_write_test.s: test/sstable_write_test.cc.s
+
+.PHONY : test/sstable_write_test.s
+
+# target to generate assembly for a file
+test/sstable_write_test.cc.s:
+	$(MAKE) -f CMakeFiles/sstable_write_test.dir/build.make CMakeFiles/sstable_write_test.dir/test/sstable_write_test.cc.s
+.PHONY : test/sstable_write_test.cc.s
+
 third_party/murmur3/MurmurHash3.o: third_party/murmur3/MurmurHash3.cc.o
 
 .PHONY : third_party/murmur3/MurmurHash3.o
@@ -1375,28 +1380,26 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... list_install_components"
-	@echo "... test"
 	@echo "... xdb"
 	@echo "... sstable_test"
-	@echo "... package_source"
 	@echo "... murmur3"
 	@echo "... install"
 	@echo "... block_test"
 	@echo "... cache_test"
 	@echo "... coding_test"
+	@echo "... db_test"
+	@echo "... test"
 	@echo "... env_test"
+	@echo "... sstable_write_test"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... example_test"
 	@echo "... filter_block_test"
 	@echo "... install/local"
 	@echo "... memtable_test"
-	@echo "... db_test"
-	@echo "... package"
 	@echo "... crc32c"
 	@echo "... crc32c_sse42"
 	@echo "... crc32c_arm64"
-	@echo "... glog"
 	@echo "... snappy"
 	@echo "... gmock_main"
 	@echo "... gmock"
@@ -1501,6 +1504,9 @@ help:
 	@echo "... test/sstable_test.o"
 	@echo "... test/sstable_test.i"
 	@echo "... test/sstable_test.s"
+	@echo "... test/sstable_write_test.o"
+	@echo "... test/sstable_write_test.i"
+	@echo "... test/sstable_write_test.s"
 	@echo "... third_party/murmur3/MurmurHash3.o"
 	@echo "... third_party/murmur3/MurmurHash3.i"
 	@echo "... third_party/murmur3/MurmurHash3.s"

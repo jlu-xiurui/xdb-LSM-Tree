@@ -51,7 +51,7 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target Crc32c::crc32c
-add_library(Crc32c::crc32c SHARED IMPORTED)
+add_library(Crc32c::crc32c STATIC IMPORTED)
 
 set_target_properties(Crc32c::crc32c PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"

@@ -12,7 +12,7 @@ class DB {
 
     static Status Open(const Option& option, const std::string& name, DB** ptr);
 
-    virtual Status Get(const Slice& key, std::string* value) = 0;
+    virtual Status Get(const ReadOption& option,const Slice& key, std::string* value) = 0;
 
     virtual Status Put(const WriteOption& option, const Slice& key, const Slice& value) = 0;
 

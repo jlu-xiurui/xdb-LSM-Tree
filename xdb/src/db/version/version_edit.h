@@ -20,6 +20,15 @@ struct FileMeta {
 
 class VersionEdit {
  public:
+    VersionEdit() : 
+        log_number_(0),
+        last_sequence_(0),
+        next_file_number_(0),
+        has_log_number_(false),
+        has_last_sequence_(false),
+        has_next_file_number_(false),
+        has_comparator_name_(false) {}
+
     void SetLogNumber(uint64_t log_number) {
         has_log_number_ = true;
         log_number_ = log_number;

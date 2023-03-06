@@ -88,7 +88,8 @@ std::string SSTableFileName(const std::string& dbname, uint64_t number) {
 }
 
 Status SetCurrentFile(Env* env, const std::string& dbname, uint64_t number) {
-    Slice meta_file_name = MetaFileName(dbname, number);
+    std::string content = MetaFileName(dbname, number);
+    Slice meta_file_name = content;
     std::string tmp = TmpFileName(dbname, number);
     Status s = WriteStringToFileSync(env, meta_file_name, tmp);
     if (s.ok()) {

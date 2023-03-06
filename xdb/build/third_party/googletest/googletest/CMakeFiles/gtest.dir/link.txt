@@ -1,1 +1,2 @@
-/usr/bin/clang++ -fPIC -g  -shared -Wl,-soname,libgtest.so.1.13.0 -o ../../../lib/libgtest.so.1.13.0 CMakeFiles/gtest.dir/src/gtest-all.cc.o  -lpthread 
+/usr/bin/ar qc ../../../lib/libgtest.a  CMakeFiles/gtest.dir/src/gtest-all.cc.o
+/usr/bin/ranlib ../../../lib/libgtest.a

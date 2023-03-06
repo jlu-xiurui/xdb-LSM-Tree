@@ -1,7 +1,6 @@
 file(REMOVE_RECURSE
   "../../../bin/libgtestpdb_debug_postfix-NOTFOUND.pdb"
-  "../../../lib/libgtest.so"
-  "../../../lib/libgtest.so.1.13.0"
+  "../../../lib/libgtest.a"
   "CMakeFiles/gtest.dir/src/gtest-all.cc.o"
 )
 

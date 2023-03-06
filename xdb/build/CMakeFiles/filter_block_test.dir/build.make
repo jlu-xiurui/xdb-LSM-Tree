@@ -79,13 +79,14 @@ filter_block_test_EXTERNAL_OBJECTS =
 
 test/filter_block_test: CMakeFiles/filter_block_test.dir/test/filter_block_test.cc.o
 test/filter_block_test: CMakeFiles/filter_block_test.dir/build.make
-test/filter_block_test: libxdb.so
-test/filter_block_test: lib/libgmock_main.so.1.13.0
+test/filter_block_test: libxdb.a
+test/filter_block_test: lib/libgtest.a
+test/filter_block_test: lib/libgmock_main.a
 test/filter_block_test: libmurmur3.so
-test/filter_block_test: third_party/crc32c/libcrc32c.so.1.1.0
-test/filter_block_test: third_party/snappy/libsnappy.so.1.1.9
-test/filter_block_test: lib/libgmock.so.1.13.0
-test/filter_block_test: lib/libgtest.so.1.13.0
+test/filter_block_test: third_party/crc32c/libcrc32c.a
+test/filter_block_test: third_party/snappy/libsnappy.a
+test/filter_block_test: lib/libgmock.a
+test/filter_block_test: lib/libgtest.a
 test/filter_block_test: CMakeFiles/filter_block_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test/filter_block_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/filter_block_test.dir/link.txt --verbose=$(VERBOSE)

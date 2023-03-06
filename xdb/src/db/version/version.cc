@@ -10,11 +10,12 @@
 #include "db/log/log_reader.h"
 
 namespace xdb {
-    VersionSet::VersionSet(const std::string name, const Option* option)
+    VersionSet::VersionSet(const std::string name, const Option* option, TableCache* cache)
         : name_(name),
           option_(option),
           env_(option->env),
           icmp_(option->comparator),
+          table_cache_(cache),
           dummy_head_(this),
           current_(nullptr),
           log_number_(0),
@@ -45,6 +46,14 @@ namespace xdb {
                 }
             }
         }
+    }
+
+    Status Get(const ReadOption& option, const LookupKey& key, std::string* result) {
+        struct State {
+            const ReadOption& option;
+            Slice internal_key;
+
+        };
     }
 
     void Version::Ref() { ++refs_;}
@@ -176,7 +185,7 @@ namespace xdb {
         uint64_t log_number = 0;
         SequenceNum last_sequence = 0;
         uint64_t next_file_number = 0;
-        std::string comparator_name = 0;
+        std::string comparator_name;
         bool has_log_number = false;
         bool has_last_sequence = false;
         bool has_next_file_number = false;
