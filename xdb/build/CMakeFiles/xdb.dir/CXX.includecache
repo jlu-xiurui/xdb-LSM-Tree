@@ -19,6 +19,8 @@ db/log/log_writer.h
 ../src/db/db/log/log_writer.h
 db/version/version.h
 ../src/db/db/version/version.h
+db/sstable/table_cache.h
+../src/db/db/sstable/table_cache.h
 
 ../src/db/filter/filter_block.h
 vector
@@ -120,6 +122,14 @@ include/iterator.h
 include/comparator.h
 ../src/db/sstable/include/comparator.h
 
+../src/db/sstable/table_cache.h
+include/cache.h
+../src/db/sstable/include/cache.h
+include/env.h
+../src/db/sstable/include/env.h
+include/option.h
+../src/db/sstable/include/option.h
+
 ../src/db/version/version.h
 cassert
 -
@@ -137,6 +147,8 @@ util/mutex.h
 ../src/db/version/util/mutex.h
 include/option.h
 ../src/db/version/include/option.h
+db/sstable/table_cache.h
+../src/db/version/db/sstable/table_cache.h
 
 ../src/db/version/version_edit.h
 vector

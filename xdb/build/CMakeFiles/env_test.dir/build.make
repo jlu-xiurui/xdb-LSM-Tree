@@ -80,13 +80,12 @@ env_test_EXTERNAL_OBJECTS =
 test/env_test: CMakeFiles/env_test.dir/test/env_test.cc.o
 test/env_test: CMakeFiles/env_test.dir/build.make
 test/env_test: libxdb.a
-test/env_test: lib/libgtest.a
-test/env_test: lib/libgmock_main.a
+test/env_test: lib/libgmock_main.so.1.13.0
 test/env_test: libmurmur3.so
-test/env_test: third_party/crc32c/libcrc32c.a
-test/env_test: third_party/snappy/libsnappy.a
-test/env_test: lib/libgmock.a
-test/env_test: lib/libgtest.a
+test/env_test: third_party/crc32c/libcrc32c.so.1.1.0
+test/env_test: third_party/snappy/libsnappy.so.1.1.9
+test/env_test: lib/libgmock.so.1.13.0
+test/env_test: lib/libgtest.so.1.13.0
 test/env_test: CMakeFiles/env_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test/env_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/env_test.dir/link.txt --verbose=$(VERBOSE)

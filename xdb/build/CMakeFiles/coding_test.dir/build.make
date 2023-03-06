@@ -80,13 +80,12 @@ coding_test_EXTERNAL_OBJECTS =
 test/coding_test: CMakeFiles/coding_test.dir/test/coding_test.cc.o
 test/coding_test: CMakeFiles/coding_test.dir/build.make
 test/coding_test: libxdb.a
-test/coding_test: lib/libgtest.a
-test/coding_test: lib/libgmock_main.a
+test/coding_test: lib/libgmock_main.so.1.13.0
 test/coding_test: libmurmur3.so
-test/coding_test: third_party/crc32c/libcrc32c.a
-test/coding_test: third_party/snappy/libsnappy.a
-test/coding_test: lib/libgmock.a
-test/coding_test: lib/libgtest.a
+test/coding_test: third_party/crc32c/libcrc32c.so.1.1.0
+test/coding_test: third_party/snappy/libsnappy.so.1.1.9
+test/coding_test: lib/libgmock.so.1.13.0
+test/coding_test: lib/libgtest.so.1.13.0
 test/coding_test: CMakeFiles/coding_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test/coding_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/coding_test.dir/link.txt --verbose=$(VERBOSE)

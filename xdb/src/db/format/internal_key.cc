@@ -6,6 +6,19 @@ void AppendInternalKey(std::string* dst, const ParsedInternalKey& key) {
     PutFixed64(dst, PackSequenceAndType(key.seq_,key.type_));
 }
 
+bool ParseInternalKey(const Slice& internal_key, ParsedInternalKey* result) {
+    const size_t n = internal_key.size();
+    if (n < 8) {
+        return false;
+    }
+    uint64_t num = DecodeFixed64(internal_key.data() + n - 8);
+    uint8_t type = num & 0xff;
+    result->seq_ = num >> 8;
+    result->type_ = static_cast<RecordType>(type);
+    result->user_key_ = Slice(internal_key.data(), n - 8);
+    return (type <= static_cast<uint8_t>(KTypeInsertion));
+}
+
 LookupKey::LookupKey(const Slice& user_key, SequenceNum seq) {
     size_t key_size = user_key.size();
     size_t need = key_size + 13;

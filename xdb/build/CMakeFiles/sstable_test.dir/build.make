@@ -80,13 +80,12 @@ sstable_test_EXTERNAL_OBJECTS =
 test/sstable_test: CMakeFiles/sstable_test.dir/test/sstable_test.cc.o
 test/sstable_test: CMakeFiles/sstable_test.dir/build.make
 test/sstable_test: libxdb.a
-test/sstable_test: lib/libgtest.a
-test/sstable_test: lib/libgmock_main.a
+test/sstable_test: lib/libgmock_main.so.1.13.0
 test/sstable_test: libmurmur3.so
-test/sstable_test: third_party/crc32c/libcrc32c.a
-test/sstable_test: third_party/snappy/libsnappy.a
-test/sstable_test: lib/libgmock.a
-test/sstable_test: lib/libgtest.a
+test/sstable_test: third_party/crc32c/libcrc32c.so.1.1.0
+test/sstable_test: third_party/snappy/libsnappy.so.1.1.9
+test/sstable_test: lib/libgmock.so.1.13.0
+test/sstable_test: lib/libgtest.so.1.13.0
 test/sstable_test: CMakeFiles/sstable_test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test/sstable_test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sstable_test.dir/link.txt --verbose=$(VERBOSE)

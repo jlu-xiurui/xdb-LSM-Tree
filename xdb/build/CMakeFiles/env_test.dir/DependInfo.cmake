@@ -24,12 +24,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/DependInfo.cmake"
-  "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"
   "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/murmur3.dir/DependInfo.cmake"
   "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/CMakeFiles/crc32c.dir/DependInfo.cmake"
   "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy/CMakeFiles/snappy.dir/DependInfo.cmake"
   "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake"
+  "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

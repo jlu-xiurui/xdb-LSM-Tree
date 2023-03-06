@@ -51,7 +51,7 @@ if(_IMPORT_PREFIX STREQUAL "/")
 endif()
 
 # Create imported target Snappy::snappy
-add_library(Snappy::snappy STATIC IMPORTED)
+add_library(Snappy::snappy SHARED IMPORTED)
 
 set_target_properties(Snappy::snappy PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"

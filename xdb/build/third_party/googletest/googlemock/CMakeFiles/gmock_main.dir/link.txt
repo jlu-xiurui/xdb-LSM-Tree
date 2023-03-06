@@ -1,2 +1,1 @@
-/usr/bin/ar qc ../../../lib/libgmock_main.a  CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-/usr/bin/ranlib ../../../lib/libgmock_main.a
+/usr/bin/clang++ -fPIC -g  -shared -Wl,-soname,libgmock_main.so.1.13.0 -o ../../../lib/libgmock_main.so.1.13.0 CMakeFiles/gmock_main.dir/src/gmock_main.cc.o  -Wl,-rpath,/home/xiurui/xdb-LSM-Tree/xdb/build/lib: ../../../lib/libgmock.so.1.13.0 ../../../lib/libgtest.so.1.13.0 -lpthread 

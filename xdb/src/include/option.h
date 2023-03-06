@@ -52,6 +52,9 @@ struct Option {
     // memtable will be writen to disk as SStable.
     // default : 4MB
     size_t write_mem_size = 4 * 1024 * 1024; 
+
+    // Numbers of open files that can be used by db.
+    int max_open_file = 1000;
 };
 
 struct WriteOption {

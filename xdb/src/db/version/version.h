@@ -33,7 +33,6 @@ class Version {
 
     ~Version();
     
-    
     VersionSet* vset_;
     Version* next_;
     Version* prev_;

@@ -48,13 +48,71 @@ namespace xdb {
         }
     }
 
-    Status Get(const ReadOption& option, const LookupKey& key, std::string* result) {
+    enum SaverState {
+        KNotFound,
+        KFound,
+        KDeleted,
+        KCorrupt,
+    };
+
+    struct GetSaver {
+        Slice user_key;
+        std::string* result;
+        Comparator* user_cmp;
+        SaverState state;
+    };
+
+    static void SaveResult(void* arg, const Slice& key, const Slice& value) {
+        GetSaver* saver = reinterpret_cast<GetSaver*>(arg);
+        ParsedInternalKey parsed_key;
+        if (!ParseInternalKey(key, &parsed_key)) {
+            saver->state = KCorrupt;
+        } else {
+            if (saver->user_cmp->Compare(parsed_key.user_key_, saver->user_key) == 0) {
+                saver->state = (parsed_key.type_ == KTypeInsertion ? KFound : KDeleted);
+                if (saver->state == KFound) {
+                    saver->result->assign(value.data(), value.size());
+                }
+            }
+        }
+    }
+
+    Status Version::Get(const ReadOption& option, const LookupKey& key, std::string* result) {
         struct State {
+            GetSaver saver;
             const ReadOption& option;
             Slice internal_key;
+            Status s;
+            VersionSet* vset;
+            bool found;
+
+            static bool Match(void* arg, int level, FileMeta* meta) {
+                State* state = reinterpret_cast<State*>(arg);
+                state->s = state->vset->table_cache_->Get(state->option, meta->number,
+                        meta->file_size, state->internal_key, &state->saver, &SaveResult);
+                if (!state->s.ok()) {
+                    state->found = true;
+                    return false;
+                }
+                switch (state->saver.state) {
+                    case KCorrupt:
+                        state->found = true;
+                        state->s = Status::Corruption("incorrect parse key for ", state->saver.user_key);
+                        return false;
+                    case KFound:
+                        state->found = true;
+                        return false;
+                    case KDeleted:
+                        return false;
+                    case KNotFound:
+                        return true; // keep searching
+                }
+            }
 
         };
     }
+
+
 
     void Version::Ref() { ++refs_;}
 
@@ -357,4 +415,6 @@ namespace xdb {
             }
         }
     }
+
+    
 }

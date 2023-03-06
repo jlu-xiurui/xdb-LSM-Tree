@@ -42,6 +42,8 @@ class ParsedInternalKey {
 
 void AppendInternalKey(std::string* dst, const ParsedInternalKey& key);
 
+bool ParseInternalKey(const Slice& internal_key, ParsedInternalKey* result);
+
 // Key | Sequence 56bits | Type 8bits
 class InternalKey {
  public:

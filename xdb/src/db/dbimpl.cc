@@ -5,8 +5,16 @@
 #include "util/filename.h"
 #include "db/log/log_reader.h"
 #include "include/sstable_builder.h"
+#include "db/sstable/table_cache.h"
 
 namespace xdb {
+
+    const int KNumNonTableCache = 10;
+
+    static size_t TableCacheSize(const Option& option) {
+        return option.max_open_file - KNumNonTableCache;
+    }
+
     struct DBImpl::Writer {
         explicit Writer(Mutex* mu)
             : batch(nullptr), done(false), sync(false), cv(mu) {}
@@ -29,8 +37,10 @@ namespace xdb {
           background_cv_(&mu_),
           background_scheduled_(false),
           closed_(false),
-          vset_(new VersionSet(name, &option_)),
+          table_cache_(new TableCache(name, option_, TableCacheSize(option_))),
+          vset_(new VersionSet(name, &option_, table_cache_)),
           tmp_batch_(new WriteBatch) {}
+          
     DBImpl::~DBImpl() {
         closed_.store(true, std::memory_order_release);
         if (file_lock_ != nullptr) {
