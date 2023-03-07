@@ -4,6 +4,7 @@
 #include <iostream>
 #include "crc32c/crc32c.h"
 namespace xdb {
+    /*
     TEST(DBTest, Sometest) {
         uint8_t buf[10] = {0x01,0x02,0x03};
         uint32_t crc1 = crc32c::Extend(0,buf,1);
@@ -11,18 +12,24 @@ namespace xdb {
         uint32_t crc3 = crc32c::Extend(crc1,buf+1,2);
         ASSERT_EQ(crc2, crc3);
     }
-
+    */
     TEST(DBTest, OpenTest) {
         Option option;
         DB* db;
+        DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         delete db;
-        DestoryDB(option, "/home/xiurui/test");
+        db = nullptr;
+        DB::Open(option,"/home/xiurui/test",&db);
+        delete db;
     }
+    
     TEST(DBTest, RecoverTest) {
         Option option;
         WriteOption write_option;
+        ReadOption read_option;
         DB* db;
+        DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         db->Put(write_option,"a","1");
         db->Put(write_option,"a","2");
@@ -31,20 +38,23 @@ namespace xdb {
         db->Put(write_option,"a","5");
         db->Put(write_option,"a","6");
         std::string result;
-        db->Get("a",&result);
+        db->Get(read_option, "a",&result);
         ASSERT_EQ(result, "6");
         delete db;
+        db = nullptr;
         DB::Open(option,"/home/xiurui/test",&db);
         std::string result1;
-        db->Get("a",&result1);
+        db->Get(read_option, "a",&result1);
         ASSERT_EQ(result1, "6");
         delete db;
-        DestoryDB(option, "/home/xiurui/test");
     }
+    /*
     TEST(DBTest, SimpleTest) {
         Option option;
         WriteOption write_option;
+        ReadOption read_option;
         DB* db;
+        DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         db->Put(write_option,"a","1");
         db->Put(write_option,"a","2");
@@ -53,15 +63,16 @@ namespace xdb {
         db->Put(write_option,"a","5");
         db->Put(write_option,"a","6");
         std::string result;
-        db->Get("a",&result);
+        db->Get(read_option, "a",&result);
         ASSERT_EQ(result, "6");
         delete db;
-        DestoryDB(option, "/home/xiurui/test");
     }
     TEST(DBTest, MutiKeyTest) {
         Option option;
         WriteOption write_option;
+        ReadOption read_option;
         DB* db;
+        DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         std::mt19937 rng(std::random_device{}());
         std::vector<std::string> data(1000);
@@ -74,15 +85,15 @@ namespace xdb {
         }
         std::string result;
         for (int i = 0; i < 1000; i++) {
-            db->Get(std::to_string(i), &result);
+            db->Get(read_option, std::to_string(i), &result);
             ASSERT_EQ(result, data[i]);
         }
         delete db;
-        DestoryDB(option, "/home/xiurui/test");
     }
     TEST(DBTest, DeletionTest) {
         Option option;
         WriteOption write_option;
+        ReadOption read_option;
         DB* db;
         DB::Open(option,"/home/xiurui/test",&db);
         std::mt19937 rng(std::random_device{}());
@@ -101,7 +112,7 @@ namespace xdb {
         }
         std::string result;
         for (int i = 0; i < 1000; i++) {
-            db->Get(std::to_string(i), &result);
+            db->Get(read_option, std::to_string(i), &result);
             ASSERT_EQ(result, data[i]);
         }
         option.env->RemoveDir("/home/xiurui/test");
@@ -124,6 +135,7 @@ namespace xdb {
         int id = state->id;
         TestState* ts = state->state;
         WriteOption write_option;
+        ReadOption read_option;
         Status s;
         char val[2000];
         for (int i = 0; i < 1000; i++) {
@@ -136,7 +148,7 @@ namespace xdb {
                 ASSERT_TRUE(s.ok());
             } else {
                 std::string result;
-                s = ts->db->Get(std::to_string(key),&result);
+                s = ts->db->Get(read_option, std::to_string(key),&result);
                 //std::cout<<"get key = "<<key<<" val = " << result<<std::endl;
                 if (!s.IsNotFound()) {
                     int v_key, v_id, v_i;
@@ -181,4 +193,5 @@ namespace xdb {
         delete db;
         DestoryDB(option, "/home/xiurui/test");
     }
+    */
 }

@@ -46,7 +46,7 @@ add_library(glog::glog SHARED IMPORTED)
 
 set_target_properties(glog::glog PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/third_party/glog;/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/third_party/glog/src"
-  INTERFACE_LINK_LIBRARIES "-lpthread"
+  INTERFACE_LINK_LIBRARIES "-pthread"
 )
 
 # Import target "glog::glog" for configuration "DEBUG"

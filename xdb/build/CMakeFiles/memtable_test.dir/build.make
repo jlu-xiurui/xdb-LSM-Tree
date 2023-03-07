@@ -79,7 +79,7 @@ memtable_test_EXTERNAL_OBJECTS =
 
 test/memtable_test: CMakeFiles/memtable_test.dir/test/memtable_test.cc.o
 test/memtable_test: CMakeFiles/memtable_test.dir/build.make
-test/memtable_test: libxdb.a
+test/memtable_test: libxdb.so
 test/memtable_test: lib/libgmock_main.so.1.13.0
 test/memtable_test: libmurmur3.so
 test/memtable_test: third_party/crc32c/libcrc32c.so.1.1.0

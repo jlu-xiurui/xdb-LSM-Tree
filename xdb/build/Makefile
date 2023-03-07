@@ -840,6 +840,33 @@ src/db/sstable/sstable_reader.cc.s:
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.s
 .PHONY : src/db/sstable/sstable_reader.cc.s
 
+src/db/sstable/table_cache.o: src/db/sstable/table_cache.cc.o
+
+.PHONY : src/db/sstable/table_cache.o
+
+# target to build an object file
+src/db/sstable/table_cache.cc.o:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o
+.PHONY : src/db/sstable/table_cache.cc.o
+
+src/db/sstable/table_cache.i: src/db/sstable/table_cache.cc.i
+
+.PHONY : src/db/sstable/table_cache.i
+
+# target to preprocess a source file
+src/db/sstable/table_cache.cc.i:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.i
+.PHONY : src/db/sstable/table_cache.cc.i
+
+src/db/sstable/table_cache.s: src/db/sstable/table_cache.cc.s
+
+.PHONY : src/db/sstable/table_cache.s
+
+# target to generate assembly for a file
+src/db/sstable/table_cache.cc.s:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.s
+.PHONY : src/db/sstable/table_cache.cc.s
+
 src/db/version/version.o: src/db/version/version.cc.o
 
 .PHONY : src/db/version/version.o
@@ -1485,6 +1512,9 @@ help:
 	@echo "... src/db/sstable/sstable_reader.o"
 	@echo "... src/db/sstable/sstable_reader.i"
 	@echo "... src/db/sstable/sstable_reader.s"
+	@echo "... src/db/sstable/table_cache.o"
+	@echo "... src/db/sstable/table_cache.i"
+	@echo "... src/db/sstable/table_cache.s"
 	@echo "... src/db/version/version.o"
 	@echo "... src/db/version/version.i"
 	@echo "... src/db/version/version.s"

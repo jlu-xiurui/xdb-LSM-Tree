@@ -79,7 +79,7 @@ example_test_EXTERNAL_OBJECTS =
 
 test/example_test: CMakeFiles/example_test.dir/test/example_test.cc.o
 test/example_test: CMakeFiles/example_test.dir/build.make
-test/example_test: libxdb.a
+test/example_test: libxdb.so
 test/example_test: lib/libgmock_main.so.1.13.0
 test/example_test: libmurmur3.so
 test/example_test: third_party/crc32c/libcrc32c.so.1.1.0

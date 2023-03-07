@@ -16,6 +16,7 @@ namespace xdb {
 
 class VersionSet;
 
+
 class Version {
  public:
     void Ref();
@@ -33,6 +34,9 @@ class Version {
 
     ~Version();
     
+    void ForEachFile(Slice user_key, Slice internal_key, void* arg,
+         bool(*fun)(void*, int, FileMeta*));
+
     VersionSet* vset_;
     Version* next_;
     Version* prev_;
@@ -50,6 +54,10 @@ class VersionSet {
     VersionSet& operator=(const VersionSet&) = delete;
 
     ~VersionSet();
+    
+    Version* Current() {
+      return current_;
+    }
 
     Status LogAndApply(VersionEdit* edit, Mutex* mu) 
         EXCLUSIVE_LOCKS_REQUIRED(mu);
@@ -78,13 +86,13 @@ class VersionSet {
     void AddLiveFiles(std::set<uint64_t>* live);
  private:
     class Builder;
-    
+
     friend class Version;
 
     Status WriteSnapShot(log::Writer* writer);
     
     void AppendVersion(Version* v);
-
+    
     const std::string name_;
     const Option* option_;
     Env* env_;

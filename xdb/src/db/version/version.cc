@@ -58,7 +58,7 @@ namespace xdb {
     struct GetSaver {
         Slice user_key;
         std::string* result;
-        Comparator* user_cmp;
+        const Comparator* user_cmp;
         SaverState state;
     };
 
@@ -77,18 +77,78 @@ namespace xdb {
         }
     }
 
+    static bool NewFirst(FileMeta* a, FileMeta* b) {
+        return a->number > b->number;
+    }
+
+    // find first file that "largest >= internal_key"
+    static size_t FindFile(std::vector<FileMeta*> files, const Slice& user_key, 
+            const Comparator* ucmp) {
+        size_t lo = 0;
+        size_t hi = files.size();
+        while (lo < hi) {
+            // if (lo == hi - 1), mid will be lo.
+            // to avoid dead loop
+            size_t mid = (lo + hi) / 2;
+            FileMeta* meta = files[mid];
+            if (ucmp->Compare(user_key, meta->largest.user_key()) > 0) {
+                // all file before or at mid is "largest < internal_key"
+                lo = mid + 1;
+            } else {
+                // mid is "largest >= internal_key",
+                // all file after it is unuseful
+                hi = mid;
+            }
+        }
+        return hi;
+    }
+
+    void Version::ForEachFile(Slice user_key, Slice internal_key, void* arg,
+            bool(*fun)(void*, int, FileMeta*)) {
+        const Comparator* ucmp = vset_->icmp_.UserComparator();
+        std::vector<FileMeta*> tmp;
+        for (FileMeta* meta : files_[0]) {
+            if (ucmp->Compare(user_key, meta->largest.user_key()) <= 0 &&
+                    ucmp->Compare(user_key, meta->smallest.user_key())) {
+                tmp.push_back(meta);
+            }
+        }
+        if (!tmp.empty()) {
+            std::sort(tmp.begin(), tmp.end(), NewFirst);
+            for (FileMeta* meta : tmp) {
+                if (!(*fun)(arg, 0, meta)) {
+                    return;
+                }
+            }
+        }
+        for (int level = 1; level < config::KNumLevels; level++) {
+            if (files_[level].size() == 0) {
+                continue;
+            }
+            size_t index = FindFile(files_[level], user_key, ucmp);
+            if (index < files_[level].size()) {
+                FileMeta* meta = files_[level][index];
+                if (ucmp->Compare(user_key, meta->smallest.user_key()) >= 0) {
+                    if (!(*fun)(arg, level, meta)) {
+                        return;
+                    }
+                }
+            }
+        }
+
+    }
     Status Version::Get(const ReadOption& option, const LookupKey& key, std::string* result) {
         struct State {
             GetSaver saver;
-            const ReadOption& option;
+            const ReadOption* option;
             Slice internal_key;
             Status s;
             VersionSet* vset;
             bool found;
 
-            static bool Match(void* arg, int level, FileMeta* meta) {
+            static bool SSTableMatch(void* arg, int level, FileMeta* meta) {
                 State* state = reinterpret_cast<State*>(arg);
-                state->s = state->vset->table_cache_->Get(state->option, meta->number,
+                state->s = state->vset->table_cache_->Get(*state->option, meta->number,
                         meta->file_size, state->internal_key, &state->saver, &SaveResult);
                 if (!state->s.ok()) {
                     state->found = true;
@@ -107,9 +167,23 @@ namespace xdb {
                     case KNotFound:
                         return true; // keep searching
                 }
+                return false;
             }
-
         };
+        State state;
+        state.saver.user_key = key.UserKey();
+        state.saver.state = KNotFound;
+        state.saver.result = result;
+        state.saver.user_cmp = vset_->icmp_.UserComparator();
+        
+        state.option = &option;
+        state.internal_key = key.InternalKey();
+        state.vset = vset_;
+        state.found = false;
+
+        ForEachFile(state.saver.user_key, state.internal_key, &state,
+                &State::SSTableMatch);
+        return state.found ? state.s : Status::NotFound("key is not found in sstable");      
     }
 
 

@@ -14,6 +14,46 @@
 # EXTERNAL cache entries
 ########################
 
+//Build a 32 bit version of the library.
+BENCHMARK_BUILD_32_BITS:BOOL=OFF
+
+//Flags used by the C++ compiler during coverage builds.
+BENCHMARK_CXX_FLAGS_COVERAGE:STRING=-g
+
+//Allow the downloading and in-tree building of unmet dependencies
+BENCHMARK_DOWNLOAD_DEPENDENCIES:BOOL=OFF
+
+//Enable building and running the assembly tests
+BENCHMARK_ENABLE_ASSEMBLY_TESTS:BOOL=OFF
+
+//Enable the use of exceptions in the benchmark library.
+BENCHMARK_ENABLE_EXCEPTIONS:BOOL=OFF
+
+//Enable building the unit tests which depend on gtest
+BENCHMARK_ENABLE_GTEST_TESTS:BOOL=ON
+
+//Enable installation of benchmark. (Projects embedding benchmark
+// may want to turn this OFF.)
+BENCHMARK_ENABLE_INSTALL:BOOL=ON
+
+//Enable performance counters provided by libpfm
+BENCHMARK_ENABLE_LIBPFM:BOOL=OFF
+
+//Enable link time optimisation of the benchmark library.
+BENCHMARK_ENABLE_LTO:BOOL=OFF
+
+//Enable testing of the benchmark library.
+BENCHMARK_ENABLE_TESTING:BOOL=OFF
+
+//Flags used for linking binaries during coverage builds.
+BENCHMARK_EXE_LINKER_FLAGS_COVERAGE:STRING=
+
+//Flags used by the shared libraries linker during coverage builds.
+BENCHMARK_SHARED_LINKER_FLAGS_COVERAGE:STRING=
+
+//Build and test using libc++ as the standard library.
+BENCHMARK_USE_LIBCXX:BOOL=OFF
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
 
@@ -338,6 +378,9 @@ Crc32c_SOURCE_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c
 
 DISABLE_RTTI:BOOL=ON
 
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=/usr/bin/git
+
 //Use Abseil and RE2. Requires Abseil and RE2 to be separately
 // added to the build.
 GTEST_HAS_ABSL:BOOL=OFF
@@ -360,6 +403,21 @@ GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
+
+//Build LevelDB's benchmarks
+LEVELDB_BUILD_BENCHMARKS:BOOL=ON
+
+//Build LevelDB's unit tests
+LEVELDB_BUILD_TESTS:BOOL=ON
+
+//Install LevelDB's header and library
+LEVELDB_INSTALL:BOOL=ON
+
+//Path to a library.
+LIBRT:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
+
+//Path to a program.
+LLVM_FILECHECK_EXE:FILEPATH=LLVM_FILECHECK_EXE-NOTFOUND
 
 //Print file offsets in traces instead of symbolizing
 PRINT_UNSYMBOLIZED_STACK_TRACES:BOOL=OFF
@@ -427,6 +485,18 @@ WITH_UNWIND:BOOL=ON
 //Path to a program.
 _Python_EXECUTABLE:FILEPATH=/usr/bin/python3.8
 
+//Value Computed by CMake
+benchmark_BINARY_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/leveldb/third_party/benchmark
+
+//Dependencies for the target
+benchmark_LIB_DEPENDS:STATIC=general;-pthread;general;/usr/lib/x86_64-linux-gnu/librt.so;
+
+//Value Computed by CMake
+benchmark_SOURCE_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/third_party/leveldb/third_party/benchmark
+
+//Dependencies for the target
+benchmark_main_LIB_DEPENDS:STATIC=general;benchmark::benchmark;
+
 //The directory containing a CMake configuration file for gflags.
 gflags_DIR:PATH=gflags_DIR-NOTFOUND
 
@@ -434,7 +504,7 @@ gflags_DIR:PATH=gflags_DIR-NOTFOUND
 glog_BINARY_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/third_party/glog
 
 //Dependencies for the target
-glog_LIB_DEPENDS:STATIC=general;-lpthread;
+glog_LIB_DEPENDS:STATIC=general;-pthread;
 
 //Value Computed by CMake
 glog_SOURCE_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/third_party/glog
@@ -477,13 +547,19 @@ gtest_disable_pthreads:BOOL=OFF
 
 //Use shared (DLL) run-time lib even when Google Test is built
 // as static lib.
-gtest_force_shared_crt:BOOL=OFF
+gtest_force_shared_crt:BOOL=ON
 
 //Build gtest with internal symbols hidden in shared libraries.
 gtest_hide_internal_symbols:BOOL=OFF
 
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;gtest;
+
+//Value Computed by CMake
+leveldb_BINARY_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/leveldb
+
+//Value Computed by CMake
+leveldb_SOURCE_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/third_party/leveldb
 
 //Value Computed by CMake
 xdb_BINARY_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb/build
@@ -499,6 +575,12 @@ xdb_SOURCE_DIR:STATIC=/home/xiurui/xdb-LSM-Tree/xdb
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: BENCHMARK_CXX_FLAGS_COVERAGE
+BENCHMARK_CXX_FLAGS_COVERAGE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BENCHMARK_EXE_LINKER_FLAGS_COVERAGE
+BENCHMARK_EXE_LINKER_FLAGS_COVERAGE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BENCHMARK_SHARED_LINKER_FLAGS_COVERAGE
+BENCHMARK_SHARED_LINKER_FLAGS_COVERAGE-ADVANCED:INTERNAL=1
 //Result of TEST_BIG_ENDIAN
 BYTE_ORDER_BIG_ENDIAN:INTERNAL=0
 //ADVANCED property for variable: CMAKE_ADDR2LINE
@@ -690,6 +772,16 @@ COMPILER_HAS_DEPRECATED_ATTR:INTERNAL=
 COMPILER_HAS_HIDDEN_INLINE_VISIBILITY:INTERNAL=1
 //Test COMPILER_HAS_HIDDEN_VISIBILITY
 COMPILER_HAS_HIDDEN_VISIBILITY:INTERNAL=1
+//Result of TRY_COMPILE
+COMPILE_HAVE_GNU_POSIX_REGEX:INTERNAL=FALSE
+//Result of TRY_COMPILE
+COMPILE_HAVE_POSIX_REGEX:INTERNAL=TRUE
+//Result of TRY_COMPILE
+COMPILE_HAVE_STD_REGEX:INTERNAL=TRUE
+//Result of TRY_COMPILE
+COMPILE_HAVE_STEADY_CLOCK:INTERNAL=TRUE
+//Result of TRY_COMPILE
+COMPILE_HAVE_THREAD_SAFETY_ATTRIBUTES:INTERNAL=FALSE
 //ADVANCED property for variable: CPACK_BINARY_DEB
 CPACK_BINARY_DEB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CPACK_BINARY_FREEBSD
@@ -730,10 +822,14 @@ CRC32C_HAVE_NO_MISSING_FIELD_INITIALIZERS:INTERNAL=1
 CRC32C_HAVE_NO_SIGN_COMPARE:INTERNAL=1
 //Test CRC32C_HAVE_NO_UNUSED_PARAMETER
 CRC32C_HAVE_NO_UNUSED_PARAMETER:INTERNAL=1
+//Details about finding Git
+FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[/usr/bin/git][v2.25.1()]
 //Details about finding Python
 FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/usr/bin/python3.8][cfound components: Interpreter ][v3.8.10()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_INCLUDE_DIR
 GTEST_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_LIBRARY
@@ -766,6 +862,8 @@ HAVE_CLANG_MBMI2:INTERNAL=1
 HAVE_CLANG_THREAD_SAFETY:INTERNAL=1
 //Result of TRY_COMPILE
 HAVE_CMAKE_SIZEOF_UNSIGNED_SHORT:INTERNAL=TRUE
+//Have library crc32c
+HAVE_CRC32C:INTERNAL=
 //Test HAVE_CXX11_ATOMIC
 HAVE_CXX11_ATOMIC:INTERNAL=1
 //Test HAVE_CXX11_CHRONO
@@ -776,6 +874,38 @@ HAVE_CXX11_CONSTEXPR:INTERNAL=
 HAVE_CXX11_NULLPTR_T:INTERNAL=1
 //Test HAVE_CXX11_TLS
 HAVE_CXX11_TLS:INTERNAL=1
+//Test HAVE_CXX17_HAS_INCLUDE
+HAVE_CXX17_HAS_INCLUDE:INTERNAL=1
+//Test HAVE_CXX_FLAG_COVERAGE
+HAVE_CXX_FLAG_COVERAGE:INTERNAL=1
+//Test HAVE_CXX_FLAG_FNO_EXCEPTIONS
+HAVE_CXX_FLAG_FNO_EXCEPTIONS:INTERNAL=1
+//Test HAVE_CXX_FLAG_FSTRICT_ALIASING
+HAVE_CXX_FLAG_FSTRICT_ALIASING:INTERNAL=1
+//Test HAVE_CXX_FLAG_STD_CXX11
+HAVE_CXX_FLAG_STD_CXX11:INTERNAL=1
+//Test HAVE_CXX_FLAG_WALL
+HAVE_CXX_FLAG_WALL:INTERNAL=1
+//Test HAVE_CXX_FLAG_WD654
+HAVE_CXX_FLAG_WD654:INTERNAL=
+//Test HAVE_CXX_FLAG_WERROR
+HAVE_CXX_FLAG_WERROR:INTERNAL=1
+//Test HAVE_CXX_FLAG_WEXTRA
+HAVE_CXX_FLAG_WEXTRA:INTERNAL=1
+//Test HAVE_CXX_FLAG_WNO_DEPRECATED
+HAVE_CXX_FLAG_WNO_DEPRECATED:INTERNAL=1
+//Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS
+HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSHADOW
+HAVE_CXX_FLAG_WSHADOW:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32
+HAVE_CXX_FLAG_WSHORTEN_64_TO_32:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSTRICT_ALIASING
+HAVE_CXX_FLAG_WSTRICT_ALIASING:INTERNAL=1
+//Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE
+HAVE_CXX_FLAG_WSUGGEST_OVERRIDE:INTERNAL=
+//Test HAVE_CXX_FLAG_WTHREAD_SAFETY
+HAVE_CXX_FLAG_WTHREAD_SAFETY:INTERNAL=1
 //Have library dbghelp
 HAVE_DBGHELP:INTERNAL=
 //Have function dladdr
@@ -792,6 +922,10 @@ HAVE_EXT_HASH_SET:INTERNAL=
 HAVE_EXT_SLIST:INTERNAL=1
 //Have function fcntl
 HAVE_FCNTL:INTERNAL=1
+//Have symbol fdatasync
+HAVE_FDATASYNC:INTERNAL=1
+//Have symbol F_FULLFSYNC
+HAVE_FULLFSYNC:INTERNAL=
 //Have symbol mmap
 HAVE_FUNC_MMAP:INTERNAL=1
 //Have symbol sysconf
@@ -808,6 +942,8 @@ HAVE_HAVE_U_INT16_T:INTERNAL=TRUE
 HAVE_HAVE___UINT16:INTERNAL=FALSE
 //Have include inttypes.h
 HAVE_INTTYPES_H:INTERNAL=1
+//Test HAVE_KYOTOCABINET
+HAVE_KYOTOCABINET:INTERNAL=
 //Have library lz4
 HAVE_LIBLZ4:INTERNAL=
 //Have library lzo2
@@ -828,6 +964,8 @@ HAVE_NAMESPACES:INTERNAL=1
 HAVE_NO_DEPRECATED:INTERNAL=1
 //Test HAVE_NO_UNNAMED_TYPE_TEMPLATE_ARGS
 HAVE_NO_UNNAMED_TYPE_TEMPLATE_ARGS:INTERNAL=1
+//Have symbol O_CLOEXEC
+HAVE_O_CLOEXEC:INTERNAL=1
 //Result of TRY_COMPILE
 HAVE_PC_FROM_UCONTEXT:INTERNAL=FALSE
 //Have function pread
@@ -844,10 +982,14 @@ HAVE_RWLOCK:INTERNAL=
 HAVE_SIGACTION:INTERNAL=1
 //Have function sigaltstack
 HAVE_SIGALTSTACK:INTERNAL=1
+//Have library snappy
+HAVE_SNAPPY:INTERNAL=
 //Result of TRY_COMPILE
 HAVE_SNAPPY_IS_BIG_ENDIAN:INTERNAL=TRUE
 //Have symbol snprintf
 HAVE_SNPRINTF:INTERNAL=1
+//Have library sqlite3
+HAVE_SQLITE3:INTERNAL=1
 //Test HAVE_SSE42
 HAVE_SSE42:INTERNAL=1
 //Have include stddef.h
@@ -880,6 +1022,8 @@ HAVE_SYS_UIO_H:INTERNAL=1
 HAVE_SYS_UTSNAME_H:INTERNAL=1
 //Have include sys/wait.h
 HAVE_SYS_WAIT_H:INTERNAL=1
+//Have library tcmalloc
+HAVE_TCMALLOC:INTERNAL=
 //Have include tr1/unordered_map
 HAVE_TR1_UNORDERED_MAP:INTERNAL=1
 //Have include tr1/unordered_set
@@ -920,8 +1064,16 @@ HAVE___DECLSPEC:INTERNAL=
 HAVE___SYNC_VAL_COMPARE_AND_SWAP:INTERNAL=1
 //CHECK_TYPE_SIZE: unsigned __int16 unknown
 HAVE___UINT16:INTERNAL=
+//Test LEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS
+LEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS:INTERNAL=1
 PYTHONINTERP_FOUND:INTERNAL=TRUE
 PYTHON_EXECUTABLE:INTERNAL=/usr/bin/python3.8
+//Result of TRY_RUN
+RUN_HAVE_POSIX_REGEX:INTERNAL=0
+//Result of TRY_RUN
+RUN_HAVE_STD_REGEX:INTERNAL=0
+//Result of TRY_RUN
+RUN_HAVE_STEADY_CLOCK:INTERNAL=0
 //Test SNAPPY_HAVE_BMI2
 SNAPPY_HAVE_BMI2:INTERNAL=
 //Test SNAPPY_HAVE_NEON
@@ -940,6 +1092,8 @@ SNAPPY_IS_BIG_ENDIAN:INTERNAL=0
 STL_NO_NAMESPACE:INTERNAL=
 //Test STL_STD_NAMESPACE
 STL_STD_NAMESPACE:INTERNAL=1
+//Result of TRY_COMPILE
+THREADS_HAVE_PTHREAD_ARG:INTERNAL=TRUE
 //ADVANCED property for variable: Unwind_INCLUDE_DIR
 Unwind_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Unwind_LIBRARY

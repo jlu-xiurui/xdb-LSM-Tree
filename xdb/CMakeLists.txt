@@ -56,6 +56,8 @@ target_sources(xdb
         "${PROJECT_SOURCE_DIR}/src/db/sstable/block_reader.h"
         "${PROJECT_SOURCE_DIR}/src/db/sstable/sstable_builder.cc"
         "${PROJECT_SOURCE_DIR}/src/db/sstable/sstable_reader.cc"
+        "${PROJECT_SOURCE_DIR}/src/db/sstable/table_cache.h"
+        "${PROJECT_SOURCE_DIR}/src/db/sstable/table_cache.cc"
         "${PROJECT_SOURCE_DIR}/src/db/version/version_edit.cc"
         "${PROJECT_SOURCE_DIR}/src/db/version/version_edit.h"
         "${PROJECT_SOURCE_DIR}/src/db/version/version.cc"

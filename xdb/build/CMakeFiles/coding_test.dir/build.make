@@ -79,7 +79,7 @@ coding_test_EXTERNAL_OBJECTS =
 
 test/coding_test: CMakeFiles/coding_test.dir/test/coding_test.cc.o
 test/coding_test: CMakeFiles/coding_test.dir/build.make
-test/coding_test: libxdb.a
+test/coding_test: libxdb.so
 test/coding_test: lib/libgmock_main.so.1.13.0
 test/coding_test: libmurmur3.so
 test/coding_test: third_party/crc32c/libcrc32c.so.1.1.0

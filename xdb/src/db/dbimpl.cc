@@ -42,7 +42,12 @@ namespace xdb {
           tmp_batch_(new WriteBatch) {}
           
     DBImpl::~DBImpl() {
+        mu_.Lock();
         closed_.store(true, std::memory_order_release);
+        if (background_scheduled_) {
+            background_cv_.Wait();
+        }
+        mu_.Unlock();
         if (file_lock_ != nullptr) {
             env_->UnlockFile(file_lock_);
         }
@@ -56,6 +61,7 @@ namespace xdb {
         delete tmp_batch_;
         delete log_;
         delete logfile_;
+        delete table_cache_;
     }
 
     WriteBatch* DBImpl::MergeBatchGroup(Writer** last_writer) {
@@ -103,16 +109,27 @@ namespace xdb {
         Status status;
         MutexLock l(&mu_);
         SequenceNum seq = vset_->LastSequence();
+        Version* current = vset_->Current();
+
         mem_->Ref();
+        if (imm_ != nullptr) imm_->Ref();
+        current->Ref();
+
         {
             mu_.Unlock();
             LookupKey lkey(key, seq);
             if (!mem_->Get(lkey,value,&status)) {
-                status = Status::NotFound(Slice());
+                // not found in mem
+            } else if (imm_ != nullptr && !imm_->Get(lkey,value,&status)) {
+                // not found in imm
+            } else {
+                status = current->Get(option, lkey, value);
             }
             mu_.Lock();
         }
         mem_->Unref();
+        if (imm_ != nullptr) imm_->Unref();
+        current->Unref();
         return status;
     }
 

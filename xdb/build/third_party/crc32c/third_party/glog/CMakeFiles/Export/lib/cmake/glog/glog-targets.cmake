@@ -55,7 +55,7 @@ add_library(glog::glog SHARED IMPORTED)
 
 set_target_properties(glog::glog PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "-lpthread"
+  INTERFACE_LINK_LIBRARIES "-pthread"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

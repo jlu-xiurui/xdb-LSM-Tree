@@ -79,7 +79,7 @@ cache_test_EXTERNAL_OBJECTS =
 
 test/cache_test: CMakeFiles/cache_test.dir/test/cache_test.cc.o
 test/cache_test: CMakeFiles/cache_test.dir/build.make
-test/cache_test: libxdb.a
+test/cache_test: libxdb.so
 test/cache_test: lib/libgmock_main.so.1.13.0
 test/cache_test: libmurmur3.so
 test/cache_test: third_party/crc32c/libcrc32c.so.1.1.0

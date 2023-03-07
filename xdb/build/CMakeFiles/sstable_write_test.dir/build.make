@@ -79,7 +79,7 @@ sstable_write_test_EXTERNAL_OBJECTS =
 
 test/sstable_write_test: CMakeFiles/sstable_write_test.dir/test/sstable_write_test.cc.o
 test/sstable_write_test: CMakeFiles/sstable_write_test.dir/build.make
-test/sstable_write_test: libxdb.a
+test/sstable_write_test: libxdb.so
 test/sstable_write_test: lib/libgmock_main.so.1.13.0
 test/sstable_write_test: libmurmur3.so
 test/sstable_write_test: third_party/crc32c/libcrc32c.so.1.1.0

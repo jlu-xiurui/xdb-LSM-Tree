@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/xdb.dir/src/db/sstable/block_reader.cc.o"
   "CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o"
   "CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o"
+  "CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o"
   "CMakeFiles/xdb.dir/src/db/version/version.cc.o"
   "CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o"
   "CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o"
@@ -23,8 +24,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/xdb.dir/src/util/filename.cc.o"
   "CMakeFiles/xdb.dir/src/util/iterator.cc.o"
   "CMakeFiles/xdb.dir/src/util/status.cc.o"
-  "libxdb.a"
   "libxdb.pdb"
+  "libxdb.so"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -28,7 +28,7 @@ struct LRUHandle {
 
 class HandleTable {
  public:
-    HandleTable() : element_num_(0), capacity_(0) {
+    HandleTable() : element_num_(0), capacity_(0), list_(nullptr) {
         Resize();
     }
     ~HandleTable() { delete[] list_; }

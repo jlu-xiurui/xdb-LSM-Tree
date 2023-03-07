@@ -1735,3 +1735,301 @@ int main(int argc, char** argv)
   return 0;
 #endif
 }
+Determining if the fdatasync exist passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ea878/fast && /usr/bin/make -f CMakeFiles/cmTC_ea878.dir/build.make CMakeFiles/cmTC_ea878.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_ea878.dir/CheckSymbolExists.cxx.o
+/usr/bin/clang++     -o CMakeFiles/cmTC_ea878.dir/CheckSymbolExists.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_ea878
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ea878.dir/link.txt --verbose=1
+/usr/bin/clang++       -rdynamic CMakeFiles/cmTC_ea878.dir/CheckSymbolExists.cxx.o  -o cmTC_ea878 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+File /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef fdatasync
+  return ((int*)(&fdatasync))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the O_CLOEXEC exist passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0ffde/fast && /usr/bin/make -f CMakeFiles/cmTC_0ffde.dir/build.make CMakeFiles/cmTC_0ffde.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_0ffde.dir/CheckSymbolExists.cxx.o
+/usr/bin/clang++     -o CMakeFiles/cmTC_0ffde.dir/CheckSymbolExists.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_0ffde
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0ffde.dir/link.txt --verbose=1
+/usr/bin/clang++       -rdynamic CMakeFiles/cmTC_0ffde.dir/CheckSymbolExists.cxx.o  -o cmTC_0ffde 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+File /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <fcntl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef O_CLOEXEC
+  return ((int*)(&O_CLOEXEC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C++ SOURCE FILE Test LEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e82cd/fast && /usr/bin/make -f CMakeFiles/cmTC_e82cd.dir/build.make CMakeFiles/cmTC_e82cd.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e82cd.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti -DLEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS   -Wno-missing-field-initializers -std=gnu++11 -o CMakeFiles/cmTC_e82cd.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_e82cd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e82cd.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti -DLEVELDB_HAVE_NO_MISSING_FIELD_INITIALIZERS    CMakeFiles/cmTC_e82cd.dir/src.cxx.o  -o cmTC_e82cd 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX17_HAS_INCLUDE succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6576b/fast && /usr/bin/make -f CMakeFiles/cmTC_6576b.dir/build.make CMakeFiles/cmTC_6576b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_6576b.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti -DHAVE_CXX17_HAS_INCLUDE   -std=gnu++11 -o CMakeFiles/cmTC_6576b.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_6576b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6576b.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti -DHAVE_CXX17_HAS_INCLUDE    CMakeFiles/cmTC_6576b.dir/src.cxx.o  -o cmTC_6576b 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+#if defined(__has_include) &&  __has_include(<string>)
+#include <string>
+#endif
+int main() { std::string str; return 0; }
+
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_STD_CXX11 succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_daabe/fast && /usr/bin/make -f CMakeFiles/cmTC_daabe.dir/build.make CMakeFiles/cmTC_daabe.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_daabe.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti -DHAVE_CXX_FLAG_STD_CXX11  -std=c++11   -std=c++11 -std=gnu++11 -o CMakeFiles/cmTC_daabe.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_daabe
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_daabe.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti -DHAVE_CXX_FLAG_STD_CXX11  -std=c++11    CMakeFiles/cmTC_daabe.dir/src.cxx.o  -o cmTC_daabe 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WALL succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_706a0/fast && /usr/bin/make -f CMakeFiles/cmTC_706a0.dir/build.make CMakeFiles/cmTC_706a0.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_706a0.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11 -DHAVE_CXX_FLAG_WALL  -Wall   -Wall -std=gnu++11 -o CMakeFiles/cmTC_706a0.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_706a0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_706a0.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11 -DHAVE_CXX_FLAG_WALL  -Wall    CMakeFiles/cmTC_706a0.dir/src.cxx.o  -o cmTC_706a0 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WEXTRA succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9dadf/fast && /usr/bin/make -f CMakeFiles/cmTC_9dadf.dir/build.make CMakeFiles/cmTC_9dadf.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9dadf.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall -DHAVE_CXX_FLAG_WEXTRA  -Wextra   -Wextra -std=gnu++11 -o CMakeFiles/cmTC_9dadf.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_9dadf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9dadf.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall -DHAVE_CXX_FLAG_WEXTRA  -Wextra    CMakeFiles/cmTC_9dadf.dir/src.cxx.o  -o cmTC_9dadf 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSHADOW succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4938f/fast && /usr/bin/make -f CMakeFiles/cmTC_4938f.dir/build.make CMakeFiles/cmTC_4938f.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4938f.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra -DHAVE_CXX_FLAG_WSHADOW  -Wshadow   -Wshadow -std=gnu++11 -o CMakeFiles/cmTC_4938f.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4938f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4938f.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra -DHAVE_CXX_FLAG_WSHADOW  -Wshadow    CMakeFiles/cmTC_4938f.dir/src.cxx.o  -o cmTC_4938f 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WERROR succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_83903/fast && /usr/bin/make -f CMakeFiles/cmTC_83903.dir/build.make CMakeFiles/cmTC_83903.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_83903.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow -DHAVE_CXX_FLAG_WERROR  -Werror   -Werror -std=gnu++11 -o CMakeFiles/cmTC_83903.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_83903
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83903.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow -DHAVE_CXX_FLAG_WERROR  -Werror    CMakeFiles/cmTC_83903.dir/src.cxx.o  -o cmTC_83903 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32 succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1951e/fast && /usr/bin/make -f CMakeFiles/cmTC_1951e.dir/build.make CMakeFiles/cmTC_1951e.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1951e.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow -DHAVE_CXX_FLAG_WSHORTEN_64_TO_32  -Wshorten-64-to-32   -Wshorten-64-to-32 -std=gnu++11 -o CMakeFiles/cmTC_1951e.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_1951e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1951e.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow -DHAVE_CXX_FLAG_WSHORTEN_64_TO_32  -Wshorten-64-to-32    CMakeFiles/cmTC_1951e.dir/src.cxx.o  -o cmTC_1951e 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_FSTRICT_ALIASING succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_899e5/fast && /usr/bin/make -f CMakeFiles/cmTC_899e5.dir/build.make CMakeFiles/cmTC_899e5.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_899e5.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32 -DHAVE_CXX_FLAG_FSTRICT_ALIASING  -fstrict-aliasing   -fstrict-aliasing -std=gnu++11 -o CMakeFiles/cmTC_899e5.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_899e5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_899e5.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32 -DHAVE_CXX_FLAG_FSTRICT_ALIASING  -fstrict-aliasing    CMakeFiles/cmTC_899e5.dir/src.cxx.o  -o cmTC_899e5 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_44274/fast && /usr/bin/make -f CMakeFiles/cmTC_44274.dir/build.make CMakeFiles/cmTC_44274.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_44274.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing -DHAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS  -Wno-deprecated-declarations   -Wno-deprecated-declarations -std=gnu++11 -o CMakeFiles/cmTC_44274.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_44274
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_44274.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing -DHAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS  -Wno-deprecated-declarations    CMakeFiles/cmTC_44274.dir/src.cxx.o  -o cmTC_44274 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WNO_DEPRECATED succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_166a7/fast && /usr/bin/make -f CMakeFiles/cmTC_166a7.dir/build.make CMakeFiles/cmTC_166a7.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_166a7.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations -DHAVE_CXX_FLAG_WNO_DEPRECATED  -Wno-deprecated   -Wno-deprecated -std=gnu++11 -o CMakeFiles/cmTC_166a7.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_166a7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_166a7.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations -DHAVE_CXX_FLAG_WNO_DEPRECATED  -Wno-deprecated    CMakeFiles/cmTC_166a7.dir/src.cxx.o  -o cmTC_166a7 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_FNO_EXCEPTIONS succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_0df67/fast && /usr/bin/make -f CMakeFiles/cmTC_0df67.dir/build.make CMakeFiles/cmTC_0df67.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0df67.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations -DHAVE_CXX_FLAG_FNO_EXCEPTIONS  -fno-exceptions   -fno-exceptions -std=gnu++11 -o CMakeFiles/cmTC_0df67.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0df67
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0df67.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations -DHAVE_CXX_FLAG_FNO_EXCEPTIONS  -fno-exceptions    CMakeFiles/cmTC_0df67.dir/src.cxx.o  -o cmTC_0df67 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WSTRICT_ALIASING succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_14821/fast && /usr/bin/make -f CMakeFiles/cmTC_14821.dir/build.make CMakeFiles/cmTC_14821.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_14821.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions -DHAVE_CXX_FLAG_WSTRICT_ALIASING  -Wstrict-aliasing   -Wstrict-aliasing -std=gnu++11 -o CMakeFiles/cmTC_14821.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_14821
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14821.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions -DHAVE_CXX_FLAG_WSTRICT_ALIASING  -Wstrict-aliasing    CMakeFiles/cmTC_14821.dir/src.cxx.o  -o cmTC_14821 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WTHREAD_SAFETY succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9c00b/fast && /usr/bin/make -f CMakeFiles/cmTC_9c00b.dir/build.make CMakeFiles/cmTC_9c00b.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9c00b.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions  -Wstrict-aliasing -DHAVE_CXX_FLAG_WTHREAD_SAFETY  -Wthread-safety   -Wthread-safety -std=gnu++11 -o CMakeFiles/cmTC_9c00b.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_9c00b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c00b.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions  -Wstrict-aliasing -DHAVE_CXX_FLAG_WTHREAD_SAFETY  -Wthread-safety    CMakeFiles/cmTC_9c00b.dir/src.cxx.o  -o cmTC_9c00b 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_COVERAGE succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4cae8/fast && /usr/bin/make -f CMakeFiles/cmTC_4cae8.dir/build.make CMakeFiles/cmTC_4cae8.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4cae8.dir/src.cxx.o
+/usr/bin/clang++    -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions  -Wstrict-aliasing  -Wthread-safety -DHAVE_CXX_FLAG_COVERAGE  --coverage   --coverage -std=gnu++11 -o CMakeFiles/cmTC_4cae8.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4cae8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4cae8.dir/link.txt --verbose=1
+/usr/bin/clang++   -fno-exceptions -fno-rtti  -std=c++11  -Wall  -Wextra  -Wshadow  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -fno-exceptions  -Wstrict-aliasing  -Wthread-safety -DHAVE_CXX_FLAG_COVERAGE  --coverage    CMakeFiles/cmTC_4cae8.dir/src.cxx.o  -o cmTC_4cae8 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Determining if the function sqlite3_open exists in the sqlite3 passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e0c58/fast && /usr/bin/make -f CMakeFiles/cmTC_e0c58.dir/build.make CMakeFiles/cmTC_e0c58.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_e0c58.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -Wstrict-prototypes -DCHECK_FUNCTION_EXISTS=sqlite3_open   -o CMakeFiles/cmTC_e0c58.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e0c58
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0c58.dir/link.txt --verbose=1
+/usr/bin/clang  -Wstrict-prototypes -DCHECK_FUNCTION_EXISTS=sqlite3_open    -rdynamic CMakeFiles/cmTC_e0c58.dir/CheckFunctionExists.c.o  -o cmTC_e0c58  -lsqlite3 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+

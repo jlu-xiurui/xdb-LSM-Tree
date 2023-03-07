@@ -79,7 +79,7 @@ db_test_EXTERNAL_OBJECTS =
 
 test/db_test: CMakeFiles/db_test.dir/test/db_test.cc.o
 test/db_test: CMakeFiles/db_test.dir/build.make
-test/db_test: libxdb.a
+test/db_test: libxdb.so
 test/db_test: lib/libgmock_main.so.1.13.0
 test/db_test: libmurmur3.so
 test/db_test: third_party/crc32c/libcrc32c.so.1.1.0
