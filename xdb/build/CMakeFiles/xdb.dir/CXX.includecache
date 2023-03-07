@@ -14,28 +14,6 @@ include/slice.h
 include/filter_policy.h
 ../src/db/filter/include/filter_policy.h
 
-../src/db/format/internal_key.h
-cassert
--
-cstddef
--
-include/slice.h
-../src/db/format/include/slice.h
-util/coding.h
-../src/db/format/util/coding.h
-include/comparator.h
-../src/db/format/include/comparator.h
-include/status.h
-../src/db/format/include/status.h
-
-../src/db/sstable/block_builder.h
-vector
--
-include/slice.h
-../src/db/sstable/include/slice.h
-include/option.h
-../src/db/sstable/include/option.h
-
 ../src/db/sstable/block_format.h
 include/slice.h
 ../src/db/sstable/include/slice.h
@@ -44,13 +22,11 @@ include/status.h
 include/option.h
 ../src/db/sstable/include/option.h
 
-../src/db/version/version_edit.h
-vector
--
-set
--
-db/format/internal_key.h
-../src/db/version/db/format/internal_key.h
+../src/db/sstable/block_reader.h
+include/iterator.h
+../src/db/sstable/include/iterator.h
+include/comparator.h
+../src/db/sstable/include/comparator.h
 
 ../src/include/comparator.h
 include/slice.h
@@ -98,7 +74,7 @@ string
 cstring
 -
 
-../src/include/sstable_builder.h
+../src/include/sstable_reader.h
 include/option.h
 ../src/include/include/option.h
 util/file.h
@@ -107,12 +83,6 @@ util/file.h
 ../src/include/status.h
 include/slice.h
 ../src/include/include/slice.h
-
-../src/util/coding.h
-string
--
-include/slice.h
-../src/util/include/slice.h
 
 ../src/util/file.h
 cassert
@@ -130,12 +100,6 @@ sys/mman.h
 include/status.h
 ../src/util/include/status.h
 
-../src/util/filename.h
-string
--
-include/slice.h
-../src/util/include/slice.h
-
 ../src/util/mutex.h
 mutex
 -
@@ -148,61 +112,15 @@ util/thread_annotations.h
 
 ../src/util/thread_annotations.h
 
-../third_party/crc32c/include/crc32c/crc32c.h
-cstddef
--
-cstdint
--
-string
--
-stddef.h
--
-stdint.h
--
-string_view
--
-
-../third_party/snappy/snappy.h
-stddef.h
--
-stdint.h
--
-string
--
-snappy-stubs-public.h
-../third_party/snappy/snappy-stubs-public.h
-
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_builder.cc
-cassert
--
-snappy/snappy.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/snappy/snappy.h
-crc32c/crc32c.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/crc32c/crc32c.h
-include/sstable_builder.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/include/sstable_builder.h
-include/option.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/include/option.h
-include/comparator.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/include/comparator.h
-include/iterator.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/include/iterator.h
-db/sstable/block_builder.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/db/sstable/block_builder.h
-db/sstable/block_format.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/db/sstable/block_format.h
+/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_reader.cc
+include/sstable_reader.h
+/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/include/sstable_reader.h
 db/filter/filter_block.h
 /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/db/filter/filter_block.h
-util/coding.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/util/coding.h
-util/filename.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/util/filename.h
-db/version/version_edit.h
-/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/db/version/version_edit.h
-
-third_party/snappy/snappy-stubs-public.h
-cstddef
--
-sys/uio.h
--
+db/sstable/block_reader.h
+/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/db/sstable/block_reader.h
+db/sstable/block_format.h
+/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/db/sstable/block_format.h
+util/file.h
+/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/util/file.h
 

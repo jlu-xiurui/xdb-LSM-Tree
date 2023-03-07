@@ -10,11 +10,12 @@
 #include "db/log/log_reader.h"
 
 namespace xdb {
-    VersionSet::VersionSet(const std::string name, const Option* option, TableCache* cache)
+    VersionSet::VersionSet(const std::string name, const Option* option, TableCache* cache,
+            const InternalKeyComparator* cmp)
         : name_(name),
           option_(option),
           env_(option->env),
-          icmp_(option->comparator),
+          icmp_(*cmp),
           table_cache_(cache),
           dummy_head_(this),
           current_(nullptr),
@@ -109,7 +110,7 @@ namespace xdb {
         std::vector<FileMeta*> tmp;
         for (FileMeta* meta : files_[0]) {
             if (ucmp->Compare(user_key, meta->largest.user_key()) <= 0 &&
-                    ucmp->Compare(user_key, meta->smallest.user_key())) {
+                    ucmp->Compare(user_key, meta->smallest.user_key()) >= 0) {
                 tmp.push_back(meta);
             }
         }
@@ -334,7 +335,7 @@ namespace xdb {
                 if (s.ok()) {
                     if (edit.has_comparator_name_ &&
                             edit.comparator_name_ != icmp_.UserComparator()->Name()) {
-                        s = Status::Corruption(edit.comparator_name_ + "don't match" +
+                        s = Status::Corruption(edit.comparator_name_ + "don't match " +
                                 icmp_.UserComparator()->Name());
                     }
                 }

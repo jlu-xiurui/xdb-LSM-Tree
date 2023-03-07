@@ -83,7 +83,7 @@ class BlockReader::Iter : public Iterator {
 
         int current_compare = 0;
         // if iter is valid, use current key to speed up.
-        if(!Valid()) {
+        if (Valid()) {
             current_compare = cmp_->Compare(key_, key);
             if (current_compare < 0) {
                 lo = restart_index_;

@@ -19,6 +19,7 @@ CMakeFiles/xdb.dir/src/db/dbimpl.cc.o
  ../src/include/comparator.h
  ../src/include/db.h
  ../src/include/env.h
+ ../src/include/filter_policy.h
  ../src/include/iterator.h
  ../src/include/option.h
  ../src/include/slice.h
@@ -45,6 +46,7 @@ CMakeFiles/xdb.dir/src/db/filter/filter_block.cc.o
 CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o
  ../src/db/format/internal_key.h
  ../src/include/comparator.h
+ ../src/include/filter_policy.h
  ../src/include/slice.h
  ../src/include/status.h
  ../src/util/coding.h
@@ -76,6 +78,7 @@ CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o
  ../src/db/memtable/memtable.h
  ../src/db/memtable/skiplist.h
  ../src/include/comparator.h
+ ../src/include/filter_policy.h
  ../src/include/iterator.h
  ../src/include/slice.h
  ../src/include/status.h
@@ -195,6 +198,7 @@ CMakeFiles/xdb.dir/src/db/version/version.cc.o
  ../src/include/cache.h
  ../src/include/comparator.h
  ../src/include/env.h
+ ../src/include/filter_policy.h
  ../src/include/iterator.h
  ../src/include/option.h
  ../src/include/slice.h
@@ -210,6 +214,7 @@ CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o
  ../src/db/format/internal_key.h
  ../src/db/version/version_edit.h
  ../src/include/comparator.h
+ ../src/include/filter_policy.h
  ../src/include/slice.h
  ../src/include/status.h
  ../src/util/coding.h
@@ -221,6 +226,7 @@ CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o
  ../src/db/memtable/skiplist.h
  ../src/db/writebatch/writebatch_helper.h
  ../src/include/comparator.h
+ ../src/include/filter_policy.h
  ../src/include/iterator.h
  ../src/include/slice.h
  ../src/include/status.h

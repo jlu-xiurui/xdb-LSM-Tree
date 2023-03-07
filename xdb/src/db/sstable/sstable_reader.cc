@@ -9,7 +9,7 @@ namespace xdb {
 
 struct SSTableReader::Rep {
     ~Rep() {
-        delete file;
+        delete filter;
         delete[] filter_data;
         delete index_block;
     }

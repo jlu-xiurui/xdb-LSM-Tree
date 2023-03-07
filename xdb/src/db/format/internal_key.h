@@ -8,6 +8,7 @@
 #include "util/coding.h"
 #include "include/comparator.h"
 #include "include/status.h"
+#include "include/filter_policy.h"
 
 namespace xdb {
 
@@ -95,6 +96,17 @@ class InternalKeyComparator : public Comparator {
     void FindShortestBigger(std::string* start) const override;
  private:
     const Comparator* user_cmp_;
+};
+
+class InteralKeyFilterPolicy : public FilterPolicy {
+ public:
+    InteralKeyFilterPolicy(const FilterPolicy* policy) :
+        user_policy_(policy) {}
+    const char* Name() const;
+    void CreatFilter(const Slice* keys, int n, std::string* dst) const;
+    bool KeyMayMatch(const Slice& key, const Slice& filter) const;
+ private:
+    const FilterPolicy* user_policy_;
 };
 
 class LookupKey {

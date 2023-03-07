@@ -48,7 +48,7 @@ class Version {
 class VersionSet {
  public:
     VersionSet(const std::string name, const Option* option, 
-         TableCache* cache);
+         TableCache* cache, const InternalKeyComparator* cmp);
     
     VersionSet(const VersionSet&) = delete;
     VersionSet& operator=(const VersionSet&) = delete;

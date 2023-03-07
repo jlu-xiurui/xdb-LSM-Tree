@@ -75,4 +75,18 @@ void InternalKeyComparator::FindShortestBigger(std::string* start) const {
     }
 }
 
+const char* InteralKeyFilterPolicy::Name() const  { return user_policy_->Name(); }
+
+void InteralKeyFilterPolicy::CreatFilter(const Slice* keys, int n, std::string* dst) const {
+    Slice* user_keys = const_cast<Slice*>(keys);
+    for (int i = 0; i < n; i++) {
+        user_keys[i] = ExtractUserKey(keys[i]);
+    }
+    user_policy_->CreatFilter(user_keys, n, dst);
+}
+
+bool InteralKeyFilterPolicy::KeyMayMatch(const Slice& key, const Slice& filter) const {
+    return user_policy_->KeyMayMatch(ExtractUserKey(key), filter);
+}
+
 }

@@ -68,6 +68,7 @@ class DBImpl : public DB {
 
     const std::string name_;
     const InternalKeyComparator internal_comparator_;
+    const InteralKeyFilterPolicy internal_policy_;
     const Option option_;
 
     FileLock* file_lock_;
@@ -94,6 +95,9 @@ class DBImpl : public DB {
     std::deque<Writer*> writers_ GUARDED_BY(mu_);
 };
 
+Option AdaptOption(const InternalKeyComparator* icmp,
+            const InteralKeyFilterPolicy* ipolicy,
+            const Option& option);
 }
 
 #endif // STORAGE_XDB_DB_DBIMPL_H_

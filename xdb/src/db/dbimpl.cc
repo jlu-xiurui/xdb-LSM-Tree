@@ -25,10 +25,20 @@ namespace xdb {
         CondVar cv;
     };
 
+    Option AdaptOption(const InternalKeyComparator* icmp,
+            const InteralKeyFilterPolicy* ipolicy,
+            const Option& src) {
+        Option ret = src;
+        ret.comparator = icmp;
+        ret.filter_policy = (src.filter_policy == nullptr ? nullptr : ipolicy);
+        return ret;
+    }
+    
     DBImpl::DBImpl(const Option& option, const std::string& name) 
         : name_(name), 
           internal_comparator_(option.comparator),
-          option_(option),
+          internal_policy_(option.filter_policy),
+          option_(AdaptOption(&internal_comparator_, &internal_policy_, option)),
           file_lock_(nullptr),
           env_(option.env),
           mem_(nullptr),
@@ -38,7 +48,7 @@ namespace xdb {
           background_scheduled_(false),
           closed_(false),
           table_cache_(new TableCache(name, option_, TableCacheSize(option_))),
-          vset_(new VersionSet(name, &option_, table_cache_)),
+          vset_(new VersionSet(name, &option_, table_cache_, &internal_comparator_)),
           tmp_batch_(new WriteBatch) {}
           
     DBImpl::~DBImpl() {
@@ -118,10 +128,10 @@ namespace xdb {
         {
             mu_.Unlock();
             LookupKey lkey(key, seq);
-            if (!mem_->Get(lkey,value,&status)) {
-                // not found in mem
-            } else if (imm_ != nullptr && !imm_->Get(lkey,value,&status)) {
-                // not found in imm
+            if (mem_->Get(lkey,value,&status)) {
+                // found in mem
+            } else if (imm_ != nullptr && imm_->Get(lkey,value,&status)) {
+                // found in imm
             } else {
                 status = current->Get(option, lkey, value);
             }

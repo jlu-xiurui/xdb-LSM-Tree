@@ -18,6 +18,7 @@ CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/cache.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/comparator.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/db.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/env.h
+CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/filter_policy.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/iterator.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/option.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/include/slice.h
@@ -44,6 +45,7 @@ CMakeFiles/xdb.dir/src/db/filter/filter_block.cc.o: ../src/db/filter/filter_bloc
 
 CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o: ../src/db/format/internal_key.h
 CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o: ../src/include/comparator.h
+CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o: ../src/include/filter_policy.h
 CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o: ../src/include/slice.h
 CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o: ../src/include/status.h
 CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o: ../src/util/coding.h
@@ -75,6 +77,7 @@ CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/db/memtable/membuffer.h
 CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/db/memtable/memtable.h
 CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/db/memtable/skiplist.h
 CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/include/comparator.h
+CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/include/filter_policy.h
 CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/include/iterator.h
 CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/include/slice.h
 CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o: ../src/include/status.h
@@ -194,6 +197,7 @@ CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/version/version_edit.h
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/cache.h
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/comparator.h
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/env.h
+CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/filter_policy.h
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/iterator.h
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/option.h
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/include/slice.h
@@ -209,6 +213,7 @@ CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/format/dbformat.h
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/format/internal_key.h
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/version/version_edit.h
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/comparator.h
+CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/filter_policy.h
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/slice.h
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/include/status.h
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/util/coding.h
@@ -220,6 +225,7 @@ CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/memtable/memtabl
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/memtable/skiplist.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/writebatch/writebatch_helper.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/include/comparator.h
+CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/include/filter_policy.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/include/iterator.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/include/slice.h
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/include/status.h

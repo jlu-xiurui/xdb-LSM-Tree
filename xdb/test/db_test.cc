@@ -48,7 +48,7 @@ namespace xdb {
         ASSERT_EQ(result1, "6");
         delete db;
     }
-    /*
+    
     TEST(DBTest, SimpleTest) {
         Option option;
         WriteOption write_option;
@@ -193,5 +193,5 @@ namespace xdb {
         delete db;
         DestoryDB(option, "/home/xiurui/test");
     }
-    */
+    
 }

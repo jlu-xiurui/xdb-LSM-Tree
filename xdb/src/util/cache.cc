@@ -241,7 +241,7 @@ void LRUCache::FinishErase(LRUHandle* e) EXCLUSIVE_LOCKS_REQUIRED(mu_) {
     }
 }
 
-static const int KNumShardBits = 4;
+static const int KNumShardBits = 1;
 static const int KNumShard = 1 << KNumShardBits;
 
 
