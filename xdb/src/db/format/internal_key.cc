@@ -59,7 +59,7 @@ void InternalKeyComparator::FindShortestMiddle(std::string* start, const Slice& 
     Slice limit_user = ExtractUserKey(limit);
     std::string tmp(start_user.data(),start_user.size());
     user_cmp_->FindShortestMiddle(&tmp, limit_user);
-    if (tmp.size() < start_user.size() && Compare(start_user, tmp) < 0) {
+    if (tmp.size() < start_user.size() && user_cmp_->Compare(start_user, tmp) < 0) {
         PutFixed64(&tmp, PackSequenceAndType(KMaxSequenceNum, KTypeLookup));
         start->swap(tmp);
     }
@@ -69,7 +69,7 @@ void InternalKeyComparator::FindShortestBigger(std::string* start) const {
     Slice start_user = ExtractUserKey(*start);
     std::string tmp(start->data(), start->size());
     user_cmp_->FindShortestBigger(&tmp);
-    if (tmp.size() < start_user.size() && Compare(start_user, tmp) < 0) {
+    if (tmp.size() < start_user.size() && user_cmp_->Compare(start_user, tmp) < 0) {
         PutFixed64(&tmp, PackSequenceAndType(KMaxSequenceNum, KTypeLookup));
         start->swap(tmp);
     }

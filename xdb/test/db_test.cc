@@ -4,7 +4,7 @@
 #include <iostream>
 #include "crc32c/crc32c.h"
 namespace xdb {
-    /*
+    
     TEST(DBTest, Sometest) {
         uint8_t buf[10] = {0x01,0x02,0x03};
         uint32_t crc1 = crc32c::Extend(0,buf,1);
@@ -12,7 +12,7 @@ namespace xdb {
         uint32_t crc3 = crc32c::Extend(crc1,buf+1,2);
         ASSERT_EQ(crc2, crc3);
     }
-    */
+    
     TEST(DBTest, OpenTest) {
         Option option;
         DB* db;
