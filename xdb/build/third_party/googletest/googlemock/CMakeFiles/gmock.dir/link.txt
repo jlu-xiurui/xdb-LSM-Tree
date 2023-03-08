@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g  -shared -Wl,-soname,libgmock.so.1.13.0 -o ../../../lib/libgmock.so.1.13.0 CMakeFiles/gmock.dir/src/gmock-all.cc.o  -Wl,-rpath,/home/xiurui/xdb-LSM-Tree/xdb/build/lib: ../../../lib/libgtest.so.1.13.0 -pthread 

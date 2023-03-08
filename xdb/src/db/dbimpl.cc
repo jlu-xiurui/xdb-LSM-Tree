@@ -589,6 +589,9 @@ namespace xdb {
                 }
                 if (!keep) {
                     file_delete.push_back(filename);
+                    if (type == KSSTableFile) {
+                        table_cache_->Evict(number);
+                    }
                 }
             }
         }

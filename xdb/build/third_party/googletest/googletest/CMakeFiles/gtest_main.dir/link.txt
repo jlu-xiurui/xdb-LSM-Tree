@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g  -shared -Wl,-soname,libgtest_main.so.1.13.0 -o ../../../lib/libgtest_main.so.1.13.0 CMakeFiles/gtest_main.dir/src/gtest_main.cc.o  -Wl,-rpath,/home/xiurui/xdb-LSM-Tree/xdb/build/lib: ../../../lib/libgtest.so.1.13.0 -pthread 

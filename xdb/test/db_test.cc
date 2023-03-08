@@ -76,7 +76,7 @@ namespace xdb {
         DB::Open(option,"/home/xiurui/test",&db);
         std::mt19937 rng(std::random_device{}());
         std::vector<std::string> data(1000);
-        for (int iter = 0; iter < 1; iter++) {
+        for (int iter = 0; iter < 5; iter++) {
             for (int i = 0; i < 1000; i++) {
                 std::string val = std::to_string(rng() % 1000);
                 db->Put(write_option, std::to_string(i),val);
@@ -95,6 +95,7 @@ namespace xdb {
         WriteOption write_option;
         ReadOption read_option;
         DB* db;
+        DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         std::mt19937 rng(std::random_device{}());
         std::vector<std::string> data(1000);
@@ -115,7 +116,6 @@ namespace xdb {
             db->Get(read_option, std::to_string(i), &result);
             ASSERT_EQ(result, data[i]);
         }
-        option.env->RemoveDir("/home/xiurui/test");
         delete db;
     }
     const int KthreadNum = 10;
@@ -167,7 +167,7 @@ namespace xdb {
         TestState* ts = state->state;
         WriteOption write_option;
         Status s;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100000; i++) {
             s = ts->db->Put(write_option,"1","0");
         }
         ts->done.fetch_add(1, std::memory_order_release);
@@ -176,6 +176,7 @@ namespace xdb {
         Option option;
         WriteOption write_option;
         DB* db;
+        DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         TestState test_state(db);
         ThreadState thread[KthreadNum];
@@ -191,7 +192,6 @@ namespace xdb {
         }
         //std::cout<<"ConcurrencyTest done"<<std::endl;
         delete db;
-        DestoryDB(option, "/home/xiurui/test");
     }
     
 }
