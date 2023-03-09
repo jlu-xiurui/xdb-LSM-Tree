@@ -48,7 +48,7 @@ namespace xdb {
         ASSERT_EQ(result1, "6");
         delete db;
     }
-    
+ 
     TEST(DBTest, SimpleTest) {
         Option option;
         WriteOption write_option;
@@ -118,7 +118,7 @@ namespace xdb {
         }
         delete db;
     }
-    const int KthreadNum = 10;
+    const int KthreadNum = 2;
     struct TestState {
         TestState(DB* db) : db(db),rng(std::random_device{}()), done(0) {}
         DB* db;
@@ -138,7 +138,7 @@ namespace xdb {
         ReadOption read_option;
         Status s;
         char val[2000];
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100000; i++) {
             int key = ts->rng() % 10;
             ts->kv[id].store(i, std::memory_order_release);
             if ((ts->rng() % 2) == 0) {
@@ -184,7 +184,7 @@ namespace xdb {
         for (int i = 0; i < KthreadNum; i++){
             thread[i].state = &test_state;
             thread[i].id = i;
-            std::thread t(TestThread1, &thread[i]);
+            std::thread t(TestThread, &thread[i]);
             t.detach();
         }
         while(test_state.done.load(std::memory_order_acquire) < KthreadNum) {

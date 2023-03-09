@@ -138,17 +138,32 @@ namespace xdb {
         }
 
     }
-    Status Version::Get(const ReadOption& option, const LookupKey& key, std::string* result) {
+    Status Version::Get(const ReadOption& option, const LookupKey& key, std::string* result,
+            GetStats* stats) {
+        stats->seek_file = nullptr;
+        stats->seek_file_level = -1;
         struct State {
             GetSaver saver;
+            GetStats* stats;
             const ReadOption* option;
             Slice internal_key;
             Status s;
             VersionSet* vset;
             bool found;
 
+            int last_seek_file_level;
+            FileMeta* last_seek_file;
+
             static bool SSTableMatch(void* arg, int level, FileMeta* meta) {
                 State* state = reinterpret_cast<State*>(arg);
+                if (state->last_seek_file != nullptr &&
+                        state->stats->seek_file == nullptr) {
+                    state->stats->seek_file = state->last_seek_file ;
+                    state->stats->seek_file_level = state->last_seek_file_level;
+                }
+                state->last_seek_file = meta;
+                state->last_seek_file_level = level;
+
                 state->s = state->vset->table_cache_->Get(*state->option, meta->number,
                         meta->file_size, state->internal_key, &state->saver, &SaveResult);
                 if (!state->s.ok()) {
@@ -176,7 +191,9 @@ namespace xdb {
         state.saver.state = KNotFound;
         state.saver.result = result;
         state.saver.user_cmp = vset_->icmp_.UserComparator();
-        
+        state.last_seek_file = nullptr;
+        state.last_seek_file_level = -1;
+
         state.option = &option;
         state.internal_key = key.InternalKey();
         state.vset = vset_;
@@ -184,6 +201,7 @@ namespace xdb {
 
         ForEachFile(state.saver.user_key, state.internal_key, &state,
                 &State::SSTableMatch);
+        
         return state.found ? state.s : Status::NotFound("key is not found in sstable");      
     }
 
@@ -237,8 +255,13 @@ namespace xdb {
             for (const auto& file : edit->new_files_) {
                 const int level = file.first;
                 FileMeta* meta = new FileMeta(file.second);
-                meta->refs = 1; {
-    }
+                meta->refs = 1; 
+
+                // assume a seek costs equal to 40KB data
+                // So, allow one seek for each 16KB data.
+                meta->allow_seeks = static_cast<int>(meta->file_size / 16384U);
+                if (meta->allow_seeks < 100) meta->allow_seeks = 100;
+
                 level_[level].deleted_files.erase(meta->number);
                 level_[level].add_files_->insert(meta);
             }
@@ -375,6 +398,7 @@ namespace xdb {
             Version* v = new Version(this);
             builder.SaveTo(v);
             AppendVersion(v);
+            EvalCompactionScore(v);
             log_number_ = log_number;
             meta_file_number_ = next_file_number;
             last_sequence_ = last_sequence;
@@ -415,7 +439,7 @@ namespace xdb {
         }
 
         {
-            // NOTE: Only one Compaction is running at some time
+            // NOTE: Only one Compaction is running at one time
             // so unlock is safe here;
             mu->Unlock();
             if (s.ok()) {
@@ -434,12 +458,15 @@ namespace xdb {
 
         if (s.ok()) {
             AppendVersion(v);
+            EvalCompactionScore(v);
             log_number_ = edit->log_number_;
         } else {
             delete v;
             if (initialize) {
                 delete meta_log_file_;
                 delete meta_log_writer_;
+                meta_log_file_ = nullptr;
+                meta_log_writer_ = nullptr;
                 env_->RemoveFile(meta_file_name);
             }
         }
@@ -490,6 +517,56 @@ namespace xdb {
             }
         }
     }
-
     
+    static uint64_t TotalFileSize(std::vector<FileMeta *> files) {
+        uint64_t sum = 0;
+        for (FileMeta* meta : files) {
+            sum += meta->file_size;
+        }
+        return sum;
+    }
+
+    static double LevelMaxSize(int level) {
+        // the constants is from Leveldb.
+        // may be a experience value.
+        double result = 10. * 1048576.0;
+        while (level > 1) {
+            result *= 10;
+            level--;
+        }
+        return result;
+    }
+    void VersionSet::EvalCompactionScore(Version* v) {
+        int best_level = -1;
+        double best_score = -1;
+
+        for (int level = 0; level < config::KNumLevels; ++level) {
+            double score;
+            if (level == 0) {
+                score = v->files_[level].size() / config::KL0_CompactionThreshold;
+            } else {
+                const uint64_t file_size = TotalFileSize(v->files_[level]);
+                score = static_cast<double>(file_size) / LevelMaxSize(level);
+            }
+            if (score > best_score) {
+                best_level = level;
+                best_score = score;
+            }
+        }
+        v->compaction_level = best_level;
+        v->compaction_score = best_score;
+    }
+
+    bool Version::UpdateStats(const GetStats& stats) {
+        FileMeta* meta = stats.seek_file;
+        if (meta != nullptr) {
+            meta->allow_seeks--;
+            if (meta->allow_seeks <= 0 && file_to_compact_ == nullptr) {
+                file_to_compact_ = meta;
+                file_to_compact_level_ = stats.seek_file_level;
+                return true;
+            }
+        }
+        return false;
+    }
 }

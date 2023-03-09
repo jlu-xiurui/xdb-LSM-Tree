@@ -25,12 +25,20 @@ namespace xdb {
         CondVar cv;
     };
 
-    Option AdaptOption(const InternalKeyComparator* icmp,
+    Option AdaptOption(const std::string& name,
+            const InternalKeyComparator* icmp,
             const InteralKeyFilterPolicy* ipolicy,
             const Option& src) {
         Option ret = src;
         ret.comparator = icmp;
         ret.filter_policy = (src.filter_policy == nullptr ? nullptr : ipolicy);
+        if (ret.logger == nullptr) {
+            src.env->CreatDir(name);
+            Status s = src.env->NewLogger(LoggerFileName(name), &ret.logger);
+            if (!s.ok()) {
+                ret.logger = nullptr;
+            }
+        }
         return ret;
     }
     
@@ -38,7 +46,7 @@ namespace xdb {
         : name_(name), 
           internal_comparator_(option.comparator),
           internal_policy_(option.filter_policy),
-          option_(AdaptOption(&internal_comparator_, &internal_policy_, option)),
+          option_(AdaptOption(name, &internal_comparator_, &internal_policy_, option)),
           file_lock_(nullptr),
           env_(option.env),
           mem_(nullptr),
@@ -120,11 +128,13 @@ namespace xdb {
         MutexLock l(&mu_);
         SequenceNum seq = vset_->LastSequence();
         Version* current = vset_->Current();
+        Version::GetStats stats;
 
         mem_->Ref();
         if (imm_ != nullptr) imm_->Ref();
         current->Ref();
 
+        bool have_stats_update = false;
         {
             mu_.Unlock();
             LookupKey lkey(key, seq);
@@ -133,10 +143,16 @@ namespace xdb {
             } else if (imm_ != nullptr && imm_->Get(lkey,value,&status)) {
                 // found in imm
             } else {
-                status = current->Get(option, lkey, value);
+                status = current->Get(option, lkey, value, &stats);
+                have_stats_update = true;
             }
             mu_.Lock();
         }
+
+        if (have_stats_update && current->UpdateStats(stats)) {
+            MayScheduleCompaction();
+        }
+
         mem_->Unref();
         if (imm_ != nullptr) imm_->Unref();
         current->Unref();
@@ -204,7 +220,8 @@ namespace xdb {
         }
         
         // merge the writebatch
-        Status status = MakeRoomForWrite();
+        Status status;
+        status = MakeRoomForWrite();
         Writer* last_writer = &w;
         SequenceNum last_seq = vset_->LastSequence();
         if (batch != nullptr) {
@@ -423,6 +440,8 @@ namespace xdb {
             if (s.ok()) {
                 s = WriteLevel0SSTable(mem, edit);
             }
+            mem->Unref();
+            mem = nullptr;
         }
         delete file;
         return s;
@@ -465,6 +484,9 @@ namespace xdb {
         files_writing_.insert(meta.number);
         Iterator* iter = mem->NewIterator();
 
+        Log(option_.logger, "Level 0 SSTable #%llu: creating",
+                (unsigned long long)meta.number);
+
         Status s;
         {
             mu_.Unlock();
@@ -495,7 +517,6 @@ namespace xdb {
             background_scheduled_ = true;
             env_->Schedule(&DBImpl::CompactionSchedule, this);
         }
-
     }
 
     void DBImpl::CompactionSchedule(void* db) {

@@ -55,6 +55,9 @@ struct Option {
 
     // Numbers of open files that can be used by db.
     int max_open_file = 1000;
+
+    // the error/progress information will be written to logger
+    Logger* logger = nullptr;
 };
 
 struct WriteOption {

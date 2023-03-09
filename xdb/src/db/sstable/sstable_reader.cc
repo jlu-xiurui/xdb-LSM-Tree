@@ -59,6 +59,7 @@ Status SSTableReader::Open(const Option& option, RandomReadFile* file,
     rep->filter_data = nullptr;
     rep->filter = nullptr;
     *table = new SSTableReader(rep);
+    (*table)->ReadFilterIndex(footer);
     return s;
 }
 
@@ -155,7 +156,7 @@ Status SSTableReader::InternalGet(const ReadOption& option, const Slice& key, vo
     if (index_iter->Valid()) {
         Slice handle_content = index_iter->Value();
         BlockHandle handle;
-        FilterBlockReader* filter;
+        FilterBlockReader* filter = rep_->filter;
         if (filter != nullptr && handle.DecodeFrom(&handle_content).ok() 
                 && filter->KeyMayMatch(handle.GetOffset(), key)) {
             // key is not found.

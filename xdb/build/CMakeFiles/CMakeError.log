@@ -1,0 +1,490 @@
+Performing C++ SOURCE FILE Test HAVE_ARM64_CRC32C failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1cb4a/fast && /usr/bin/make -f CMakeFiles/cmTC_1cb4a.dir/build.make CMakeFiles/cmTC_1cb4a.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_1cb4a.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_ARM64_CRC32C  -march=armv8-a+crc+crypto   -std=gnu++11 -o CMakeFiles/cmTC_1cb4a.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+error: unknown target CPU 'armv8-a+crc+crypto'
+note: valid target CPU values are: nocona, core2, penryn, bonnell, atom, silvermont, slm, goldmont, goldmont-plus, tremont, nehalem, corei7, westmere, sandybridge, corei7-avx, ivybridge, core-avx-i, haswell, core-avx2, broadwell, skylake, skylake-avx512, skx, cascadelake, cooperlake, cannonlake, icelake-client, icelake-server, tigerlake, knl, knm, k8, athlon64, athlon-fx, opteron, k8-sse3, athlon64-sse3, opteron-sse3, amdfam10, barcelona, btver1, btver2, bdver1, bdver2, bdver3, bdver4, znver1, znver2, x86-64
+make[1]: *** [CMakeFiles/cmTC_1cb4a.dir/build.make:66：CMakeFiles/cmTC_1cb4a.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_1cb4a/fast] 错误 2
+
+
+Source file was:
+
+#include <arm_acle.h>
+#include <arm_neon.h>
+
+int main() {
+  __crc32cb(0, 0); __crc32ch(0, 0); __crc32cw(0, 0); __crc32cd(0, 0);
+  vmull_p64(0, 0);
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_STRONG_GETAUXVAL failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_96b44/fast && /usr/bin/make -f CMakeFiles/cmTC_96b44.dir/build.make CMakeFiles/cmTC_96b44.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_96b44.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_STRONG_GETAUXVAL   -std=gnu++11 -o CMakeFiles/cmTC_96b44.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+In file included from /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:14:2: error: "ACLE intrinsics support not enabled."
+#error "ACLE intrinsics support not enabled."
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:35:3: error: use of undeclared identifier '__builtin_arm_wfi'; did you mean '__builtin_dwarf_cfa'?
+  __builtin_arm_wfi();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:35:3: note: '__builtin_dwarf_cfa' declared here
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:39:3: error: use of undeclared identifier '__builtin_arm_wfe'; did you mean '__builtin_dwarf_cfa'?
+  __builtin_arm_wfe();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:35:3: note: '__builtin_dwarf_cfa' declared here
+  __builtin_arm_wfi();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:43:3: error: use of undeclared identifier '__builtin_arm_sev'
+  __builtin_arm_sev();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:47:3: error: use of undeclared identifier '__builtin_arm_sevl'
+  __builtin_arm_sevl();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:51:3: error: use of undeclared identifier '__builtin_arm_yield'; did you mean '__builtin_ia32_xend'?
+  __builtin_arm_yield();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:43:3: note: '__builtin_ia32_xend' declared here
+  __builtin_arm_sev();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:64:9: error: use of undeclared identifier '__builtin_arm_ldrex'
+    v = __builtin_arm_ldrex(__p);
+        ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:65:10: error: use of undeclared identifier '__builtin_arm_strex'
+  while (__builtin_arm_strex(__x, __p));
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:95:3: error: use of undeclared identifier '__builtin_arm_nop'; did you mean '__builtin_coro_noop'?
+  __builtin_arm_nop();
+  ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:95:3: note: '__builtin_coro_noop' declared here
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:147:10: error: use of undeclared identifier '__builtin_arm_cls'
+  return __builtin_arm_cls(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:155:10: error: use of undeclared identifier '__builtin_arm_cls64'
+  return __builtin_arm_cls64(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:161:10: error: use of undeclared identifier '__builtin_arm_cls64'
+  return __builtin_arm_cls64(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:213:10: error: use of undeclared identifier '__builtin_arm_rbit'
+  return __builtin_arm_rbit(__t);
+         ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_acle.h:222:10: error: use of undeclared identifier '__builtin_arm_rbit64'
+  return __builtin_arm_rbit64(__t);
+         ^
+In file included from /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:3:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:28:2: error: "NEON support not enabled"
+#error "NEON support not enabled"
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:48:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int8_t int8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:49:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) int8_t int8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:50:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int16_t int16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:51:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int16_t int16x8_t;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[1]: *** [CMakeFiles/cmTC_96b44.dir/build.make:66：CMakeFiles/cmTC_96b44.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_96b44/fast] 错误 2
+
+
+Source file was:
+
+#include <arm_acle.h>
+#include <arm_neon.h>
+#include <sys/auxv.h>
+
+int main() {
+  getauxval(AT_HWCAP);
+  return 0;
+}
+
+Determining if the include file windows.h exists failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bb22b/fast && /usr/bin/make -f CMakeFiles/cmTC_bb22b.dir/build.make CMakeFiles/cmTC_bb22b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_bb22b.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_bb22b.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: 'windows.h' file not found
+#include <windows.h>
+         ^~~~~~~~~~~
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_bb22b.dir/build.make:66：CMakeFiles/cmTC_bb22b.dir/CheckIncludeFile.c.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_bb22b/fast] 错误 2
+
+
+
+Determining if the function lzo1x_1_15_compress exists in the lzo2 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b352a/fast && /usr/bin/make -f CMakeFiles/cmTC_b352a.dir/build.make CMakeFiles/cmTC_b352a.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_b352a.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=lzo1x_1_15_compress   -o CMakeFiles/cmTC_b352a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b352a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b352a.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=lzo1x_1_15_compress    -rdynamic CMakeFiles/cmTC_b352a.dir/CheckFunctionExists.c.o  -o cmTC_b352a  -llzo2 
+/usr/bin/ld: 找不到 -llzo2
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_b352a.dir/build.make:87：cmTC_b352a] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_b352a/fast] 错误 2
+
+
+
+Determining if the function LZ4_compress_default exists in the lz4 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e6c8c/fast && /usr/bin/make -f CMakeFiles/cmTC_e6c8c.dir/build.make CMakeFiles/cmTC_e6c8c.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_e6c8c.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=LZ4_compress_default   -o CMakeFiles/cmTC_e6c8c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e6c8c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6c8c.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=LZ4_compress_default    -rdynamic CMakeFiles/cmTC_e6c8c.dir/CheckFunctionExists.c.o  -o cmTC_e6c8c  -llz4 
+/usr/bin/ld: 找不到 -llz4
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_e6c8c.dir/build.make:87：cmTC_e6c8c] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_e6c8c/fast] 错误 2
+
+
+
+Performing C++ SOURCE FILE Test HAVE_VISUAL_STUDIO_ARCH_AVX failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_da8b1/fast && /usr/bin/make -f CMakeFiles/cmTC_da8b1.dir/build.make CMakeFiles/cmTC_da8b1.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_da8b1.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_VISUAL_STUDIO_ARCH_AVX   /arch:AVX -std=gnu++11 -o CMakeFiles/cmTC_da8b1.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: no such file or directory: '/arch:AVX'
+make[1]: *** [CMakeFiles/cmTC_da8b1.dir/build.make:66: CMakeFiles/cmTC_da8b1.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_da8b1/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_VISUAL_STUDIO_ARCH_AVX2 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_32ec7/fast && /usr/bin/make -f CMakeFiles/cmTC_32ec7.dir/build.make CMakeFiles/cmTC_32ec7.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_32ec7.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_VISUAL_STUDIO_ARCH_AVX2   /arch:AVX2 -std=gnu++11 -o CMakeFiles/cmTC_32ec7.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: no such file or directory: '/arch:AVX2'
+make[1]: *** [CMakeFiles/cmTC_32ec7.dir/build.make:66: CMakeFiles/cmTC_32ec7.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_32ec7/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_SSSE3 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_42d52/fast && /usr/bin/make -f CMakeFiles/cmTC_42d52.dir/build.make CMakeFiles/cmTC_42d52.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_42d52.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_SSSE3   -std=gnu++11 -o CMakeFiles/cmTC_42d52.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:8:27: error: always_inline function '_mm_shuffle_epi8' requires target feature 'ssse3', but would be inlined into function 'main' that is compiled without support for 'ssse3'
+  const __m128i pattern = _mm_shuffle_epi8(_mm_loadl_epi64(src), shuffle_mask);
+                          ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_42d52.dir/build.make:66：CMakeFiles/cmTC_42d52.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_42d52/fast] 错误 2
+
+
+Source file was:
+
+#include <tmmintrin.h>
+
+int main() {
+  const __m128i *src = 0;
+  __m128i dest;
+  const __m128i shuffle_mask = _mm_load_si128(src);
+  const __m128i pattern = _mm_shuffle_epi8(_mm_loadl_epi64(src), shuffle_mask);
+  _mm_storeu_si128(&dest, pattern);
+  return 0;
+}
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_X86_CRC32 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a7fd3/fast && /usr/bin/make -f CMakeFiles/cmTC_a7fd3.dir/build.make CMakeFiles/cmTC_a7fd3.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_a7fd3.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_X86_CRC32   -std=gnu++11 -o CMakeFiles/cmTC_a7fd3.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:4:10: error: always_inline function '_mm_crc32_u32' requires target feature 'sse4.2', but would be inlined into function 'main' that is compiled without support for 'sse4.2'
+  return _mm_crc32_u32(0, 1);
+         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_a7fd3.dir/build.make:66：CMakeFiles/cmTC_a7fd3.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_a7fd3/fast] 错误 2
+
+
+Source file was:
+
+#include <immintrin.h>
+int main() {
+  return _mm_crc32_u32(0, 1);
+}
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_NEON_CRC32 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_76d9b/fast && /usr/bin/make -f CMakeFiles/cmTC_76d9b.dir/build.make CMakeFiles/cmTC_76d9b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_76d9b.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_NEON_CRC32   -std=gnu++11 -o CMakeFiles/cmTC_76d9b.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+In file included from /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:28:2: error: "NEON support not enabled"
+#error "NEON support not enabled"
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:48:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int8_t int8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:49:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) int8_t int8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:50:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int16_t int16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:51:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int16_t int16x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:52:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int32_t int32x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:53:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int32_t int32x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:54:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) int64_t int64x1_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:55:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int64_t int64x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:56:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint8_t uint8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:57:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) uint8_t uint8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:58:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint16_t uint16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:59:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint16_t uint16x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:60:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint32_t uint32x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:61:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint32_t uint32x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:62:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) uint64_t uint64x1_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:63:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint64_t uint64x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:64:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) float16_t float16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:65:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) float16_t float16x8_t;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[1]: *** [CMakeFiles/cmTC_76d9b.dir/build.make:66：CMakeFiles/cmTC_76d9b.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_76d9b/fast] 错误 2
+
+
+Source file was:
+
+#include <arm_neon.h>
+#include <arm_acle.h>
+int main() {
+  return __crc32cw(0, 1);
+}
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_BMI2 failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4ff32/fast && /usr/bin/make -f CMakeFiles/cmTC_4ff32.dir/build.make CMakeFiles/cmTC_4ff32.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_4ff32.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_BMI2   -std=gnu++11 -o CMakeFiles/cmTC_4ff32.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:4:10: error: always_inline function '_bzhi_u32' requires target feature 'bmi2', but would be inlined into function 'main' that is compiled without support for 'bmi2'
+  return _bzhi_u32(0, 1);
+         ^
+1 error generated.
+make[1]: *** [CMakeFiles/cmTC_4ff32.dir/build.make:66：CMakeFiles/cmTC_4ff32.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_4ff32/fast] 错误 2
+
+
+Source file was:
+
+#include <immintrin.h>
+int main() {
+  return _bzhi_u32(0, 1);
+}
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_NEON failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_accc6/fast && /usr/bin/make -f CMakeFiles/cmTC_accc6.dir/build.make CMakeFiles/cmTC_accc6.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_accc6.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_NEON   -std=gnu++11 -o CMakeFiles/cmTC_accc6.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+In file included from /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx:2:
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:28:2: error: "NEON support not enabled"
+#error "NEON support not enabled"
+ ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:48:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int8_t int8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:49:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) int8_t int8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:50:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int16_t int16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:51:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) int16_t int16x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:52:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int32_t int32x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:53:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) int32_t int32x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:54:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) int64_t int64x1_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:55:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) int64_t int64x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:56:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint8_t uint8x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:57:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(16))) uint8_t uint8x16_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:58:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint16_t uint16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:59:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) uint16_t uint16x8_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:60:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint32_t uint32x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:61:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) uint32_t uint32x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:62:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(1))) uint64_t uint64x1_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:63:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(2))) uint64_t uint64x2_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:64:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(4))) float16_t float16x4_t;
+                       ^
+/usr/lib/llvm-10/lib/clang/10.0.0/include/arm_neon.h:65:24: error: 'neon_vector_type' attribute is not supported for this target
+typedef __attribute__((neon_vector_type(8))) float16_t float16x8_t;
+                       ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[1]: *** [CMakeFiles/cmTC_accc6.dir/build.make:66：CMakeFiles/cmTC_accc6.dir/src.cxx.o] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_accc6/fast] 错误 2
+
+
+Source file was:
+
+#include <arm_neon.h>
+int main() {
+  uint8_t val = 3, dup[8];
+  uint8x16_t v = vld1q_dup_u8(&val);
+  vst1q_u8(dup, v);
+  return 0;
+}
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a9b43/fast && /usr/bin/make -f CMakeFiles/cmTC_a9b43.dir/build.make CMakeFiles/cmTC_a9b43.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_a9b43.dir/src.c.o
+/usr/bin/clang   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_a9b43.dir/src.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a9b43
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9b43.dir/link.txt --verbose=1
+/usr/bin/clang  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_a9b43.dir/src.c.o  -o cmTC_a9b43 
+/usr/bin/ld: CMakeFiles/cmTC_a9b43.dir/src.c.o: in function `main':
+src.c:(.text+0x35): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x41): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x53): undefined reference to `pthread_join'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_a9b43.dir/build.make:87：cmTC_a9b43] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_a9b43/fast] 错误 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6d857/fast && /usr/bin/make -f CMakeFiles/cmTC_6d857.dir/build.make CMakeFiles/cmTC_6d857.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_6d857.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_6d857.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_6d857
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6d857.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_6d857.dir/CheckFunctionExists.c.o  -o cmTC_6d857  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[1]: *** [CMakeFiles/cmTC_6d857.dir/build.make:87：cmTC_6d857] 错误 1
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+make: *** [Makefile:121：cmTC_6d857/fast] 错误 2
+
+
+

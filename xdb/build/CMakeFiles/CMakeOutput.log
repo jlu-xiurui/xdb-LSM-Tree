@@ -1,0 +1,1036 @@
+The system is: Linux - 5.15.0-67-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/clang 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is Clang, found in "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/3.16.3/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/clang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is Clang, found in "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/3.16.3/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5f787/fast && /usr/bin/make -f CMakeFiles/cmTC_5f787.dir/build.make CMakeFiles/cmTC_5f787.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_5f787.dir/testCCompiler.c.o
+/usr/bin/clang   -std=gnu11 -o CMakeFiles/cmTC_5f787.dir/testCCompiler.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_5f787
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5f787.dir/link.txt --verbose=1
+/usr/bin/clang      CMakeFiles/cmTC_5f787.dir/testCCompiler.c.o  -o cmTC_5f787 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9d040/fast && /usr/bin/make -f CMakeFiles/cmTC_9d040.dir/build.make CMakeFiles/cmTC_9d040.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o
+/usr/bin/clang   -v -std=gnu11 -o CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+clang version 10.0.0-4ubuntu1 
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Candidate multilib: x32;@mx32
+Selected multilib: .;@m64
+ (in-process)
+ "/usr/lib/llvm-10/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mthread-model posix -mframe-pointer=all -fmath-errno -fno-rounding-math -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir /usr/lib/llvm-10/lib/clang/10.0.0 -internal-isystem /usr/local/include -internal-isystem /usr/lib/llvm-10/lib/clang/10.0.0/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -std=gnu11 -fdebug-compilation-dir /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fgnuc-version=4.2.1 -fobjc-runtime=gcc -fdiagnostics-show-option -faddrsig -o CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+clang -cc1 version 10.0.0 based upon LLVM 10.0.0 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/local/include
+ /usr/lib/llvm-10/lib/clang/10.0.0/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+Linking C executable cmTC_9d040
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d040.dir/link.txt --verbose=1
+/usr/bin/clang     -v CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o  -o cmTC_9d040 
+clang version 10.0.0-4ubuntu1 
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Candidate multilib: x32;@mx32
+Selected multilib: .;@m64
+ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_9d040 /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtbegin.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/x86_64-linux-gnu/../../lib64 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../.. -L/usr/lib/llvm-10/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtend.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/local/include]
+    add: [/usr/lib/llvm-10/lib/clang/10.0.0/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/llvm-10/lib/clang/10.0.0/include] ==> [/usr/lib/llvm-10/lib/clang/10.0.0/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/local/include;/usr/lib/llvm-10/lib/clang/10.0.0/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_9d040/fast && /usr/bin/make -f CMakeFiles/cmTC_9d040.dir/build.make CMakeFiles/cmTC_9d040.dir/build]
+  ignore line: [make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/clang   -v -std=gnu11 -o CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang version 10.0.0-4ubuntu1 ]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Candidate multilib: x32]
+  ignore line: [@mx32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/lib/llvm-10/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model static -mthread-model posix -mframe-pointer=all -fmath-errno -fno-rounding-math -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir /usr/lib/llvm-10/lib/clang/10.0.0 -internal-isystem /usr/local/include -internal-isystem /usr/lib/llvm-10/lib/clang/10.0.0/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -std=gnu11 -fdebug-compilation-dir /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fgnuc-version=4.2.1 -fobjc-runtime=gcc -fdiagnostics-show-option -faddrsig -o CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 10.0.0 based upon LLVM 10.0.0 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/llvm-10/lib/clang/10.0.0/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking C executable cmTC_9d040]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d040.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/clang     -v CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o  -o cmTC_9d040 ]
+  ignore line: [clang version 10.0.0-4ubuntu1 ]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Candidate multilib: x32]
+  ignore line: [@mx32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_9d040 /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtbegin.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/x86_64-linux-gnu/../../lib64 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../.. -L/usr/lib/llvm-10/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtend.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_9d040] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtbegin.o] ==> ignore
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu/../../lib64] ==> dir [/usr/lib/x86_64-linux-gnu/../../lib64]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../..] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../..]
+    arg [-L/usr/lib/llvm-10/bin/../lib] ==> dir [/usr/lib/llvm-10/bin/../lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_9d040.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtend.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9] ==> [/usr/lib/gcc/x86_64-linux-gnu/9]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu/../../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../..] ==> [/usr/lib]
+  collapse library dir [/usr/lib/llvm-10/bin/../lib] ==> [/usr/lib/llvm-10/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/9;/usr/lib/x86_64-linux-gnu;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib;/usr/lib/llvm-10/lib;/lib]
+  implicit fwks: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ae07c/fast && /usr/bin/make -f CMakeFiles/cmTC_ae07c.dir/build.make CMakeFiles/cmTC_ae07c.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_ae07c.dir/testCXXCompiler.cxx.o
+/usr/bin/clang++    -std=gnu++11 -o CMakeFiles/cmTC_ae07c.dir/testCXXCompiler.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_ae07c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ae07c.dir/link.txt --verbose=1
+/usr/bin/clang++       CMakeFiles/cmTC_ae07c.dir/testCXXCompiler.cxx.o  -o cmTC_ae07c 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b69be/fast && /usr/bin/make -f CMakeFiles/cmTC_b69be.dir/build.make CMakeFiles/cmTC_b69be.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/clang++    -v -std=gnu++11 -o CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+clang version 10.0.0-4ubuntu1 
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Candidate multilib: x32;@mx32
+Selected multilib: .;@m64
+ (in-process)
+ "/usr/lib/llvm-10/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -mthread-model posix -mframe-pointer=all -fmath-errno -fno-rounding-math -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir /usr/lib/llvm-10/lib/clang/10.0.0 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward -internal-isystem /usr/local/include -internal-isystem /usr/lib/llvm-10/lib/clang/10.0.0/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -std=gnu++11 -fdeprecated-macro -fdebug-compilation-dir /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fgnuc-version=4.2.1 -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fdiagnostics-show-option -faddrsig -o CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 10.0.0 based upon LLVM 10.0.0 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/include"
+ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9
+ /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9
+ /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward
+ /usr/local/include
+ /usr/lib/llvm-10/lib/clang/10.0.0/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+Linking CXX executable cmTC_b69be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b69be.dir/link.txt --verbose=1
+/usr/bin/clang++      -v CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_b69be 
+clang version 10.0.0-4ubuntu1 
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9
+Candidate multilib: .;@m64
+Candidate multilib: 32;@m32
+Candidate multilib: x32;@mx32
+Selected multilib: .;@m64
+ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_b69be /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtbegin.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/x86_64-linux-gnu/../../lib64 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../.. -L/usr/lib/llvm-10/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtend.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9]
+    add: [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9]
+    add: [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward]
+    add: [/usr/local/include]
+    add: [/usr/lib/llvm-10/lib/clang/10.0.0/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9] ==> [/usr/include/c++/9]
+  collapse include dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9] ==> [/usr/include/x86_64-linux-gnu/c++/9]
+  collapse include dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward] ==> [/usr/include/c++/9/backward]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/lib/llvm-10/lib/clang/10.0.0/include] ==> [/usr/lib/llvm-10/lib/clang/10.0.0/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/include/c++/9;/usr/include/x86_64-linux-gnu/c++/9;/usr/include/c++/9/backward;/usr/local/include;/usr/lib/llvm-10/lib/clang/10.0.0/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_b69be/fast && /usr/bin/make -f CMakeFiles/cmTC_b69be.dir/build.make CMakeFiles/cmTC_b69be.dir/build]
+  ignore line: [make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/clang++    -v -std=gnu++11 -o CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang version 10.0.0-4ubuntu1 ]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Candidate multilib: x32]
+  ignore line: [@mx32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/lib/llvm-10/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model static -mthread-model posix -mframe-pointer=all -fmath-errno -fno-rounding-math -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -fno-split-dwarf-inlining -debugger-tuning=gdb -v -resource-dir /usr/lib/llvm-10/lib/clang/10.0.0 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward -internal-isystem /usr/local/include -internal-isystem /usr/lib/llvm-10/lib/clang/10.0.0/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -std=gnu++11 -fdeprecated-macro -fdebug-compilation-dir /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fgnuc-version=4.2.1 -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fdiagnostics-show-option -faddrsig -o CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 10.0.0 based upon LLVM 10.0.0 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9]
+  ignore line: [ /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/x86_64-linux-gnu/c++/9]
+  ignore line: [ /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../include/c++/9/backward]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/lib/llvm-10/lib/clang/10.0.0/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [Linking CXX executable cmTC_b69be]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b69be.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/clang++      -v CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_b69be ]
+  ignore line: [clang version 10.0.0-4ubuntu1 ]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.5.0]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8]
+  ignore line: [Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Candidate multilib: 32]
+  ignore line: [@m32]
+  ignore line: [Candidate multilib: x32]
+  ignore line: [@mx32]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/bin/ld" -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_b69be /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtbegin.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/x86_64-linux-gnu/../../lib64 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../.. -L/usr/lib/llvm-10/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtend.o /usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_b69be] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtbegin.o] ==> ignore
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu/../../lib64] ==> dir [/usr/lib/x86_64-linux-gnu/../../lib64]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../..] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../..]
+    arg [-L/usr/lib/llvm-10/bin/../lib] ==> dir [/usr/lib/llvm-10/bin/../lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_b69be.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/crtend.o] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9] ==> [/usr/lib/gcc/x86_64-linux-gnu/9]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu/../../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/9/../../..] ==> [/usr/lib]
+  collapse library dir [/usr/lib/llvm-10/bin/../lib] ==> [/usr/lib/llvm-10/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/9;/usr/lib/x86_64-linux-gnu;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib;/usr/lib/llvm-10/lib;/lib]
+  implicit fwks: []
+
+
+Performing C++ SOURCE FILE Test HAVE_CLANG_THREAD_SAFETY succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4fd77/fast && /usr/bin/make -f CMakeFiles/cmTC_4fd77.dir/build.make CMakeFiles/cmTC_4fd77.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4fd77.dir/src.cxx.o
+/usr/bin/clang++    -DHAVE_CLANG_THREAD_SAFETY   -Wthread-safety -std=gnu++11 -o CMakeFiles/cmTC_4fd77.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4fd77
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4fd77.dir/link.txt --verbose=1
+/usr/bin/clang++   -DHAVE_CLANG_THREAD_SAFETY    CMakeFiles/cmTC_4fd77.dir/src.cxx.o  -o cmTC_4fd77 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_bcbb2/fast && /usr/bin/make -f CMakeFiles/cmTC_bcbb2.dir/build.make CMakeFiles/cmTC_bcbb2.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_bcbb2.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_bcbb2.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_bcbb2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bcbb2.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_bcbb2.dir/CheckIncludeFile.c.o  -o cmTC_bcbb2 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_87bda/fast && /usr/bin/make -f CMakeFiles/cmTC_87bda.dir/build.make CMakeFiles/cmTC_87bda.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_87bda.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_87bda.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_87bda
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87bda.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_87bda.dir/CheckIncludeFile.c.o  -o cmTC_87bda 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4ccc7/fast && /usr/bin/make -f CMakeFiles/cmTC_4ccc7.dir/build.make CMakeFiles/cmTC_4ccc7.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_4ccc7.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_4ccc7.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_4ccc7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4ccc7.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_4ccc7.dir/CheckIncludeFile.c.o  -o cmTC_4ccc7 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_70d39/fast && /usr/bin/make -f CMakeFiles/cmTC_70d39.dir/build.make CMakeFiles/cmTC_70d39.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_70d39.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_70d39.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CheckTypeSize/CMAKE_SIZEOF_UNSIGNED_SHORT.c
+Linking C executable cmTC_70d39
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70d39.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_70d39.dir/CMAKE_SIZEOF_UNSIGNED_SHORT.c.o  -o cmTC_70d39 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_59718/fast && /usr/bin/make -f CMakeFiles/cmTC_59718.dir/build.make CMakeFiles/cmTC_59718.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_59718.dir/TestEndianess.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_59718.dir/TestEndianess.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_59718
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59718.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_59718.dir/TestEndianess.c.o  -o cmTC_59718 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+
+Performing C++ SOURCE FILE Test CRC32C_HAVE_NO_DEPRECATED succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6df23/fast && /usr/bin/make -f CMakeFiles/cmTC_6df23.dir/build.make CMakeFiles/cmTC_6df23.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_6df23.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_DEPRECATED   -Wno-deprecated -std=gnu++11 -o CMakeFiles/cmTC_6df23.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_6df23
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6df23.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_DEPRECATED    CMakeFiles/cmTC_6df23.dir/src.cxx.o  -o cmTC_6df23 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CRC32C_HAVE_NO_SIGN_COMPARE succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c7fe4/fast && /usr/bin/make -f CMakeFiles/cmTC_c7fe4.dir/build.make CMakeFiles/cmTC_c7fe4.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_c7fe4.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_SIGN_COMPARE   -Wno-sign-compare -std=gnu++11 -o CMakeFiles/cmTC_c7fe4.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_c7fe4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c7fe4.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_SIGN_COMPARE    CMakeFiles/cmTC_c7fe4.dir/src.cxx.o  -o cmTC_c7fe4 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CRC32C_HAVE_NO_UNUSED_PARAMETER succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_79cb0/fast && /usr/bin/make -f CMakeFiles/cmTC_79cb0.dir/build.make CMakeFiles/cmTC_79cb0.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_79cb0.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_UNUSED_PARAMETER   -Wno-unused-parameter -std=gnu++11 -o CMakeFiles/cmTC_79cb0.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_79cb0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79cb0.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_UNUSED_PARAMETER    CMakeFiles/cmTC_79cb0.dir/src.cxx.o  -o cmTC_79cb0 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test CRC32C_HAVE_NO_MISSING_FIELD_INITIALIZERS succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a0a84/fast && /usr/bin/make -f CMakeFiles/cmTC_a0a84.dir/build.make CMakeFiles/cmTC_a0a84.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a0a84.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_MISSING_FIELD_INITIALIZERS   -Wno-missing-field-initializers -std=gnu++11 -o CMakeFiles/cmTC_a0a84.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_a0a84
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a0a84.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DCRC32C_HAVE_NO_MISSING_FIELD_INITIALIZERS    CMakeFiles/cmTC_a0a84.dir/src.cxx.o  -o cmTC_a0a84 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_BUILTIN_PREFETCH succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d8ce8/fast && /usr/bin/make -f CMakeFiles/cmTC_d8ce8.dir/build.make CMakeFiles/cmTC_d8ce8.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_d8ce8.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_BUILTIN_PREFETCH   -std=gnu++11 -o CMakeFiles/cmTC_d8ce8.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_d8ce8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8ce8.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_BUILTIN_PREFETCH    CMakeFiles/cmTC_d8ce8.dir/src.cxx.o  -o cmTC_d8ce8 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+int main() {
+  char data = 0;
+  const char* address = &data;
+  __builtin_prefetch(address, 0, 0);
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_MM_PREFETCH succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3d19e/fast && /usr/bin/make -f CMakeFiles/cmTC_3d19e.dir/build.make CMakeFiles/cmTC_3d19e.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_3d19e.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_MM_PREFETCH   -std=gnu++11 -o CMakeFiles/cmTC_3d19e.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3d19e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3d19e.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_MM_PREFETCH    CMakeFiles/cmTC_3d19e.dir/src.cxx.o  -o cmTC_3d19e 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+#if defined(_MSC_VER)
+#include <intrin.h>
+#else  // !defined(_MSC_VER)
+#include <xmmintrin.h>
+#endif  // defined(_MSC_VER)
+
+int main() {
+  char data = 0;
+  const char* address = &data;
+  _mm_prefetch(address, _MM_HINT_NTA);
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_SSE42 succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f62d5/fast && /usr/bin/make -f CMakeFiles/cmTC_f62d5.dir/build.make CMakeFiles/cmTC_f62d5.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_f62d5.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_SSE42  -msse4.2   -std=gnu++11 -o CMakeFiles/cmTC_f62d5.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_f62d5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f62d5.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_SSE42  -msse4.2    CMakeFiles/cmTC_f62d5.dir/src.cxx.o  -o cmTC_f62d5 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+#if defined(_MSC_VER)
+#include <intrin.h>
+#else  // !defined(_MSC_VER)
+#include <cpuid.h>
+#include <nmmintrin.h>
+#endif  // defined(_MSC_VER)
+
+int main() {
+  _mm_crc32_u8(0, 0); _mm_crc32_u32(0, 0);
+#if defined(_M_X64) || defined(__x86_64__)
+   _mm_crc32_u64(0, 0);
+#endif // defined(_M_X64) || defined(__x86_64__)
+  return 0;
+}
+
+Performing C++ SOURCE FILE Test HAVE_WEAK_GETAUXVAL succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ebcee/fast && /usr/bin/make -f CMakeFiles/cmTC_ebcee.dir/build.make CMakeFiles/cmTC_ebcee.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_ebcee.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_WEAK_GETAUXVAL   -std=gnu++11 -o CMakeFiles/cmTC_ebcee.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_ebcee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ebcee.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_WEAK_GETAUXVAL    CMakeFiles/cmTC_ebcee.dir/src.cxx.o  -o cmTC_ebcee 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+unsigned long getauxval(unsigned long type) __attribute__((weak));
+#define AT_HWCAP 16
+
+int main() {
+  getauxval(AT_HWCAP);
+  return 0;
+}
+
+Determining if the system is big endian passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c5cc0/fast && /usr/bin/make -f CMakeFiles/cmTC_c5cc0.dir/build.make CMakeFiles/cmTC_c5cc0.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_c5cc0.dir/TestEndianess.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_c5cc0.dir/TestEndianess.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/TestEndianess.c
+Linking C executable cmTC_c5cc0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5cc0.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_c5cc0.dir/TestEndianess.c.o  -o cmTC_c5cc0 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+TestEndianess.c:
+/* A 16 bit integer is required. */
+typedef unsigned short cmakeint16;
+
+/* On a little endian machine, these 16bit ints will give "THIS IS LITTLE ENDIAN."
+   On a big endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_little[] =  {0x4854, 0x5349, 0x4920, 0x2053, 0x494c, 0x5454, 0x454c, 0x4520, 0x444e, 0x4149, 0x2e4e, 0x0000};
+
+/* on a big endian machine, these 16bit ints will give "THIS IS BIG ENDIAN."
+   On a little endian machine the characters will be exchanged pairwise. */
+const cmakeint16 info_big[] =     {0x5448, 0x4953, 0x2049, 0x5320, 0x4249, 0x4720, 0x454e, 0x4449, 0x414e, 0x2e2e, 0x0000};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_little[argc];
+  require += info_big[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the include file sys/mman.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ad2c1/fast && /usr/bin/make -f CMakeFiles/cmTC_ad2c1.dir/build.make CMakeFiles/cmTC_ad2c1.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_ad2c1.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_ad2c1.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_ad2c1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad2c1.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_ad2c1.dir/CheckIncludeFile.c.o  -o cmTC_ad2c1 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the include file sys/resource.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e8105/fast && /usr/bin/make -f CMakeFiles/cmTC_e8105.dir/build.make CMakeFiles/cmTC_e8105.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_e8105.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_e8105.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e8105
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e8105.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_e8105.dir/CheckIncludeFile.c.o  -o cmTC_e8105 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_97c4b/fast && /usr/bin/make -f CMakeFiles/cmTC_97c4b.dir/build.make CMakeFiles/cmTC_97c4b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_97c4b.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_97c4b.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_97c4b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97c4b.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_97c4b.dir/CheckIncludeFile.c.o  -o cmTC_97c4b 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the include file sys/uio.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_91342/fast && /usr/bin/make -f CMakeFiles/cmTC_91342.dir/build.make CMakeFiles/cmTC_91342.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_91342.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_91342.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_91342
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_91342.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_91342.dir/CheckIncludeFile.c.o  -o cmTC_91342 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e628b/fast && /usr/bin/make -f CMakeFiles/cmTC_e628b.dir/build.make CMakeFiles/cmTC_e628b.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_e628b.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_e628b.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_e628b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e628b.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_e628b.dir/CheckIncludeFile.c.o  -o cmTC_e628b 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the function zlibVersion exists in the z passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_97382/fast && /usr/bin/make -f CMakeFiles/cmTC_97382.dir/build.make CMakeFiles/cmTC_97382.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_97382.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=zlibVersion   -o CMakeFiles/cmTC_97382.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_97382
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97382.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=zlibVersion    -rdynamic CMakeFiles/cmTC_97382.dir/CheckFunctionExists.c.o  -o cmTC_97382  -lz 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Performing C++ SOURCE FILE Test HAVE_CLANG_MAVX succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8df2d/fast && /usr/bin/make -f CMakeFiles/cmTC_8df2d.dir/build.make CMakeFiles/cmTC_8df2d.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8df2d.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_CLANG_MAVX   -mavx -std=gnu++11 -o CMakeFiles/cmTC_8df2d.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_8df2d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8df2d.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_CLANG_MAVX    CMakeFiles/cmTC_8df2d.dir/src.cxx.o  -o cmTC_8df2d 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CLANG_MBMI2 succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_05953/fast && /usr/bin/make -f CMakeFiles/cmTC_05953.dir/build.make CMakeFiles/cmTC_05953.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_05953.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_CLANG_MBMI2   -mbmi2 -std=gnu++11 -o CMakeFiles/cmTC_05953.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_05953
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05953.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_CLANG_MBMI2    CMakeFiles/cmTC_05953.dir/src.cxx.o  -o cmTC_05953 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test SNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_69765/fast && /usr/bin/make -f CMakeFiles/cmTC_69765.dir/build.make CMakeFiles/cmTC_69765.dir/build
+make[1]: Entering directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_69765.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS   -Wno-missing-field-initializers -std=gnu++11 -o CMakeFiles/cmTC_69765.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_69765
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69765.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DSNAPPY_HAVE_NO_MISSING_FIELD_INITIALIZERS    CMakeFiles/cmTC_69765.dir/src.cxx.o  -o cmTC_69765 
+make[1]: Leaving directory '/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_BUILTIN_EXPECT succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_10647/fast && /usr/bin/make -f CMakeFiles/cmTC_10647.dir/build.make CMakeFiles/cmTC_10647.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_10647.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_BUILTIN_EXPECT   -std=gnu++11 -o CMakeFiles/cmTC_10647.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_10647
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10647.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_BUILTIN_EXPECT    CMakeFiles/cmTC_10647.dir/src.cxx.o  -o cmTC_10647 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+int main() {
+  return __builtin_expect(0, 1);
+}
+Performing C++ SOURCE FILE Test HAVE_BUILTIN_CTZ succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_25f69/fast && /usr/bin/make -f CMakeFiles/cmTC_25f69.dir/build.make CMakeFiles/cmTC_25f69.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_25f69.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_BUILTIN_CTZ   -std=gnu++11 -o CMakeFiles/cmTC_25f69.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_25f69
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_25f69.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_BUILTIN_CTZ    CMakeFiles/cmTC_25f69.dir/src.cxx.o  -o cmTC_25f69 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+int main() {
+  return __builtin_ctzll(0);
+}
+Performing C++ SOURCE FILE Test HAVE_ATTRIBUTE_ALWAYS_INLINE succeeded with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_f017c/fast && /usr/bin/make -f CMakeFiles/cmTC_f017c.dir/build.make CMakeFiles/cmTC_f017c.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_f017c.dir/src.cxx.o
+/usr/bin/clang++    -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_ATTRIBUTE_ALWAYS_INLINE   -std=gnu++11 -o CMakeFiles/cmTC_f017c.dir/src.cxx.o -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_f017c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f017c.dir/link.txt --verbose=1
+/usr/bin/clang++   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -DHAVE_ATTRIBUTE_ALWAYS_INLINE    CMakeFiles/cmTC_f017c.dir/src.cxx.o  -o cmTC_f017c 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+Source file was:
+
+__attribute__((always_inline)) int zero() { return 0; }
+
+int main() {
+  return zero();
+}
+Determining if the mmap exist passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d19d6/fast && /usr/bin/make -f CMakeFiles/cmTC_d19d6.dir/build.make CMakeFiles/cmTC_d19d6.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_d19d6.dir/CheckSymbolExists.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_d19d6.dir/CheckSymbolExists.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_d19d6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d19d6.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_d19d6.dir/CheckSymbolExists.c.o  -o cmTC_d19d6 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+File /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <sys/mman.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef mmap
+  return ((int*)(&mmap))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the sysconf exist passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_35b45/fast && /usr/bin/make -f CMakeFiles/cmTC_35b45.dir/build.make CMakeFiles/cmTC_35b45.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_35b45.dir/CheckSymbolExists.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_35b45.dir/CheckSymbolExists.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_35b45
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35b45.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_35b45.dir/CheckSymbolExists.c.o  -o cmTC_35b45 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+File /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <unistd.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef sysconf
+  return ((int*)(&sysconf))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9f674/fast && /usr/bin/make -f CMakeFiles/cmTC_9f674.dir/build.make CMakeFiles/cmTC_9f674.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_9f674.dir/CheckIncludeFile.c.o
+/usr/bin/clang    -o CMakeFiles/cmTC_9f674.dir/CheckIncludeFile.c.o   -c /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9f674
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9f674.dir/link.txt --verbose=1
+/usr/bin/clang      -rdynamic CMakeFiles/cmTC_9f674.dir/CheckIncludeFile.c.o  -o cmTC_9f674 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cbfd1/fast && /usr/bin/make -f CMakeFiles/cmTC_cbfd1.dir/build.make CMakeFiles/cmTC_cbfd1.dir/build
+make[1]: 进入目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_cbfd1.dir/CheckFunctionExists.c.o
+/usr/bin/clang   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_cbfd1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_cbfd1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cbfd1.dir/link.txt --verbose=1
+/usr/bin/clang  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_cbfd1.dir/CheckFunctionExists.c.o  -o cmTC_cbfd1  -lpthread 
+make[1]: 离开目录“/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/CMakeTmp”
+
+
+

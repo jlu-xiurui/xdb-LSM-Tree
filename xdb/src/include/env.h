@@ -7,6 +7,7 @@
 #include <thread>
 #include <queue>
 #include <vector>
+#include <cstdarg>
 
 #include "util/mutex.h"
 #include "util/file.h"
@@ -22,6 +23,17 @@ class FileLock {
     FileLock& operator=(const FileLock&) = delete;
     virtual ~FileLock() = default;
 };
+
+class Logger {
+ public:
+    Logger() = default;
+    Logger(const Logger&) = delete;
+    Logger& operator=(const Logger&) = delete;
+    virtual ~Logger() = default;
+
+    virtual void Logv(const char* format, std::va_list ap) = 0;
+};
+
 class Env {
  public:
     Env() = default;
@@ -57,7 +69,11 @@ class Env {
     virtual void StartThread(void (*function)(void *arg), void* arg) = 0;
 
     virtual void SleepMicroseconds(int n) = 0;
+
+    virtual Status NewLogger(const std::string& filename, Logger** result) = 0;
 };
+
+void Log(Logger* logger, const char* format, ...);
 
 Env* DefaultEnv();
 

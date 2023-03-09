@@ -10,12 +10,13 @@ namespace xdb {
 class VersionSet;
 
 struct FileMeta {
-    FileMeta() : refs(0), file_size(0) {}
+    FileMeta() : refs(0), file_size(0), allow_seeks(1 << 30) {}
     int refs;
     uint64_t number;
     uint64_t file_size;
     InternalKey smallest;
     InternalKey largest;
+    int allow_seeks;
 };
 
 class VersionEdit {

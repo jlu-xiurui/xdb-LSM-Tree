@@ -19,10 +19,16 @@ class VersionSet;
 
 class Version {
  public:
+    struct GetStats {
+      int seek_file_level;
+      FileMeta* seek_file;
+    };
     void Ref();
     void Unref();
 
-    Status Get(const ReadOption& option, const LookupKey& key, std::string* result);
+    Status Get(const ReadOption& option, const LookupKey& key, std::string* result, GetStats* stats);
+ 
+    bool UpdateStats(const GetStats& stats);
  private:
     friend class VersionSet;
 
@@ -43,6 +49,17 @@ class Version {
     int refs_;
 
     std::vector<FileMeta*> files_[config::KNumLevels];
+
+    // compaction case 1: When file is seeked to many times during
+    // "Version->Get", it should be compact.
+    int file_to_compact_level_;
+    FileMeta* file_to_compact_;
+
+    // compaction case 2: When a level's usage is to much(file num
+    // for level0, file total size for other level), compact this level.
+    // the score is setted by EvalCompactionScore()
+    int compaction_level;
+    double compaction_score;
 };
 
 class VersionSet {
@@ -92,6 +109,8 @@ class VersionSet {
     Status WriteSnapShot(log::Writer* writer);
     
     void AppendVersion(Version* v);
+
+    void EvalCompactionScore(Version* v);
     
     const std::string name_;
     const Option* option_;

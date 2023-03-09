@@ -5,6 +5,8 @@ namespace xdb {
 
 namespace config {
     static const int KNumLevels = 7;
+
+    static const int KL0_CompactionThreshold = 4;
 }
 
 }

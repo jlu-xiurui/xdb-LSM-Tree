@@ -25,8 +25,6 @@ class DBImpl : public DB {
     Status Delete(const WriteOption& option,const Slice& key) override;
 
     Status Write(const WriteOption& option,WriteBatch* batch) override;
-
-    
  private:
     friend class DB;
     struct Writer;

@@ -20,6 +20,10 @@ std::string LockFileName(const std::string& dbname) {
     return dbname + "/LOCK";
 }
 
+std::string LoggerFileName(const std::string& dbname) {
+    return dbname + "/LOGGER";
+}
+
 bool ParseFilename(const std::string& filename, uint64_t* number, FileType* type) {
     Slice rest(filename);
     if (filename == "LOCK") {

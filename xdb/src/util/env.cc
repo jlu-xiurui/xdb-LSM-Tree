@@ -3,11 +3,22 @@
 #include <dirent.h>
 
 #include "include/env.h"
+#include "util/logger.h"
+
 // allow mmap file if 64bits because of enough address capacity.
 
 namespace xdb {
 
 constexpr const int max_mmap_limit = (sizeof(void*) >= 8) ? 1000 : 0;
+
+void Log(Logger* logger, const char* format, ...) {
+    if (logger != nullptr) {
+        std::va_list ap;
+        va_start(ap, format);
+        logger->Logv(format, ap);
+        va_end(ap);
+    }
+}
 
 class FileLockImpl : public FileLock {
  public:
@@ -194,6 +205,23 @@ class EnvImpl : public Env {
     }
     void SleepMicroseconds(int n) override{
         std::this_thread::sleep_for(std::chrono::microseconds(n));
+    }
+
+    Status NewLogger(const std::string& filename, Logger** result) override {
+        int fd = ::open(filename.data(), O_CREAT | O_RDWR, 0644);
+        if (fd < 0) {
+            result = nullptr;
+            return SystemError(filename, errno);
+        }
+        std::FILE* fp = ::fdopen(fd, "w");
+        if (fp == nullptr) {
+            ::close(fd);
+            *result = nullptr;
+            return SystemError(filename, errno);
+        } else {
+            *result = new LoggerImpl(fp);
+            return Status::OK();
+        }
     }
  private:
     int LockOrUnlockFile(int fd, bool is_lock) {

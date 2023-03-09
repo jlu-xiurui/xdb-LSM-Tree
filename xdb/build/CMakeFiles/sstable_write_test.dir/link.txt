@@ -1,0 +1,1 @@
+/usr/bin/clang++  -g   CMakeFiles/sstable_write_test.dir/test/sstable_write_test.cc.o  -o test/sstable_write_test  -Wl,-rpath,/home/xiurui/xdb-LSM-Tree/xdb/build libxdb.a lib/libgtest.a lib/libgmock_main.a libmurmur3.so third_party/crc32c/libcrc32c.a third_party/snappy/libsnappy.a lib/libgmock.a lib/libgtest.a -lpthread 
