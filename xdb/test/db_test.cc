@@ -118,7 +118,7 @@ namespace xdb {
         }
         delete db;
     }
-    const int KthreadNum = 2;
+    const int KthreadNum = 10;
     struct TestState {
         TestState(DB* db) : db(db),rng(std::random_device{}()), done(0) {}
         DB* db;

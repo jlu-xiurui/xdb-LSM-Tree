@@ -127,20 +127,23 @@ namespace xdb {
         Status status;
         MutexLock l(&mu_);
         SequenceNum seq = vset_->LastSequence();
-        Version* current = vset_->Current();
         Version::GetStats stats;
 
-        mem_->Ref();
-        if (imm_ != nullptr) imm_->Ref();
+        MemTable* mem = mem_;
+        MemTable* imm = imm_;
+        Version* current = vset_->Current();
+
+        mem->Ref();
+        if (imm != nullptr) imm->Ref();
         current->Ref();
 
         bool have_stats_update = false;
         {
             mu_.Unlock();
             LookupKey lkey(key, seq);
-            if (mem_->Get(lkey,value,&status)) {
+            if (mem->Get(lkey,value,&status)) {
                 // found in mem
-            } else if (imm_ != nullptr && imm_->Get(lkey,value,&status)) {
+            } else if (imm != nullptr && imm->Get(lkey,value,&status)) {
                 // found in imm
             } else {
                 status = current->Get(option, lkey, value, &stats);
@@ -153,8 +156,8 @@ namespace xdb {
             MayScheduleCompaction();
         }
 
-        mem_->Unref();
-        if (imm_ != nullptr) imm_->Unref();
+        mem->Unref();
+        if (imm != nullptr) imm->Unref();
         current->Unref();
         return status;
     }
@@ -540,7 +543,9 @@ namespace xdb {
         mu_.AssertHeld();
         if (imm_ != nullptr) {
             CompactionMemtable();
+            return;
         }
+        
     }
 
     void DBImpl::CompactionMemtable() {

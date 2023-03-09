@@ -569,4 +569,98 @@ namespace xdb {
         }
         return false;
     }
+
+    void VersionSet::GetRange(const std::vector<FileMeta*>& input, InternalKey* smallest,
+            InternalKey* largest) {
+        assert(!input.empty());
+        smallest->Clear();
+        largest->Clear();
+        bool first = true;
+        for (const FileMeta* meta : input) {
+            if (first) {
+                *smallest = meta->smallest;
+                *largest = meta->largest;
+            } else {
+                if (icmp_.Compare(*smallest, meta->smallest) < 0) {
+                    *smallest = meta->smallest;
+                }
+                if (icmp_.Compare(*largest, meta->largest) > 0) {
+                    *largest = meta->largest;
+                }
+            }
+        }
+    }
+
+    void Version::GetOverlappingFiles(int level, const InternalKey& smallest,
+            const InternalKey& largest, std::vector<FileMeta*>* input) {
+        input->clear();
+        Slice user_smallest = smallest.user_key();
+        Slice user_largest = largest.user_key();
+
+        const Comparator* ucmp = vset_->icmp_.UserComparator();
+        for (int i = 0; i < files_[level].size();) {
+            FileMeta* meta = files_[level][i++];
+            const Slice file_smallest = meta->smallest.user_key();
+            const Slice file_largest = meta->largest.user_key();
+            if (ucmp->Compare(file_smallest, user_largest) > 0) {
+                // file is after range
+            } else if (ucmp->Compare(file_largest, user_smallest) < 0) {
+                // file is before range
+            } else {
+                input->push_back(meta);
+                if (level == 0) {
+                    if (ucmp->Compare(file_smallest, user_smallest) < 0) {
+                        i = 0;
+                        input->clear();
+                        user_smallest = file_smallest;
+                    } else if (ucmp->Compare(file_largest, user_largest) > 0) {
+                        i = 0;
+                        input->clear();
+                        user_largest = file_largest;
+                    }
+                }
+            }
+        }
+    }
+    Compaction* VersionSet::PickCompaction() {
+        Compaction* c;
+        int level;
+
+        bool size_compaction = (current_->compaction_score >= 1);
+        bool seek_compaction = (current_->file_to_compact_ != nullptr);
+        if (size_compaction) {
+            level = current_->compaction_level;
+            assert(level >= 0);
+            assert(level <= config::KL0_CompactionThreshold);
+            c = new Compaction(level);
+            for (FileMeta* meta : current_->files_[level]) {
+                if (compactor_pointer_[level].empty() ||
+                        icmp_.Compare(meta->largest.Encode(), compactor_pointer_[level]) > 0) {
+                    c->input_[0].push_back(meta);
+                    break;
+                }
+            }
+            if (c->input_[0].empty()) {
+                c->input_[0].push_back(current_->files_[level][0]);
+            }
+        } else if (seek_compaction) {
+            level = current_->file_to_compact_level_;
+            c = new Compaction(level);
+            c->input_[0].push_back(current_->file_to_compact_);
+        } else {
+            return nullptr;
+        }
+
+        c->input_version_ = current_;
+        c->input_version_->Ref();
+
+        // files in level-0 is possible over range.
+        // collect all file over range with the original file
+        if (level == 0) {
+            InternalKey smallest, largest;
+            GetRange(c->input_[0], &smallest, &largest);
+            current_->GetOverlappingFiles(0, smallest, largest, &c->input_[0]);
+        }
+
+    }
 }

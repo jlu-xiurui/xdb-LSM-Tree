@@ -15,7 +15,7 @@
 namespace xdb {
 
 class VersionSet;
-
+class Compaction;
 
 class Version {
  public:
@@ -29,8 +29,12 @@ class Version {
     Status Get(const ReadOption& option, const LookupKey& key, std::string* result, GetStats* stats);
  
     bool UpdateStats(const GetStats& stats);
+
+    void GetOverlappingFiles(int level, const InternalKey& smallest,
+         const InternalKey& largest, std::vector<FileMeta*>* input);
  private:
     friend class VersionSet;
+    friend class Compaction;
 
     explicit Version(VersionSet* vset) : vset_(vset), next_(this),
             prev_(this), refs_(0) {}
@@ -101,10 +105,14 @@ class VersionSet {
     }
 
     void AddLiveFiles(std::set<uint64_t>* live);
+
+    Compaction* PickCompaction();
+
  private:
     class Builder;
 
     friend class Version;
+    friend class Compaction;
 
     Status WriteSnapShot(log::Writer* writer);
     
@@ -112,6 +120,9 @@ class VersionSet {
 
     void EvalCompactionScore(Version* v);
     
+    void GetRange(const std::vector<FileMeta*>& input, InternalKey* smallest,
+            InternalKey* largest);
+
     const std::string name_;
     const Option* option_;
     Env* env_;
@@ -128,6 +139,20 @@ class VersionSet {
     
     WritableFile* meta_log_file_;
     log::Writer* meta_log_writer_;
+
+    std::string compactor_pointer_[config::KNumLevels];
+};
+
+class Compaction {
+ public:
+    Compaction(int level) : level_(level) {}
+ private:
+    friend class Version;
+    friend class VersionSet;
+    
+    int level_;
+    std::vector<FileMeta*> input_[2];
+    Version* input_version_;
 };
 
 }

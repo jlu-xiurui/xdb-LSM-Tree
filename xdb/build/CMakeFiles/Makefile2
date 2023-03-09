@@ -192,9 +192,9 @@ third_party/snappy/clean: third_party/snappy/CMakeFiles/snappy.dir/clean
 
 # All Build rule for target.
 CMakeFiles/xdb.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/xdb.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 CMakeFiles/xdb.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/xdb.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
+CMakeFiles/xdb.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/depend
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66 "Built target xdb"
@@ -221,13 +221,13 @@ CMakeFiles/xdb.dir/clean:
 # Target rules for target CMakeFiles/sstable_test.dir
 
 # All Build rule for target.
-CMakeFiles/sstable_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/sstable_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/sstable_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/sstable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/sstable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/sstable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/sstable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/sstable_test.dir/build.make CMakeFiles/sstable_test.dir/depend
 	$(MAKE) -f CMakeFiles/sstable_test.dir/build.make CMakeFiles/sstable_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=37,38 "Built target sstable_test"
@@ -281,13 +281,13 @@ CMakeFiles/murmur3.dir/clean:
 # Target rules for target CMakeFiles/block_test.dir
 
 # All Build rule for target.
-CMakeFiles/block_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/block_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/block_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/block_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/block_test.dir/build.make CMakeFiles/block_test.dir/depend
 	$(MAKE) -f CMakeFiles/block_test.dir/build.make CMakeFiles/block_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=1,2 "Built target block_test"
@@ -314,13 +314,13 @@ CMakeFiles/block_test.dir/clean:
 # Target rules for target CMakeFiles/cache_test.dir
 
 # All Build rule for target.
-CMakeFiles/cache_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/cache_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/cache_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/cache_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/cache_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/cache_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/cache_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/cache_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/cache_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/cache_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/cache_test.dir/build.make CMakeFiles/cache_test.dir/depend
 	$(MAKE) -f CMakeFiles/cache_test.dir/build.make CMakeFiles/cache_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=3,4 "Built target cache_test"
@@ -347,13 +347,13 @@ CMakeFiles/cache_test.dir/clean:
 # Target rules for target CMakeFiles/coding_test.dir
 
 # All Build rule for target.
-CMakeFiles/coding_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/coding_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/coding_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/coding_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/coding_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/coding_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/coding_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/coding_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/coding_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/coding_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/coding_test.dir/build.make CMakeFiles/coding_test.dir/depend
 	$(MAKE) -f CMakeFiles/coding_test.dir/build.make CMakeFiles/coding_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=5,6 "Built target coding_test"
@@ -380,13 +380,13 @@ CMakeFiles/coding_test.dir/clean:
 # Target rules for target CMakeFiles/db_test.dir
 
 # All Build rule for target.
-CMakeFiles/db_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/db_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/db_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/db_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/db_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/db_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/db_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/db_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/db_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/db_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/depend
 	$(MAKE) -f CMakeFiles/db_test.dir/build.make CMakeFiles/db_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=12,13 "Built target db_test"
@@ -413,13 +413,13 @@ CMakeFiles/db_test.dir/clean:
 # Target rules for target CMakeFiles/env_test.dir
 
 # All Build rule for target.
-CMakeFiles/env_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/env_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/env_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/env_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/env_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/env_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/env_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/env_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/env_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/env_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/env_test.dir/build.make CMakeFiles/env_test.dir/depend
 	$(MAKE) -f CMakeFiles/env_test.dir/build.make CMakeFiles/env_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=14,15 "Built target env_test"
@@ -446,13 +446,13 @@ CMakeFiles/env_test.dir/clean:
 # Target rules for target CMakeFiles/sstable_write_test.dir
 
 # All Build rule for target.
-CMakeFiles/sstable_write_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/sstable_write_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/sstable_write_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/sstable_write_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/sstable_write_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/sstable_write_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/sstable_write_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/sstable_write_test.dir/build.make CMakeFiles/sstable_write_test.dir/depend
 	$(MAKE) -f CMakeFiles/sstable_write_test.dir/build.make CMakeFiles/sstable_write_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=39,40 "Built target sstable_write_test"
@@ -479,13 +479,13 @@ CMakeFiles/sstable_write_test.dir/clean:
 # Target rules for target CMakeFiles/example_test.dir
 
 # All Build rule for target.
-CMakeFiles/example_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/example_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/example_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/example_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/example_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/example_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/example_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/example_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/example_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/example_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/example_test.dir/build.make CMakeFiles/example_test.dir/depend
 	$(MAKE) -f CMakeFiles/example_test.dir/build.make CMakeFiles/example_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=16,17 "Built target example_test"
@@ -512,13 +512,13 @@ CMakeFiles/example_test.dir/clean:
 # Target rules for target CMakeFiles/filter_block_test.dir
 
 # All Build rule for target.
-CMakeFiles/filter_block_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/filter_block_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/filter_block_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/filter_block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/filter_block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/filter_block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/filter_block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/filter_block_test.dir/build.make CMakeFiles/filter_block_test.dir/depend
 	$(MAKE) -f CMakeFiles/filter_block_test.dir/build.make CMakeFiles/filter_block_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=18,19 "Built target filter_block_test"
@@ -545,13 +545,13 @@ CMakeFiles/filter_block_test.dir/clean:
 # Target rules for target CMakeFiles/memtable_test.dir
 
 # All Build rule for target.
-CMakeFiles/memtable_test.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/memtable_test.dir/all: CMakeFiles/xdb.dir/all
+CMakeFiles/memtable_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/memtable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/memtable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/memtable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
-CMakeFiles/memtable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 	$(MAKE) -f CMakeFiles/memtable_test.dir/build.make CMakeFiles/memtable_test.dir/depend
 	$(MAKE) -f CMakeFiles/memtable_test.dir/build.make CMakeFiles/memtable_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=28,29 "Built target memtable_test"

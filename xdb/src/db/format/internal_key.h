@@ -70,6 +70,8 @@ class InternalKey {
         rep_.clear();
         AppendInternalKey(&rep_, key);
     }
+
+    void Clear() { rep_.clear(); }
  private:
     std::string rep_;
 };
