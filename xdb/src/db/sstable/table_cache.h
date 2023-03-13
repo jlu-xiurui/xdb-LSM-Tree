@@ -21,6 +21,8 @@ class TableCache {
 
     void Evict(uint64_t file_number);
 
+    Iterator* NewIterator(const ReadOption& option, uint64_t file_number, uint64_t file_size);
+
  private:
     Status FindTable(uint64_t file_number, uint64_t file_size, Cache::Handle** handle);
     

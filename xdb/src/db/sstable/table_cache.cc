@@ -4,6 +4,7 @@
 #include "include/cache.h"
 #include "util/filename.h"
 #include "include/env.h"
+#include "include/iterator.h"
 
 namespace xdb {
 
@@ -18,6 +19,11 @@ static void DeleteEntry(const xdb::Slice &key, void *value) {
     delete tf;
 }
 
+static void UnrefEntry(void *arg1, void *arg2) {
+    Cache* cache = reinterpret_cast<Cache*> (arg1);
+    Cache::Handle* handle  = reinterpret_cast<Cache::Handle*> (arg2);
+    cache->Release(handle);
+}
 Status TableCache::Get(const ReadOption& option, uint64_t file_number, uint64_t file_size,
             const Slice& key, void* arg, void (*handle_result)(void*, const Slice&, const Slice&)) {
     Cache::Handle* handle = nullptr;
@@ -60,6 +66,19 @@ Status TableCache::FindTable(uint64_t file_number, uint64_t file_size, Cache::Ha
         }
     }
     return s;
+}
+
+
+Iterator* TableCache::NewIterator(const ReadOption& option, uint64_t file_number, uint64_t file_size) {
+    Cache::Handle* handle = nullptr;
+    Status s = FindTable(file_number, file_size, &handle);
+    if (!s.ok()) {
+        return NewErrorIterator(s);
+    }
+    SSTableReader* table = reinterpret_cast<TableAndFile*>(cache_->Value(handle))->table;
+    Iterator* iter = table->NewIterator(option);
+    iter->AppendCleanup(&UnrefEntry, cache_, handle);
+    return iter;
 }
 
 }

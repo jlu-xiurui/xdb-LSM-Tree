@@ -108,9 +108,13 @@ class VersionSet {
 
     Compaction* PickCompaction();
 
+    Iterator* MakeMergedIterator(Compaction* c);
+
  private:
     class Builder;
 
+    class LevelFileIterator;
+    
     friend class Version;
     friend class Compaction;
 

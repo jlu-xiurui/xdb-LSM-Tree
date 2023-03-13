@@ -773,4 +773,29 @@ namespace xdb {
         return (input_[0].size() == 1 && input_[1].size() == 0
                 && TotalFileSize(grandparents_) < GrandparantsOverLapLimit(input_version_->vset_->option_));
     }
+
+    class LevelFileIterator : public Iterator {
+     public:
+     private:
+    };
+
+    Iterator* VersionSet::MakeMergedIterator(Compaction* c) {
+        ReadOption option;
+        option.check_crc = option_->check_crc;
+        const size_t space = (c->level() == 0 ? 1 + c->input_[0].size() : 2);
+        Iterator** list = new Iterator*[space];
+        size_t idx = 0;
+        for (int which = 0; which < 2; which++) {
+            if (!c->input_[which].empty()) {
+                if (which + c->level_ == 0) {
+                    const std::vector<FileMeta*>& input = c->input_[which];
+                    for (const FileMeta* meta : input) {
+                        list[idx++] = table_cache_->NewIterator(option, meta->number, meta->file_size);
+                    }
+                } else {
+                    list[idx++] = NewTwoLevelIterator();
+                }
+            }
+        }
+    }
 }
