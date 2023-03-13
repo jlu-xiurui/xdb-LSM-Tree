@@ -247,6 +247,11 @@ namespace xdb {
             base_->Unref();
         }
         void Apply(const VersionEdit* edit) {
+            for (const auto & compaction_pointer : edit->compaction_pointers_) {
+                const int level = compaction_pointer.first;
+                vset_->compactor_pointer_[level] = 
+                    compaction_pointer.second.Encode().ToString();
+            }
             for (const auto& file : edit->delete_files_) {
                 const int level = file.first;
                 const uint64_t file_number = file.second;
@@ -479,6 +484,14 @@ namespace xdb {
         edit.SetComparatorName(icmp_.UserComparator()->Name());
 
         for (int level = 0; level < config::KNumLevels; level++) {
+            if (!compactor_pointer_[level].empty()) {
+                InternalKey key;
+                key.DecodeFrom(compactor_pointer_[level]);
+                edit.SetCompactionPointer(level, key);
+            }
+        }
+
+        for (int level = 0; level < config::KNumLevels; level++) {
             const std::vector<FileMeta*>& files = current_->files_[level];
             for (const FileMeta* meta : files) {
                 edit.AddFile(level, meta->number, meta->file_size,
@@ -536,6 +549,15 @@ namespace xdb {
         }
         return result;
     }
+
+    static uint64_t ExpandCompactionLimit(const Option* option) {
+        return 25 * option->max_file_size;
+    }
+
+    static uint64_t GrandparantsOverLapLimit(const Option* option) {
+        return 10 * option->max_file_size;
+    }
+
     void VersionSet::EvalCompactionScore(Version* v) {
         int best_level = -1;
         double best_score = -1;
@@ -591,6 +613,13 @@ namespace xdb {
         }
     }
 
+   void VersionSet::GetTwoRange(const std::vector<FileMeta*>& input1, const std::vector<FileMeta*>& input2, InternalKey* smallest,
+            InternalKey* largest) {
+        std::vector<FileMeta*> input_all = input1;
+        input_all.insert(input_all.end(), input2.begin(), input2.end());
+        GetRange(input_all, smallest, largest);
+    }
+
     void Version::GetOverlappingFiles(int level, const InternalKey& smallest,
             const InternalKey& largest, std::vector<FileMeta*>* input) {
         input->clear();
@@ -620,6 +649,43 @@ namespace xdb {
                     }
                 }
             }
+        }
+    }
+    FileMeta* FindSmallestBoundary(const InternalKeyComparator* icmp,
+                                   const std::vector<FileMeta*>& level_files,
+                                   const InternalKey& largest_key) {
+        const Comparator* ucmp = icmp->UserComparator();
+        FileMeta* smallest_boundary = nullptr;
+        for (FileMeta* meta : level_files) {
+            if (icmp->Compare(largest_key, meta->largest) < 0  &&
+                    ucmp->Compare(largest_key.user_key(), meta->largest.user_key()) == 0 &&
+                    (smallest_boundary == nullptr || icmp->Compare(meta->largest, smallest_boundary->largest) < 0)) {
+                smallest_boundary = meta;
+            }
+        }
+        return smallest_boundary;
+    }
+
+    void AddBoundaryInputs(const InternalKeyComparator* icmp, 
+                          const std::vector<FileMeta*>& level_files,
+                          std::vector<FileMeta*>* inputs) {
+        InternalKey largest_key;
+        if (inputs->empty()) {
+            return;
+        }
+        largest_key = level_files[0]->largest;
+        for (size_t i = 1; i < level_files.size(); i++) {
+            if (icmp->Compare(largest_key, level_files[i]->largest) < 0) {
+                largest_key = level_files[i]->largest;
+            }
+        }
+        while (true) {
+            FileMeta* meta = FindSmallestBoundary(icmp, level_files, largest_key);
+            if (meta == nullptr) {
+                break;
+            }
+            inputs->push_back(meta);
+            largest_key = meta->largest;
         }
     }
     Compaction* VersionSet::PickCompaction() {
@@ -662,5 +728,49 @@ namespace xdb {
             current_->GetOverlappingFiles(0, smallest, largest, &c->input_[0]);
         }
 
+        InternalKey smallest, largest;
+        AddBoundaryInputs(&icmp_, current_->files_[level], &c->input_[0]);
+        GetRange(c->input_[0], &smallest, &largest);
+        current_->GetOverlappingFiles(level + 1, smallest, largest, &c->input_[1]);
+        AddBoundaryInputs(&icmp_, current_->files_[level + 1], &c->input_[1]);
+        
+        InternalKey all_smallest, all_largest;
+        GetTwoRange(c->input_[0], c->input_[1], &all_smallest, &all_largest);
+        
+        // try to grow the number of inputs[0], without change
+        // inputs[1]
+        if (!c->input_[1].empty()) {
+            std::vector<FileMeta*> expand0;
+            current_->GetOverlappingFiles(level, all_smallest, all_largest, &expand0);
+            AddBoundaryInputs(&icmp_, current_->files_[level], &expand0);
+            const uint64_t expand0_size = TotalFileSize(expand0);
+            const uint64_t input0_size = TotalFileSize(c->input_[0]);
+            const uint64_t input1_size = TotalFileSize(c->input_[1]);
+            if (expand0_size > input0_size &&
+                     expand0_size < ExpandCompactionLimit(option_)) {
+                InternalKey new_smallest, new_largest;
+                std::vector<FileMeta*> expand1;
+                GetRange(expand0, &new_smallest, &new_largest);
+                current_->GetOverlappingFiles(level + 1, new_smallest, new_largest, &expand1);
+                AddBoundaryInputs(&icmp_, current_->files_[level + 1], &expand1);
+                if (expand1.size() == c->input_[1].size()) {
+                    smallest = new_smallest;
+                    largest = new_largest;
+                    c->input_[0] = expand0;
+                    c->input_[1] = expand1;
+                    GetTwoRange(c->input_[0], c->input_[1], &all_smallest, &all_largest);
+                }
+            }
+        }
+        if (level + 2 < config::KNumLevels) {
+            current_->GetOverlappingFiles(level + 2, all_smallest, all_largest, &c->grandparents_);  
+        }
+        c->edit_->SetCompactionPointer(level, largest);
+        return c;
+    }
+
+    bool Compaction::SingalMove() const {
+        return (input_[0].size() == 1 && input_[1].size() == 0
+                && TotalFileSize(grandparents_) < GrandparantsOverLapLimit(input_version_->vset_->option_));
     }
 }

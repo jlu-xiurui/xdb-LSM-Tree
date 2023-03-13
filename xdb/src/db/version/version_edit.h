@@ -58,6 +58,9 @@ class VersionEdit {
     void DeleteFile(int level, uint64_t file_number) {
         delete_files_.emplace(level, file_number);
     }
+    void SetCompactionPointer(int level, InternalKey key) {
+        delete_files_.emplace(level, key);
+    }
     void EncodeTo(std::string* dst);
 
     Status DecodeFrom(const Slice& src);
@@ -67,6 +70,7 @@ class VersionEdit {
 
     std::vector<std::pair<int, FileMeta>> new_files_;
     DeleteSet delete_files_;
+    std::vector<std::pair<int, InternalKey>> compaction_pointers_;
     uint64_t log_number_;
     SequenceNum last_sequence_;
     uint64_t next_file_number_;

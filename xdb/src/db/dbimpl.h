@@ -93,7 +93,7 @@ class DBImpl : public DB {
     std::deque<Writer*> writers_ GUARDED_BY(mu_);
 };
 
-Option AdaptOption(const InternalKeyComparator* icmp,
+Option AdaptOption(const std::string& name, const InternalKeyComparator* icmp,
             const InteralKeyFilterPolicy* ipolicy,
             const Option& option);
 }

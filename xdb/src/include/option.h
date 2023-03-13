@@ -58,6 +58,9 @@ struct Option {
 
     // the error/progress information will be written to logger
     Logger* logger = nullptr;
+
+    // write up to this amount bytes to a file before switch
+    uint64_t max_file_size = 2 * 1024 * 1024;
 };
 
 struct WriteOption {

@@ -123,6 +123,9 @@ class VersionSet {
     void GetRange(const std::vector<FileMeta*>& input, InternalKey* smallest,
             InternalKey* largest);
 
+    void GetTwoRange(const std::vector<FileMeta*>& input1,  const std::vector<FileMeta*>& input2, InternalKey* smallest,
+            InternalKey* largest);
+
     const std::string name_;
     const Option* option_;
     Env* env_;
@@ -146,13 +149,29 @@ class VersionSet {
 class Compaction {
  public:
     Compaction(int level) : level_(level) {}
+
+    bool SingalMove() const;
+
+    int level() {
+      return level_;
+    }
+    
+    FileMeta* input(int which, int i) {
+      return input_[which][i];
+    }
+
+    VersionEdit* edit() {
+      return edit_;
+    }
  private:
     friend class Version;
     friend class VersionSet;
     
     int level_;
     std::vector<FileMeta*> input_[2];
+    std::vector<FileMeta*> grandparents_; // level_ + 1
     Version* input_version_;
+    VersionEdit* edit_;
 };
 
 }

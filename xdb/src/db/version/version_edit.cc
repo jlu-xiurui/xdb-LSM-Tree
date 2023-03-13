@@ -10,7 +10,8 @@ enum Tag {
     KNextFileNumber= 3,
     KComparatorName = 4,
     KNewFiles = 5,
-    KDeleteFiles = 6
+    KDeleteFiles = 6,
+    KCompactionPointers = 7,
 };
 
 void VersionEdit::EncodeTo(std::string* dst) {
@@ -44,6 +45,12 @@ void VersionEdit::EncodeTo(std::string* dst) {
         PutVarint32(dst, delete_file.first);
         PutVarint64(dst, delete_file.second);
     }
+    for (const auto& compaction_pointer : compaction_pointers_) {
+        PutVarint32(dst, KCompactionPointers);
+        PutVarint32(dst, compaction_pointer.first);
+        PutLengthPrefixedSlice(dst, compaction_pointer.second.Encode());
+    }
+
 }
 
 bool GetLevel(Slice* input, int* value) {
@@ -71,6 +78,7 @@ Status VersionEdit::DecodeFrom(const Slice& src) {
     uint64_t number;
     Slice str;
     FileMeta meta;
+    InternalKey key;
 
     while(GetVarint32(&input, &tag)) {
         switch(tag) {
@@ -114,9 +122,15 @@ Status VersionEdit::DecodeFrom(const Slice& src) {
                 break;
             case KDeleteFiles:
                 if (!GetLevel(&input, &level) || !GetVarint64(&input, &number)) {
-                    return Status::Corruption("VersionEdit DecodeFrom: new_files");
+                    return Status::Corruption("VersionEdit DecodeFrom: delete_files");
                 }
                 delete_files_.emplace(level, number);
+                break;
+            case KCompactionPointers:
+                if (!GetLevel(&input, &level) || !GetInternalKey(&input, &key)) {
+                    return Status::Corruption("VersionEdit DecodeFrom: compaction_pointer");
+                }
+                compaction_pointers_.emplace_back(level, key);
                 break;
             default:
                 return Status::Corruption("VersionEdit DecodeFrom: unknown tag");

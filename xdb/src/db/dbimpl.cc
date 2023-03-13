@@ -545,7 +545,24 @@ namespace xdb {
             CompactionMemtable();
             return;
         }
-        
+        Compaction* c = nullptr;
+        c = vset_->PickCompaction();
+
+        Status s;
+        if (c == nullptr) {
+            // nothing to do
+        } else if (c->SingalMove()){
+            FileMeta* meta = c->input(0, 0);
+            c->edit()->DeleteFile(c->level(), meta->number);
+            c->edit()->AddFile(c->level(), meta->number, meta->file_size,
+                    meta->smallest, meta->largest);
+            s = vset_->LogAndApply(c->edit(), &mu_);
+            if (!s.ok()) {
+                RecordBackgroundError(s);
+            }
+        } else {
+            
+        }
     }
 
     void DBImpl::CompactionMemtable() {
