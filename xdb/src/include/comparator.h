@@ -7,7 +7,7 @@ namespace xdb {
 class Comparator {
  public:
     virtual ~Comparator() = default;
-
+ 
     virtual int Compare(const Slice& a, const Slice& b) const = 0;
 
     virtual const char* Name() const = 0;

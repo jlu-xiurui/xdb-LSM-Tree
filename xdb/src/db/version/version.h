@@ -17,6 +17,11 @@ namespace xdb {
 class VersionSet;
 class Compaction;
 
+// find first file that "largest >= internal_key",
+// the files must be sorted by largest and have no overlap(level > 0)
+size_t FindFile(const std::vector<FileMeta*>& files, const Slice& user_key, 
+            const Comparator* ucmp);
+
 class Version {
  public:
     struct GetStats {
@@ -35,7 +40,7 @@ class Version {
  private:
     friend class VersionSet;
     friend class Compaction;
-
+    class LevelFileIterator;
     explicit Version(VersionSet* vset) : vset_(vset), next_(this),
             prev_(this), refs_(0) {}
     
@@ -112,8 +117,6 @@ class VersionSet {
 
  private:
     class Builder;
-
-    class LevelFileIterator;
     
     friend class Version;
     friend class Compaction;

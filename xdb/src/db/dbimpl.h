@@ -28,6 +28,7 @@ class DBImpl : public DB {
  private:
     friend class DB;
     struct Writer;
+    struct CompactionState;
 
     WriteBatch* MergeBatchGroup(Writer** last_writer);
     
@@ -58,6 +59,9 @@ class DBImpl : public DB {
     void CompactionMemtable()
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
     
+    Status DoCompactionLevel(CompactionState* state)
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
     void RecordBackgroundError(Status s)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
     

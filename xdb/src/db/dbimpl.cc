@@ -25,6 +25,13 @@ namespace xdb {
         CondVar cv;
     };
 
+    struct DBImpl::CompactionState {
+        explicit CompactionState(Compaction* c) 
+                : compaction(c) {}
+
+        Compaction* const compaction;
+        SequenceNum last_sequence;
+    };
     Option AdaptOption(const std::string& name,
             const InternalKeyComparator* icmp,
             const InteralKeyFilterPolicy* ipolicy,
@@ -538,7 +545,15 @@ namespace xdb {
         background_scheduled_ = false;
         background_cv_.SignalAll();
     }
+    Status DBImpl::DoCompactionLevel(CompactionState* state) {
+        mu_.AssertHeld();
 
+        Log(option_.logger)
+        Iterator* input = vset_->MakeMergedIterator(state->compaction);
+        state->last_sequence = vset_->LastSequence();
+
+        return Status::OK();
+    }
     void DBImpl::BackgroundCompaction() {
         mu_.AssertHeld();
         if (imm_ != nullptr) {
@@ -561,7 +576,8 @@ namespace xdb {
                 RecordBackgroundError(s);
             }
         } else {
-            
+            CompactionState* state = new CompactionState(c);
+            DoCompactionLevel(state);
         }
     }
 

@@ -8,6 +8,7 @@
 #include "include/env.h"
 #include "util/filename.h"
 #include "db/log/log_reader.h"
+#include "db/version/merge.h"
 
 namespace xdb {
     VersionSet::VersionSet(const std::string name, const Option* option, TableCache* cache,
@@ -83,7 +84,7 @@ namespace xdb {
     }
 
     // find first file that "largest >= internal_key"
-    static size_t FindFile(std::vector<FileMeta*> files, const Slice& user_key, 
+    size_t FindFile(const std::vector<FileMeta*>& files, const Slice& user_key, 
             const Comparator* ucmp) {
         size_t lo = 0;
         size_t hi = files.size();
@@ -774,11 +775,65 @@ namespace xdb {
                 && TotalFileSize(grandparents_) < GrandparantsOverLapLimit(input_version_->vset_->option_));
     }
 
-    class LevelFileIterator : public Iterator {
+    class Version::LevelFileIterator : public Iterator {
      public:
+        LevelFileIterator(const InternalKeyComparator icmp, 
+                const std::vector<FileMeta*>* input) : icmp_(icmp), input_(input), index_(input->size()) {}
+        
+        ~LevelFileIterator() = default;
+        
+        bool Valid() const override { return index_ < input_->size(); }
+
+        Slice Key() const override {
+            assert(Valid());
+            return (*input_)[index_]->largest.Encode();
+        }
+
+        Slice Value() const override {
+            assert(Valid());
+            EncodeFixed64(buf_, (*input_)[index_]->file_size);
+            EncodeFixed64(buf_ + 8, (*input_)[index_]->number);
+            return Slice(buf_, 16);
+        }
+
+        void Next() override {
+            assert(Valid());
+            index_++;
+        }
+
+        void Prev() override {
+            assert(Valid());
+            index_ = index_ == 0 ? input_->size() : index_ - 1;
+        }
+
+        void Seek(const Slice& key) override {
+            index_ = FindFile(*input_, key, icmp_.UserComparator());
+        }
+
+        void SeekToFirst() override { index_ = 0; }
+
+        void SeekToLast() override {
+            index_ == input_->size() == 0 ? 0 : input_->size()-1;
+        }
+
+        Status status() override { return Status::OK(); }
      private:
+        const InternalKeyComparator icmp_;
+        const std::vector<FileMeta*>* input_;
+        size_t index_;
+        mutable char buf_[16];
     };
 
+    Iterator* GetFileIterator(void* arg, const ReadOption& option, const Slice& handle_contents) {
+        TableCache* cache = reinterpret_cast<TableCache*>(arg);
+        if (handle_contents.size() != 16) {
+            return NewErrorIterator(Status::Corruption("LevelFileIterator value is wrong"));
+        }
+        uint64_t file_size = DecodeFixed64(handle_contents.data());
+        uint64_t number = DecodeFixed64(handle_contents.data() + 8);
+        return cache->NewIterator(option, number, file_size);
+
+    }
     Iterator* VersionSet::MakeMergedIterator(Compaction* c) {
         ReadOption option;
         option.check_crc = option_->check_crc;
@@ -793,9 +848,13 @@ namespace xdb {
                         list[idx++] = table_cache_->NewIterator(option, meta->number, meta->file_size);
                     }
                 } else {
-                    list[idx++] = NewTwoLevelIterator();
+                    list[idx++] = NewTwoLevelIterator(
+                        new Version::LevelFileIterator(icmp_, &c->input_[which]), &GetFileIterator,
+                                table_cache_, option);
                 }
             }
         }
+        assert(idx == space);
+        return NewMergedIterator(list, idx, &icmp_);
     }
 }
