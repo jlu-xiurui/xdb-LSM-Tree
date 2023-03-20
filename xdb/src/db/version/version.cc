@@ -299,7 +299,7 @@ namespace xdb {
                 return;
             }
             std::vector<FileMeta*>* files = &v->files_[level];
-            if (level > 0 && files->empty()) {
+            if (level > 0 && !files->empty()) {
                 assert(vset_->icmp_.Compare((*files)[files->size() - 1]->largest,
                         meta->smallest) < 0);
             }
@@ -867,6 +867,7 @@ namespace xdb {
                 }
             }
         }
+
         assert(idx <= space);
         return NewMergedIterator(list, idx, &icmp_);
     }

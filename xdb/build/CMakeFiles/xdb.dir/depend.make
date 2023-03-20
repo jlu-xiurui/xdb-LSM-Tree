@@ -137,7 +137,9 @@ CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/db/filter/filter_
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/db/format/internal_key.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/db/sstable/block_builder.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/db/sstable/block_format.h
+CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/db/sstable/table_cache.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/db/version/version_edit.h
+CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/include/cache.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/include/comparator.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/include/env.h
 CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o: ../src/include/filter_policy.h

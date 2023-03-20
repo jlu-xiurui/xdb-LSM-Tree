@@ -522,7 +522,7 @@ namespace xdb {
         Status s;
         {
             mu_.Unlock();
-            s = BuildSSTable(name_, option_, iter, &meta);
+            s = BuildSSTable(name_, option_, table_cache_ ,iter, &meta);
             mu_.Lock();
         }
         Log(option_.logger, "Level 0 SSTable #%llu: done, level-0 num is %d",
@@ -836,7 +836,7 @@ namespace xdb {
         state->out_file = nullptr;
         if (s.ok() && num_entries > 0) {
             Log(option_.logger, "Create SSTable #%llu: level:%llu, keys:%llu, bytes:%llu", 
-                    num_entries, state->compaction->level(), num_entries, file_size);
+                    number, state->compaction->level(), num_entries, file_size);
         }
         return s;
     }

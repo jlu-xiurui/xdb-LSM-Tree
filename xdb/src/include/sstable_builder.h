@@ -3,6 +3,7 @@
 
 #include "include/option.h"
 #include "util/file.h"
+#include "db/sstable/table_cache.h"
 
 namespace xdb {
 
@@ -42,7 +43,7 @@ class SSTableBuilder {
 };
 
 Status BuildSSTable(const std::string name, const Option& option, 
-      Iterator* iter, FileMeta* meta);
+      TableCache* table_cache, Iterator* iter, FileMeta* meta);
 }
 
 #endif // STORAGE_XDB_INCLUDE_SSTABLE_BUILDER_H_

@@ -12,6 +12,8 @@
 #include "include/option.h"
 #include "db/sstable/table_cache.h"
 
+#include <iostream>
+
 namespace xdb {
 
 class VersionSet;
@@ -91,7 +93,9 @@ class VersionSet {
     
     Status Recover();
     
-    uint64_t NextFileNumber() { return next_file_number_++; }
+    uint64_t NextFileNumber() {
+      return next_file_number_++; 
+    }
 
     uint64_t LastSequence() const { return last_sequence_; }
 

@@ -138,7 +138,9 @@ CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o
  ../src/db/format/internal_key.h
  ../src/db/sstable/block_builder.h
  ../src/db/sstable/block_format.h
+ ../src/db/sstable/table_cache.h
  ../src/db/version/version_edit.h
+ ../src/include/cache.h
  ../src/include/comparator.h
  ../src/include/env.h
  ../src/include/filter_policy.h

@@ -28,7 +28,11 @@ class VersionEdit {
         has_log_number_(false),
         has_last_sequence_(false),
         has_next_file_number_(false),
-        has_comparator_name_(false) {}
+        has_comparator_name_(false) {
+            new_files_.clear();
+            delete_files_.clear();
+            compaction_pointers_.clear();
+        }
 
     void SetLogNumber(uint64_t log_number) {
         has_log_number_ = true;

@@ -4,6 +4,7 @@
 #include "util/file.h"
 #include "include/env.h"
 #include "include/iterator.h"
+#include <iostream>
 
 namespace xdb {
     TEST(ExampleTest, LinearIterater) {
@@ -12,14 +13,14 @@ namespace xdb {
         RandomReadFile* read_file;
         WritableFile* write_file;
         Env* env = DefaultEnv();
-        std::string filename{"/home/xiurui/xdb/test_file"};
+        std::string filename{"/home/xiurui/test_file"};
         Status s = env->NewWritableFile(filename, &write_file);
         ASSERT_TRUE(s.ok());
         SSTableBuilder builder(option, write_file);
-        char buf[5];
-        for (int i = 0; i < 10000; i++) {
-            std::sprintf(buf, "%04d", i);
-            builder.Add(Slice(buf, 4),"VAL");
+        char buf[10];
+        for (int i = 0; i < 1000000; i++) {
+            std::sprintf(buf, "%06d", i);
+            builder.Add(Slice(buf, 6),"VAL");
         }
         s = builder.Finish();
         ASSERT_TRUE(s.ok());
@@ -30,15 +31,17 @@ namespace xdb {
         s = env->NewRamdomReadFile(filename, &read_file);
         ASSERT_TRUE(s.ok());
         env->FileSize(filename, &file_size);
+        std::cout << "builder.FileSize():"<< builder.FileSize()<< std::endl;
+        ASSERT_EQ(file_size, builder.FileSize());
         SSTableReader* reader;
         s = SSTableReader::Open(option, read_file, file_size, &reader);
         ASSERT_TRUE(s.ok());
         ReadOption read_option;
         Iterator* iter = reader->NewIterator(read_option);
         iter->SeekToFirst();
-        for (int i = 0; i < 10000; i++) {
-            std::sprintf(buf, "%04d", i);
-            Slice s = Slice(buf, 4);
+        for (int i = 0; i < 1000000; i++) {
+            std::sprintf(buf, "%06d", i);
+            Slice s = Slice(buf, 6);
             ASSERT_TRUE(iter->Valid());
             ASSERT_EQ(iter->Key().ToString(),s.ToString());
             ASSERT_EQ(iter->Value(),"VAL");

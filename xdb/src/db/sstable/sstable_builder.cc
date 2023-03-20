@@ -13,10 +13,12 @@
 #include "util/filename.h"
 #include "db/version/version_edit.h"
 
+#include <iostream>
+
 namespace xdb {
 
 Status BuildSSTable(const std::string name, const Option& option, 
-      Iterator* iter, FileMeta* meta) {
+      TableCache* table_cache, Iterator* iter, FileMeta* meta) {
     Status s;
     meta->file_size = 0;
     iter->SeekToFirst();
@@ -38,19 +40,26 @@ Status BuildSSTable(const std::string name, const Option& option,
         meta->largest.DecodeFrom(key);
 
         s = builder->Finish();
-        if (s.ok()) {
-            meta->file_size = builder->FileSize();
-        }
-        delete builder;
+
         if (s.ok()) {
             s = file->Sync();
         }
         if (s.ok()) {
             s = file->Close();
         }
+        if (s.ok()) {
+            meta->file_size = builder->FileSize();
+        }
+        if (s.ok()) {
+            Iterator* it = table_cache->NewIterator(ReadOption(), 
+                    meta->number, meta->file_size);
+            s = it->status();
+            delete it;
+        }
+        delete builder;
         delete file;
+        
     }
-
     if (!iter->status().ok()) {
         s = iter->status();
     }
@@ -69,6 +78,7 @@ struct SSTableBuilder::Rep {
           filter_block_builder_(option.filter_policy == nullptr ?
             nullptr : new FilterBlockBuilder(option.filter_policy)),
           num_entries_(0),
+          offset_(0),
           data_block_over_(false) {
         // index_block is used for random access
         // using prefix compress will slow down the effiency.
