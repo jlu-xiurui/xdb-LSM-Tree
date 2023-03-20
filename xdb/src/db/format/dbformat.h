@@ -7,6 +7,10 @@ namespace config {
     static const int KNumLevels = 7;
 
     static const int KL0_CompactionThreshold = 4;
+
+    static const int KL0_StopWriteThreshold = 12;
+
+    static const uint64_t KMaxSequenceNumber = ((0x1ull << 56) - 1);
 }
 
 }

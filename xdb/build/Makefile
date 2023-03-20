@@ -832,6 +832,33 @@ src/db/sstable/table_cache.cc.s:
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.s
 .PHONY : src/db/sstable/table_cache.cc.s
 
+src/db/version/merge.o: src/db/version/merge.cc.o
+
+.PHONY : src/db/version/merge.o
+
+# target to build an object file
+src/db/version/merge.cc.o:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/merge.cc.o
+.PHONY : src/db/version/merge.cc.o
+
+src/db/version/merge.i: src/db/version/merge.cc.i
+
+.PHONY : src/db/version/merge.i
+
+# target to preprocess a source file
+src/db/version/merge.cc.i:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/merge.cc.i
+.PHONY : src/db/version/merge.cc.i
+
+src/db/version/merge.s: src/db/version/merge.cc.s
+
+.PHONY : src/db/version/merge.s
+
+# target to generate assembly for a file
+src/db/version/merge.cc.s:
+	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/src/db/version/merge.cc.s
+.PHONY : src/db/version/merge.cc.s
+
 src/db/version/version.o: src/db/version/version.cc.o
 
 .PHONY : src/db/version/version.o
@@ -1477,6 +1504,9 @@ help:
 	@echo "... src/db/sstable/table_cache.o"
 	@echo "... src/db/sstable/table_cache.i"
 	@echo "... src/db/sstable/table_cache.s"
+	@echo "... src/db/version/merge.o"
+	@echo "... src/db/version/merge.i"
+	@echo "... src/db/version/merge.s"
 	@echo "... src/db/version/version.o"
 	@echo "... src/db/version/version.i"
 	@echo "... src/db/version/version.s"

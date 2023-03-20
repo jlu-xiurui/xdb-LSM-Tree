@@ -62,10 +62,20 @@ class DBImpl : public DB {
     Status DoCompactionLevel(CompactionState* state)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
+    Status LogCompactionResult(CompactionState* state)
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+      
     void RecordBackgroundError(Status s)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
     
     void GarbageFilesClean()
+      EXCLUSIVE_LOCKS_REQUIRED(mu_);
+
+    Status FinishCompactionSSTable(CompactionState* state, Iterator* input);
+    
+    Status OpenCompactionSSTable(CompactionState* state);
+
+    void CleanCompaction(CompactionState* state)
       EXCLUSIVE_LOCKS_REQUIRED(mu_);
 
     const std::string name_;
@@ -88,6 +98,7 @@ class DBImpl : public DB {
     Status background_status_ GUARDED_BY(mu_);
     bool background_scheduled_  GUARDED_BY(mu_);
     std::atomic<bool> closed_;
+    std::atomic<bool> has_imm_;
 
     std::set<uint64_t> files_writing_ GUARDED_BY(mu_);
 

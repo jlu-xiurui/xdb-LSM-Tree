@@ -59,7 +59,7 @@ class VersionEdit {
         delete_files_.emplace(level, file_number);
     }
     void SetCompactionPointer(int level, InternalKey key) {
-        delete_files_.emplace(level, key);
+        compaction_pointers_.emplace_back(level, key);
     }
     void EncodeTo(std::string* dst);
 

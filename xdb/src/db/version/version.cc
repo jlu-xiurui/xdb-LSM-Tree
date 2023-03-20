@@ -559,6 +559,10 @@ namespace xdb {
         return 10 * option->max_file_size;
     }
 
+    static uint64_t SSTableFileLimit(const Option* option) {
+        return option->max_file_size;
+    }
+
     void VersionSet::EvalCompactionScore(Version* v) {
         int best_level = -1;
         double best_score = -1;
@@ -611,6 +615,7 @@ namespace xdb {
                     *largest = meta->largest;
                 }
             }
+            first = false;
         }
     }
 
@@ -671,7 +676,7 @@ namespace xdb {
                           const std::vector<FileMeta*>& level_files,
                           std::vector<FileMeta*>* inputs) {
         InternalKey largest_key;
-        if (inputs->empty()) {
+        if (level_files.empty()) {
             return;
         }
         largest_key = level_files[0]->largest;
@@ -699,7 +704,7 @@ namespace xdb {
             level = current_->compaction_level;
             assert(level >= 0);
             assert(level <= config::KL0_CompactionThreshold);
-            c = new Compaction(level);
+            c = new Compaction(option_, level);
             for (FileMeta* meta : current_->files_[level]) {
                 if (compactor_pointer_[level].empty() ||
                         icmp_.Compare(meta->largest.Encode(), compactor_pointer_[level]) > 0) {
@@ -712,7 +717,7 @@ namespace xdb {
             }
         } else if (seek_compaction) {
             level = current_->file_to_compact_level_;
-            c = new Compaction(level);
+            c = new Compaction(option_, level);
             c->input_[0].push_back(current_->file_to_compact_);
         } else {
             return nullptr;
@@ -722,7 +727,7 @@ namespace xdb {
         c->input_version_->Ref();
 
         // files in level-0 is possible over range.
-        // collect all file over range with the original file
+        // collect all file ovp er range with the original file
         if (level == 0) {
             InternalKey smallest, largest;
             GetRange(c->input_[0], &smallest, &largest);
@@ -766,13 +771,21 @@ namespace xdb {
         if (level + 2 < config::KNumLevels) {
             current_->GetOverlappingFiles(level + 2, all_smallest, all_largest, &c->grandparents_);  
         }
-        c->edit_->SetCompactionPointer(level, largest);
+        c->edit_.SetCompactionPointer(level, largest);
         return c;
     }
 
     bool Compaction::SingalMove() const {
         return (input_[0].size() == 1 && input_[1].size() == 0
                 && TotalFileSize(grandparents_) < GrandparantsOverLapLimit(input_version_->vset_->option_));
+    }
+
+    void Compaction::AddInputDeletions(VersionEdit* edit) {
+        for (int which = 0; which < 2; which++) {
+            for (FileMeta* meta : input_[which]) {
+                edit->DeleteFile(level_ + which, meta->number);
+            }
+        }
     }
 
     class Version::LevelFileIterator : public Iterator {
@@ -813,7 +826,7 @@ namespace xdb {
         void SeekToFirst() override { index_ = 0; }
 
         void SeekToLast() override {
-            index_ == input_->size() == 0 ? 0 : input_->size()-1;
+            index_ = input_->size() == 0 ? 0 : input_->size()-1;
         }
 
         Status status() override { return Status::OK(); }
@@ -854,7 +867,45 @@ namespace xdb {
                 }
             }
         }
-        assert(idx == space);
+        assert(idx <= space);
         return NewMergedIterator(list, idx, &icmp_);
+    }
+    Compaction::Compaction(const Option* option, int level) : 
+        level_(level),
+        max_output_file_bytes_(SSTableFileLimit(option)),
+        input_version_(nullptr),
+        grandparents_overlap_(0),
+        grandparents_index_(0),
+        seen_key_(false) {}
+        
+    bool Compaction::StopBefore(const Slice& key) {
+        const InternalKeyComparator* icmp = &input_version_->vset_->icmp_;
+        while (grandparents_index_ < grandparents_.size() 
+                && icmp->Compare(key, grandparents_[grandparents_index_]->largest.Encode()) > 0) {
+            if (seen_key_) {
+                grandparents_overlap_ += grandparents_[grandparents_index_]->file_size;
+            }
+            ++grandparents_index_;
+        }
+        // to seek the first input key in the grandparents
+        seen_key_ = true;
+        if (grandparents_overlap_ > GrandparantsOverLapLimit(input_version_->vset_->option_)) {
+            grandparents_overlap_ = 0;
+            return true;
+        }
+        return false;
+    }
+
+    bool Compaction::IsBaseLevelForKey(const Slice& key) {
+        const Comparator* ucmp = input_version_->vset_->icmp_.UserComparator();
+        for (int level = level_ + 2; level < config::KNumLevels; level++) {
+            for (auto meta : input_version_->files_[level]) {
+                if (ucmp->Compare(key, meta->smallest.user_key()) >= 0 &&
+                        ucmp->Compare(key, meta->largest.user_key()) <= 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

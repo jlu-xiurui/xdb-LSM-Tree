@@ -246,4 +246,9 @@ Status SSTableBuilder::Finish() {
 uint64_t SSTableBuilder::FileSize() const {
     return rep_->offset_;
 }
+
+uint64_t SSTableBuilder::NumEntries() const {
+    return rep_->num_entries_;
+}
+
 }

@@ -252,9 +252,22 @@ CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/table_cache.cc -o CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.s
 
+CMakeFiles/xdb.dir/src/db/version/merge.cc.o: CMakeFiles/xdb.dir/flags.make
+CMakeFiles/xdb.dir/src/db/version/merge.cc.o: ../src/db/version/merge.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/xdb.dir/src/db/version/merge.cc.o"
+	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/db/version/merge.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc
+
+CMakeFiles/xdb.dir/src/db/version/merge.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xdb.dir/src/db/version/merge.cc.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc > CMakeFiles/xdb.dir/src/db/version/merge.cc.i
+
+CMakeFiles/xdb.dir/src/db/version/merge.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xdb.dir/src/db/version/merge.cc.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc -o CMakeFiles/xdb.dir/src/db/version/merge.cc.s
+
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o: ../src/db/version/version_edit.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version_edit.cc
 
 CMakeFiles/xdb.dir/src/db/version/version_edit.cc.i: cmake_force
@@ -267,7 +280,7 @@ CMakeFiles/xdb.dir/src/db/version/version_edit.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/db/version/version.cc.o: ../src/db/version/version.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/xdb.dir/src/db/version/version.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/xdb.dir/src/db/version/version.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/db/version/version.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version.cc
 
 CMakeFiles/xdb.dir/src/db/version/version.cc.i: cmake_force
@@ -280,7 +293,7 @@ CMakeFiles/xdb.dir/src/db/version/version.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o: ../src/db/writebatch/writebatch.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/writebatch/writebatch.cc
 
 CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.i: cmake_force
@@ -293,7 +306,7 @@ CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/cache.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/cache.cc.o: ../src/util/cache.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/xdb.dir/src/util/cache.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/xdb.dir/src/util/cache.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/cache.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/cache.cc
 
 CMakeFiles/xdb.dir/src/util/cache.cc.i: cmake_force
@@ -306,7 +319,7 @@ CMakeFiles/xdb.dir/src/util/cache.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/coding.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/coding.cc.o: ../src/util/coding.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/xdb.dir/src/util/coding.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/xdb.dir/src/util/coding.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/coding.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/coding.cc
 
 CMakeFiles/xdb.dir/src/util/coding.cc.i: cmake_force
@@ -319,7 +332,7 @@ CMakeFiles/xdb.dir/src/util/coding.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/comparator.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/comparator.cc.o: ../src/util/comparator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/xdb.dir/src/util/comparator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/xdb.dir/src/util/comparator.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/comparator.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/comparator.cc
 
 CMakeFiles/xdb.dir/src/util/comparator.cc.i: cmake_force
@@ -332,7 +345,7 @@ CMakeFiles/xdb.dir/src/util/comparator.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/env.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/env.cc.o: ../src/util/env.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/xdb.dir/src/util/env.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/xdb.dir/src/util/env.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/env.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/env.cc
 
 CMakeFiles/xdb.dir/src/util/env.cc.i: cmake_force
@@ -345,7 +358,7 @@ CMakeFiles/xdb.dir/src/util/env.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/filename.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/filename.cc.o: ../src/util/filename.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/xdb.dir/src/util/filename.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/xdb.dir/src/util/filename.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/filename.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/filename.cc
 
 CMakeFiles/xdb.dir/src/util/filename.cc.i: cmake_force
@@ -358,7 +371,7 @@ CMakeFiles/xdb.dir/src/util/filename.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/iterator.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/iterator.cc.o: ../src/util/iterator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/xdb.dir/src/util/iterator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/xdb.dir/src/util/iterator.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/iterator.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/iterator.cc
 
 CMakeFiles/xdb.dir/src/util/iterator.cc.i: cmake_force
@@ -371,7 +384,7 @@ CMakeFiles/xdb.dir/src/util/iterator.cc.s: cmake_force
 
 CMakeFiles/xdb.dir/src/util/status.cc.o: CMakeFiles/xdb.dir/flags.make
 CMakeFiles/xdb.dir/src/util/status.cc.o: ../src/util/status.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/xdb.dir/src/util/status.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/xdb.dir/src/util/status.cc.o"
 	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xdb.dir/src/util/status.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/status.cc
 
 CMakeFiles/xdb.dir/src/util/status.cc.i: cmake_force
@@ -399,6 +412,7 @@ xdb_OBJECTS = \
 "CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o" \
 "CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o" \
 "CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o" \
+"CMakeFiles/xdb.dir/src/db/version/merge.cc.o" \
 "CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o" \
 "CMakeFiles/xdb.dir/src/db/version/version.cc.o" \
 "CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o" \
@@ -428,6 +442,7 @@ libxdb.a: CMakeFiles/xdb.dir/src/db/sstable/block_reader.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o
+libxdb.a: CMakeFiles/xdb.dir/src/db/version/merge.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/db/version/version.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o
@@ -440,7 +455,7 @@ libxdb.a: CMakeFiles/xdb.dir/src/util/iterator.cc.o
 libxdb.a: CMakeFiles/xdb.dir/src/util/status.cc.o
 libxdb.a: CMakeFiles/xdb.dir/build.make
 libxdb.a: CMakeFiles/xdb.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX static library libxdb.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX static library libxdb.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/xdb.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/xdb.dir/link.txt --verbose=$(VERBOSE)
 

@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_builder.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o"
   "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_reader.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o"
   "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/table_cache.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o"
+  "/home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/version/merge.cc.o"
   "/home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/version/version.cc.o"
   "/home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version_edit.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o"
   "/home/xiurui/xdb-LSM-Tree/xdb/src/db/writebatch/writebatch.cc" "/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o"

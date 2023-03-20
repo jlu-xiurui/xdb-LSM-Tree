@@ -3,10 +3,6 @@
 
 namespace xdb {
 
-Iterator* NewMergedIterator(Iterator** list, size_t num, const Comparator* cmp) {
-    return new MergedIterator(list, num, cmp);
-}
-
 class MergedIterator : public Iterator {
  public:
     MergedIterator(Iterator** list, size_t num, const Comparator* cmp) :
@@ -82,6 +78,10 @@ void MergedIterator::FindSmallest() {
         }
     }
     current_ = smallest;
+}
+
+Iterator* NewMergedIterator(Iterator** list, size_t num, const Comparator* cmp) {
+    return new MergedIterator(list, num, cmp);
 }
 
 }

@@ -8,6 +8,8 @@
 
 namespace xdb {
 
+class Iterator;
+
 class TableCache {
  public:
     TableCache(const std::string name, const Option& option, size_t capacity)

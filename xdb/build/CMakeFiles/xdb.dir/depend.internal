@@ -176,6 +176,7 @@ CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o
  ../src/db/sstable/table_cache.h
  ../src/include/cache.h
  ../src/include/env.h
+ ../src/include/iterator.h
  ../src/include/option.h
  ../src/include/slice.h
  ../src/include/sstable_reader.h
@@ -186,6 +187,13 @@ CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o
  ../src/util/mutex.h
  ../src/util/thread_annotations.h
  /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/table_cache.cc
+CMakeFiles/xdb.dir/src/db/version/merge.cc.o
+ ../src/db/version/merge.h
+ ../src/include/comparator.h
+ ../src/include/iterator.h
+ ../src/include/slice.h
+ ../src/include/status.h
+ /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc
 CMakeFiles/xdb.dir/src/db/version/version.cc.o
  ../src/db/format/dbformat.h
  ../src/db/format/internal_key.h
@@ -193,6 +201,7 @@ CMakeFiles/xdb.dir/src/db/version/version.cc.o
  ../src/db/log/log_reader.h
  ../src/db/log/log_writer.h
  ../src/db/sstable/table_cache.h
+ ../src/db/version/merge.h
  ../src/db/version/version.h
  ../src/db/version/version_edit.h
  ../src/include/cache.h

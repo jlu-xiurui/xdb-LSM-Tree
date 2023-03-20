@@ -191,18 +191,18 @@ third_party/snappy/clean: third_party/snappy/CMakeFiles/snappy.dir/clean
 # Target rules for target CMakeFiles/xdb.dir
 
 # All Build rule for target.
-CMakeFiles/xdb.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/xdb.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
+CMakeFiles/xdb.dir/all: CMakeFiles/murmur3.dir/all
 CMakeFiles/xdb.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/xdb.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/depend
 	$(MAKE) -f CMakeFiles/xdb.dir/build.make CMakeFiles/xdb.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66 "Built target xdb"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles --progress-num=41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67 "Built target xdb"
 .PHONY : CMakeFiles/xdb.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/xdb.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 41
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/xdb.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/xdb.dir/rule
@@ -221,9 +221,9 @@ CMakeFiles/xdb.dir/clean:
 # Target rules for target CMakeFiles/sstable_test.dir
 
 # All Build rule for target.
+CMakeFiles/sstable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/sstable_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/sstable_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/sstable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -235,7 +235,7 @@ CMakeFiles/sstable_test.dir/all: third_party/googletest/googletest/CMakeFiles/gt
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sstable_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sstable_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/sstable_test.dir/rule
@@ -281,9 +281,9 @@ CMakeFiles/murmur3.dir/clean:
 # Target rules for target CMakeFiles/block_test.dir
 
 # All Build rule for target.
+CMakeFiles/block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/block_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/block_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -295,7 +295,7 @@ CMakeFiles/block_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtes
 
 # Build rule for subdir invocation for target.
 CMakeFiles/block_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/block_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/block_test.dir/rule
@@ -314,9 +314,9 @@ CMakeFiles/block_test.dir/clean:
 # Target rules for target CMakeFiles/cache_test.dir
 
 # All Build rule for target.
+CMakeFiles/cache_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/cache_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/cache_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/cache_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/cache_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/cache_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/cache_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -328,7 +328,7 @@ CMakeFiles/cache_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtes
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cache_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cache_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/cache_test.dir/rule
@@ -347,9 +347,9 @@ CMakeFiles/cache_test.dir/clean:
 # Target rules for target CMakeFiles/coding_test.dir
 
 # All Build rule for target.
+CMakeFiles/coding_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/coding_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/coding_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/coding_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/coding_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/coding_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/coding_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -361,7 +361,7 @@ CMakeFiles/coding_test.dir/all: third_party/googletest/googletest/CMakeFiles/gte
 
 # Build rule for subdir invocation for target.
 CMakeFiles/coding_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/coding_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/coding_test.dir/rule
@@ -380,9 +380,9 @@ CMakeFiles/coding_test.dir/clean:
 # Target rules for target CMakeFiles/db_test.dir
 
 # All Build rule for target.
+CMakeFiles/db_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/db_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/db_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/db_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/db_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/db_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/db_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -394,7 +394,7 @@ CMakeFiles/db_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.d
 
 # Build rule for subdir invocation for target.
 CMakeFiles/db_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/db_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/db_test.dir/rule
@@ -413,9 +413,9 @@ CMakeFiles/db_test.dir/clean:
 # Target rules for target CMakeFiles/env_test.dir
 
 # All Build rule for target.
+CMakeFiles/env_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/env_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/env_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/env_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/env_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/env_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/env_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -427,7 +427,7 @@ CMakeFiles/env_test.dir/all: third_party/googletest/googletest/CMakeFiles/gtest.
 
 # Build rule for subdir invocation for target.
 CMakeFiles/env_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/env_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/env_test.dir/rule
@@ -446,9 +446,9 @@ CMakeFiles/env_test.dir/clean:
 # Target rules for target CMakeFiles/sstable_write_test.dir
 
 # All Build rule for target.
+CMakeFiles/sstable_write_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/sstable_write_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/sstable_write_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/sstable_write_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -460,7 +460,7 @@ CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googletest/CMakeFi
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sstable_write_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sstable_write_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/sstable_write_test.dir/rule
@@ -479,9 +479,9 @@ CMakeFiles/sstable_write_test.dir/clean:
 # Target rules for target CMakeFiles/example_test.dir
 
 # All Build rule for target.
+CMakeFiles/example_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/example_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/example_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/example_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/example_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/example_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/example_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -493,7 +493,7 @@ CMakeFiles/example_test.dir/all: third_party/googletest/googletest/CMakeFiles/gt
 
 # Build rule for subdir invocation for target.
 CMakeFiles/example_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/example_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/example_test.dir/rule
@@ -512,9 +512,9 @@ CMakeFiles/example_test.dir/clean:
 # Target rules for target CMakeFiles/filter_block_test.dir
 
 # All Build rule for target.
+CMakeFiles/filter_block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/filter_block_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/filter_block_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/filter_block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -526,7 +526,7 @@ CMakeFiles/filter_block_test.dir/all: third_party/googletest/googletest/CMakeFil
 
 # Build rule for subdir invocation for target.
 CMakeFiles/filter_block_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/filter_block_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/filter_block_test.dir/rule
@@ -545,9 +545,9 @@ CMakeFiles/filter_block_test.dir/clean:
 # Target rules for target CMakeFiles/memtable_test.dir
 
 # All Build rule for target.
+CMakeFiles/memtable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/memtable_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/memtable_test.dir/all: CMakeFiles/murmur3.dir/all
-CMakeFiles/memtable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock.dir/all
@@ -559,7 +559,7 @@ CMakeFiles/memtable_test.dir/all: third_party/googletest/googletest/CMakeFiles/g
 
 # Build rule for subdir invocation for target.
 CMakeFiles/memtable_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 46
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 47
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/memtable_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xiurui/xdb-LSM-Tree/xdb/build/CMakeFiles 0
 .PHONY : CMakeFiles/memtable_test.dir/rule

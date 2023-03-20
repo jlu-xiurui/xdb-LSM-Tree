@@ -14,6 +14,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o"
   "CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o"
   "CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o"
+  "CMakeFiles/xdb.dir/src/db/version/merge.cc.o"
   "CMakeFiles/xdb.dir/src/db/version/version.cc.o"
   "CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o"
   "CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o"

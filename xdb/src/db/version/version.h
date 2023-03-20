@@ -42,7 +42,8 @@ class Version {
     friend class Compaction;
     class LevelFileIterator;
     explicit Version(VersionSet* vset) : vset_(vset), next_(this),
-            prev_(this), refs_(0) {}
+            prev_(this), refs_(0), file_to_compact_level_(-1),
+            file_to_compact_(nullptr), compaction_level(-1), compaction_score(-1) {}
     
     Version(const Version&) = delete;
     Version& operator=(const Version&) = delete;
@@ -104,6 +105,10 @@ class VersionSet {
       }
     }
 
+    uint64_t LevelFileNum(int level) {
+      assert(level >= 0 && level <= config::KNumLevels);
+      return current_->files_[level].size();
+    }
     void SetLastSequence(uint64_t s) {
       assert(s >= last_sequence_);
       last_sequence_ = s;
@@ -115,6 +120,10 @@ class VersionSet {
 
     Iterator* MakeMergedIterator(Compaction* c);
 
+    bool NeedCompaction() {
+      Version* v = current_;
+      return (v->compaction_score >= 1) || (v->file_to_compact_ != nullptr);
+    }
  private:
     class Builder;
     
@@ -155,7 +164,7 @@ class VersionSet {
 
 class Compaction {
  public:
-    Compaction(int level) : level_(level) {}
+    Compaction(const Option* option, int level);
 
     bool SingalMove() const;
 
@@ -168,17 +177,42 @@ class Compaction {
     }
 
     VersionEdit* edit() {
-      return edit_;
+      return &edit_;
     }
+
+    size_t InputFilesNum(int which) {
+      return input_[which].size();
+    }
+
+    bool StopBefore(const Slice& key);
+
+    bool IsBaseLevelForKey(const Slice& key);
+
+    uint64_t MaxOutputFileBytes() { return max_output_file_bytes_; }
+
+    void ReleaseInput() {
+      if (input_version_ != nullptr) {
+        input_version_->Unref();
+        input_version_ = nullptr;
+      }
+    }
+
+    void AddInputDeletions(VersionEdit* edit);
+
  private:
     friend class Version;
     friend class VersionSet;
     
     int level_;
+    uint64_t max_output_file_bytes_;
     std::vector<FileMeta*> input_[2];
     std::vector<FileMeta*> grandparents_; // level_ + 1
     Version* input_version_;
-    VersionEdit* edit_;
+    VersionEdit edit_;
+
+    uint64_t grandparents_overlap_;
+    size_t grandparents_index_;
+    bool seen_key_;
 };
 
 }

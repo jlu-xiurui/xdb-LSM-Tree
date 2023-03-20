@@ -29,6 +29,8 @@ class SSTableBuilder {
     Status status() const;
 
     uint64_t FileSize() const;
+
+    uint64_t NumEntries() const;
  private:
     bool ok() const { return status().ok(); }
     void WriteBlock(BlockBuilder* builder, BlockHandle* handle);

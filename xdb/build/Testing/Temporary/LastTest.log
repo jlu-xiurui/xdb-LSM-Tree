@@ -1,0 +1,175 @@
+Start testing: Mar 20 16:33 CST
+----------------------------------------------------------
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/block_test
+1/10 Testing: block_test
+1/10 Test: block_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/block_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"block_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"block_test" end time: Mar 20 16:33 CST
+"block_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/cache_test
+2/10 Testing: cache_test
+2/10 Test: cache_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/cache_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"cache_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"cache_test" end time: Mar 20 16:33 CST
+"cache_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/coding_test
+3/10 Testing: coding_test
+3/10 Test: coding_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/coding_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"coding_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"coding_test" end time: Mar 20 16:33 CST
+"coding_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/10 Testing: db_test
+4/10 Test: db_test
+Command: "/home/xiurui/xdb-LSM-Tree/xdb/build/test/db_test" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/db_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"db_test" start time: Mar 20 16:33 CST
+Output:
+----------------------------------------------------------
+Running main() from gmock_main.cc
+[0;32m[==========] [mRunning 7 tests from 1 test suite.
+[0;32m[----------] [mGlobal test environment set-up.
+[0;32m[----------] [m7 tests from DBTest
+[0;32m[ RUN      ] [mDBTest.Sometest
+[0;32m[       OK ] [mDBTest.Sometest (0 ms)
+[0;32m[ RUN      ] [mDBTest.OpenTest
+[0;32m[       OK ] [mDBTest.OpenTest (5 ms)
+[0;32m[ RUN      ] [mDBTest.RecoverTest
+[0;32m[       OK ] [mDBTest.RecoverTest (5 ms)
+[0;32m[ RUN      ] [mDBTest.SimpleTest
+[0;32m[       OK ] [mDBTest.SimpleTest (7 ms)
+[0;32m[ RUN      ] [mDBTest.MutiKeyTest
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Failed.
+"db_test" end time: Mar 20 16:33 CST
+"db_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/env_test
+5/10 Testing: env_test
+5/10 Test: env_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/env_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"env_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"env_test" end time: Mar 20 16:33 CST
+"env_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/example_test
+6/10 Testing: example_test
+6/10 Test: example_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/example_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"example_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"example_test" end time: Mar 20 16:33 CST
+"example_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/filter_block_test
+7/10 Testing: filter_block_test
+7/10 Test: filter_block_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/filter_block_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"filter_block_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"filter_block_test" end time: Mar 20 16:33 CST
+"filter_block_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/memtable_test
+8/10 Testing: memtable_test
+8/10 Test: memtable_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/memtable_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"memtable_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"memtable_test" end time: Mar 20 16:33 CST
+"memtable_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_test
+9/10 Testing: sstable_test
+9/10 Test: sstable_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"sstable_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sstable_test" end time: Mar 20 16:33 CST
+"sstable_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: /home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_write_test
+10/10 Testing: sstable_write_test
+10/10 Test: sstable_write_test
+Command: "" "--gtest_color=yes" "--gtest_output=xml:/home/xiurui/xdb-LSM-Tree/xdb/build/test/sstable_write_test.xml"
+Directory: /home/xiurui/xdb-LSM-Tree/xdb/build
+"sstable_write_test" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"sstable_write_test" end time: Mar 20 16:33 CST
+"sstable_write_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Mar 20 16:33 CST

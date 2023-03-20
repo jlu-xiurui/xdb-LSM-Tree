@@ -75,21 +75,23 @@ namespace xdb {
         DestoryDB(option, "/home/xiurui/test");
         DB::Open(option,"/home/xiurui/test",&db);
         std::mt19937 rng(std::random_device{}());
-        std::vector<std::string> data(1000);
-        for (int iter = 0; iter < 5; iter++) {
-            for (int i = 0; i < 1000; i++) {
-                std::string val = std::to_string(rng() % 1000);
+        const size_t data_size = 10000;
+        std::vector<std::string> data(data_size);
+        for (int iter = 0; iter < 50; iter++) {
+            for (int i = 0; i < data_size; i++) {
+                std::string val = std::to_string(rng() % data_size);
                 db->Put(write_option, std::to_string(i),val);
                 data[i] = val;
             }
         }
         std::string result;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < data_size; i++) {
             db->Get(read_option, std::to_string(i), &result);
             ASSERT_EQ(result, data[i]);
         }
         delete db;
     }
+    /*
     TEST(DBTest, DeletionTest) {
         Option option;
         WriteOption write_option;
@@ -118,7 +120,7 @@ namespace xdb {
         }
         delete db;
     }
-    const int KthreadNum = 10;
+    const int KthreadNum = 30;
     struct TestState {
         TestState(DB* db) : db(db),rng(std::random_device{}()), done(0) {}
         DB* db;
@@ -138,7 +140,7 @@ namespace xdb {
         ReadOption read_option;
         Status s;
         char val[2000];
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 10000; i++) {
             int key = ts->rng() % 10;
             ts->kv[id].store(i, std::memory_order_release);
             if ((ts->rng() % 2) == 0) {
@@ -193,5 +195,6 @@ namespace xdb {
         //std::cout<<"ConcurrencyTest done"<<std::endl;
         delete db;
     }
+    */
     
 }

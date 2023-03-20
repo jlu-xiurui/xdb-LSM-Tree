@@ -6,6 +6,7 @@
 #include "db/log/log_reader.h"
 #include "include/sstable_builder.h"
 #include "db/sstable/table_cache.h"
+#include "include/env.h"
 
 namespace xdb {
 
@@ -26,11 +27,25 @@ namespace xdb {
     };
 
     struct DBImpl::CompactionState {
+        struct Output {
+            uint64_t number;
+            uint64_t file_size;
+            InternalKey smallest;
+            InternalKey largest;
+        };
         explicit CompactionState(Compaction* c) 
-                : compaction(c) {}
+                : compaction(c),
+                builder(nullptr),
+                total_bytes(0) {}
+
+        Output* CurrOutput() { return &outputs[outputs.size() - 1]; };
 
         Compaction* const compaction;
-        SequenceNum last_sequence;
+        WritableFile* out_file;
+        SSTableBuilder* builder;
+        std::vector<Output> outputs;
+
+        uint64_t total_bytes;
     };
     Option AdaptOption(const std::string& name,
             const InternalKeyComparator* icmp,
@@ -62,6 +77,7 @@ namespace xdb {
           background_cv_(&mu_),
           background_scheduled_(false),
           closed_(false),
+          has_imm_(false),
           table_cache_(new TableCache(name, option_, TableCacheSize(option_))),
           vset_(new VersionSet(name, &option_, table_cache_, &internal_comparator_)),
           tmp_batch_(new WriteBatch) {}
@@ -87,6 +103,7 @@ namespace xdb {
         delete log_;
         delete logfile_;
         delete table_cache_;
+        delete option_.logger;
     }
 
     WriteBatch* DBImpl::MergeBatchGroup(Writer** last_writer) {
@@ -286,7 +303,11 @@ namespace xdb {
             if (!background_status_.ok()) {
                 s = background_status_;
                 break;
-            } else if (mem_->ApproximateSize() <= option_.write_mem_size) {
+            } else if (vset_->LevelFileNum(0) >= config::KL0_StopWriteThreshold) {
+                // a memtable is being compact as SStable
+                Log(option_.logger, "Too many level-0 files. waiting...\n");
+                background_cv_.Wait();
+            }  else if (mem_->ApproximateSize() <= option_.write_mem_size) {
                 // there is enough room for write
                 break;
             } else if (imm_ != nullptr) {
@@ -311,6 +332,7 @@ namespace xdb {
                 imm_ = mem_;
                 mem_ = new MemTable(internal_comparator_);
                 mem_->Ref();
+                has_imm_.store(true, std::memory_order_release);
                 MayScheduleCompaction();
             }
         }
@@ -494,8 +516,8 @@ namespace xdb {
         files_writing_.insert(meta.number);
         Iterator* iter = mem->NewIterator();
 
-        Log(option_.logger, "Level 0 SSTable #%llu: creating",
-                (unsigned long long)meta.number);
+        Log(option_.logger, "Level 0 SSTable #%llu: creating, level-0 num is %d",
+                (unsigned long long)meta.number, vset_->LevelFileNum(0));
 
         Status s;
         {
@@ -503,6 +525,8 @@ namespace xdb {
             s = BuildSSTable(name_, option_, iter, &meta);
             mu_.Lock();
         }
+        Log(option_.logger, "Level 0 SSTable #%llu: done, level-0 num is %d",
+                (unsigned long long)meta.number, vset_->LevelFileNum(0));
         delete iter;
         files_writing_.erase(meta.number);
 
@@ -520,7 +544,7 @@ namespace xdb {
             // only one compaction could running
         } else if (!background_status_.ok()) {
             // compaction cause a error
-        } else if (imm_ == nullptr 
+        } else if (imm_ == nullptr && !vset_->NeedCompaction()
             /*&& version need compaction*/) {
             // noting to do
         } else {
@@ -543,16 +567,103 @@ namespace xdb {
             BackgroundCompaction();
         }
         background_scheduled_ = false;
+        MayScheduleCompaction();
         background_cv_.SignalAll();
     }
     Status DBImpl::DoCompactionLevel(CompactionState* state) {
         mu_.AssertHeld();
 
-        Log(option_.logger)
+        Log(option_.logger, "Compaction SStable level-%d's %d files to level-%d's %d files",
+                 state->compaction->level(),
+                 state->compaction->InputFilesNum(0), 
+                 state->compaction->level() + 1,
+                 state->compaction->InputFilesNum(1));
         Iterator* input = vset_->MakeMergedIterator(state->compaction);
-        state->last_sequence = vset_->LastSequence();
 
-        return Status::OK();
+        mu_.Unlock();
+        input->SeekToFirst();
+        Status s;
+        ParsedInternalKey ikey;
+        std::string last_user_key;
+        bool has_last_user_key = false;
+        bool same_key = false;
+        const Comparator* ucmp = internal_comparator_.UserComparator();
+        while(input->Valid() && !closed_.load(std::memory_order_acquire)) {
+            if (has_imm_.load(std::memory_order_acquire)) {
+                mu_.Lock();
+                if (imm_ != nullptr) {
+                    CompactionMemtable();
+                    background_cv_.SignalAll();
+                }
+                mu_.Unlock();
+            }
+            Slice key = input->Key();
+            if (state->compaction->StopBefore(key) &&
+                    state->builder != nullptr) {
+                s = FinishCompactionSSTable(state, input);
+                if (!s.ok()) {
+                    break;
+                }
+            }
+            if (!ParseInternalKey(key, &ikey)) {
+                s = Status::Corruption("DoCompactionLevel: parse key error");
+                break;
+            }
+            if (!has_last_user_key || ucmp->Compare(last_user_key, ikey.user_key_) != 0) {
+                has_last_user_key = true;
+                last_user_key.assign(ikey.user_key_.data(), ikey.user_key_.size());
+                same_key = true;
+            }
+            bool drop = false;
+            if (same_key) {
+                // hidden the lower sequence for same key
+                drop = true;
+            } else if (ikey.type_ == KTypeDeletion
+                    && state->compaction->IsBaseLevelForKey(ikey.user_key_)) {
+                drop = true;
+            }
+            same_key = false;
+            if (!drop) {
+                if (state->builder == nullptr) {
+                    s = OpenCompactionSSTable(state);
+                    if (!s.ok()) {
+                        break;
+                    }
+                }
+                if (state->builder->NumEntries() == 0) {
+                    state->CurrOutput()->smallest.DecodeFrom(key);
+                }
+                state->CurrOutput()->largest.DecodeFrom(key);
+                state->builder->Add(key, input->Value());
+                if (state->builder->FileSize() >= state->compaction->MaxOutputFileBytes()) {
+                    s = FinishCompactionSSTable(state, input);
+                    if (!s.ok()) {
+                        break;
+                    }
+                }
+            }
+            input->Next();
+        }
+        if (s.ok() && closed_.load(std::memory_order_acquire)) {
+            s = Status::Corruption("Delete DB during compaction");
+        }
+        if (s.ok() && state->builder != nullptr) {
+            s = FinishCompactionSSTable(state, input);
+        }
+        if (s.ok()) {
+            s = input->status();
+        }
+        delete input;
+        input = nullptr;
+        mu_.Lock();
+
+        if (s.ok()) {
+            s = LogCompactionResult(state);
+        }
+        if (!s.ok()) {
+            RecordBackgroundError(s);
+        }
+        return s;
     }
     void DBImpl::BackgroundCompaction() {
         mu_.AssertHeld();
@@ -575,10 +686,50 @@ namespace xdb {
             if (!s.ok()) {
                 RecordBackgroundError(s);
             }
+            Log(option_.logger, "Singal move SStable #%d level-%d to level-%d",
+                 meta->number,
+                 c->level(), 
+                 c->level() + 1);
         } else {
             CompactionState* state = new CompactionState(c);
-            DoCompactionLevel(state);
+            s = DoCompactionLevel(state);
+            if (!s.ok()) {
+                RecordBackgroundError(s);
+            }
+            CleanCompaction(state);
+            c->ReleaseInput();
+            GarbageFilesClean(); 
         }
+        delete c;
+    }
+
+    void DBImpl::CleanCompaction(CompactionState* state) {
+        if (state->builder != nullptr) {
+            delete state->builder;
+        } else {
+            assert(state->out_file == nullptr);
+        }
+        delete state->out_file;
+        for (auto output : state->outputs) {
+            files_writing_.erase(output.number);
+        }
+        delete state;
+    }
+
+    Status DBImpl::LogCompactionResult(CompactionState* state) {
+        mu_.AssertHeld();
+        Log(option_.logger, "Compaction SStable level-%d's %d files to level-%d's %d files OVER",
+                 state->compaction->level(),
+                 state->compaction->InputFilesNum(0), 
+                 state->compaction->level() + 1,
+                 state->compaction->InputFilesNum(1));
+        state->compaction->AddInputDeletions(state->compaction->edit());
+        const int level = state->compaction->level();
+        for (const auto& output : state->outputs) {
+            state->compaction->edit()->AddFile(level + 1, output.number,
+                    output.file_size, output.smallest, output.largest);
+        }
+        return vset_->LogAndApply(state->compaction->edit(), &mu_);
     }
 
     void DBImpl::CompactionMemtable() {
@@ -597,6 +748,7 @@ namespace xdb {
         if (s.ok()) {
             imm_->Unref();
             imm_ = nullptr;
+            has_imm_.store(false, std::memory_order_release);
             GarbageFilesClean();
         } else {
             RecordBackgroundError(s);
@@ -659,5 +811,56 @@ namespace xdb {
             env_->RemoveFile(name_ + "/" + filename);
         }
         mu_.Lock();
+    }
+
+    Status DBImpl::FinishCompactionSSTable(CompactionState* state, Iterator* input) {
+        assert(state->builder != nullptr);
+        Status s = input->status();
+        uint64_t number = state->CurrOutput()->number;
+        uint64_t num_entries = state->builder->NumEntries();
+        if (s.ok()) {
+            s = state->builder->Finish();
+        }
+        const uint64_t file_size = state->builder->FileSize();
+        state->CurrOutput()->file_size = file_size;
+        state->total_bytes += file_size;
+        delete state->builder;
+        state->builder = nullptr;
+        if (s.ok()) {
+            s = state->out_file->Sync();
+        }
+        if (s.ok()) {
+            s = state->out_file->Close();
+        }
+        delete state->out_file;
+        state->out_file = nullptr;
+        if (s.ok() && num_entries > 0) {
+            Log(option_.logger, "Create SSTable #%llu: level:%llu, keys:%llu, bytes:%llu", 
+                    num_entries, state->compaction->level(), num_entries, file_size);
+        }
+        return s;
+    }
+
+    Status DBImpl::OpenCompactionSSTable(CompactionState* state) {
+        assert(state != nullptr);
+        assert(state->builder == nullptr);
+        uint64_t number;
+        {
+            mu_.Lock();
+            number = vset_->NextFileNumber();
+            CompactionState::Output output;
+            output.number = number;
+            files_writing_.insert(number);
+            output.smallest.Clear();
+            output.largest.Clear();
+            state->outputs.push_back(output);
+            mu_.Unlock();
+        }
+        std::string filename = SSTableFileName(name_, number);
+        Status s = env_->NewWritableFile(filename, &state->out_file);
+        if (s.ok()) {
+            state->builder = new SSTableBuilder(option_, state->out_file);
+        }
+        return s;
     }
 }
