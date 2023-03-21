@@ -48,7 +48,7 @@ namespace xdb {
         ASSERT_EQ(result1, "6");
         delete db;
     }
- 
+    
     TEST(DBTest, SimpleTest) {
         Option option;
         WriteOption write_option;
@@ -77,7 +77,7 @@ namespace xdb {
         std::mt19937 rng(std::random_device{}());
         const size_t data_size = 1000;
         std::vector<std::string> data(data_size);
-        for (int iter = 0; iter < 5; iter++) {
+        for (int iter = 0; iter < 10; iter++) {
             for (int i = 0; i < data_size; i++) {
                 std::string val = std::to_string(rng() % data_size);
                 db->Put(write_option, std::to_string(i),val);
@@ -91,7 +91,7 @@ namespace xdb {
         }
         delete db;
     }
-    /*
+    
     TEST(DBTest, DeletionTest) {
         Option option;
         WriteOption write_option;
@@ -120,7 +120,7 @@ namespace xdb {
         }
         delete db;
     }
-    const int KthreadNum = 30;
+    const int KthreadNum = 50;
     struct TestState {
         TestState(DB* db) : db(db),rng(std::random_device{}()), done(0) {}
         DB* db;
@@ -196,5 +196,5 @@ namespace xdb {
         delete db;
     }
     
-    */
+    
 }

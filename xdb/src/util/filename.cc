@@ -32,6 +32,9 @@ bool ParseFilename(const std::string& filename, uint64_t* number, FileType* type
     } else if (filename == "CURRENT"){
         *number = 0;
         *type = KCurrentFile;
+    } else if (filename == "LOGGER"){
+        *number = 0;
+        *type = KLoggerFile;
     } else {
         uint64_t num;
         if(!ParseNumder(&rest,&num)) {

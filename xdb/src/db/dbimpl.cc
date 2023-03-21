@@ -35,6 +35,7 @@ namespace xdb {
         };
         explicit CompactionState(Compaction* c) 
                 : compaction(c),
+                out_file(nullptr),
                 builder(nullptr),
                 total_bytes(0) {}
 
@@ -74,6 +75,9 @@ namespace xdb {
           mem_(nullptr),
           imm_(nullptr),
           log_(nullptr),
+          logfile_(nullptr),
+          logfile_number_(0),
+          last_seq_(0),
           background_cv_(&mu_),
           background_scheduled_(false),
           closed_(false),
@@ -85,7 +89,7 @@ namespace xdb {
     DBImpl::~DBImpl() {
         mu_.Lock();
         closed_.store(true, std::memory_order_release);
-        if (background_scheduled_) {
+        while (background_scheduled_) {
             background_cv_.Wait();
         }
         mu_.Unlock();
@@ -544,8 +548,7 @@ namespace xdb {
             // only one compaction could running
         } else if (!background_status_.ok()) {
             // compaction cause a error
-        } else if (imm_ == nullptr && !vset_->NeedCompaction()
-            /*&& version need compaction*/) {
+        } else if (imm_ == nullptr && !vset_->NeedCompaction()) {
             // noting to do
         } else {
             background_scheduled_ = true;
@@ -573,11 +576,11 @@ namespace xdb {
     Status DBImpl::DoCompactionLevel(CompactionState* state) {
         mu_.AssertHeld();
 
-        Log(option_.logger, "Compaction SStable level-%d's %d files to level-%d's %d files",
+        Log(option_.logger, "Compaction SStable level-%d's %s to level-%d's %s",
                  state->compaction->level(),
-                 state->compaction->InputFilesNum(0), 
+                 state->compaction->InputToString(0).data(), 
                  state->compaction->level() + 1,
-                 state->compaction->InputFilesNum(1));
+                 state->compaction->InputToString(1).data());
         Iterator* input = vset_->MakeMergedIterator(state->compaction);
 
         mu_.Unlock();
@@ -652,6 +655,9 @@ namespace xdb {
         }
         if (s.ok()) {
             s = input->status();
+            if (!s.ok()) {
+                Log(option_.logger, "Merged iterator err:%s", s.ToString().data());
+            }
         }
         delete input;
         input = nullptr;
@@ -718,11 +724,11 @@ namespace xdb {
 
     Status DBImpl::LogCompactionResult(CompactionState* state) {
         mu_.AssertHeld();
-        Log(option_.logger, "Compaction SStable level-%d's %d files to level-%d's %d files OVER",
+        Log(option_.logger, "Compaction SStable level-%d's %s to level-%d's %s OVER",
                  state->compaction->level(),
-                 state->compaction->InputFilesNum(0), 
+                 state->compaction->InputToString(0).data(), 
                  state->compaction->level() + 1,
-                 state->compaction->InputFilesNum(1));
+                 state->compaction->InputToString(1).data());
         state->compaction->AddInputDeletions(state->compaction->edit());
         const int level = state->compaction->level();
         for (const auto& output : state->outputs) {
@@ -760,6 +766,7 @@ namespace xdb {
         if (background_status_.ok()) {
             background_status_ = s;
             background_cv_.SignalAll();
+            Log(option_.logger, "RecordBackgroundError: %s\n", s.ToString().data());
         }
     }
 
@@ -768,7 +775,7 @@ namespace xdb {
         if (!background_status_.ok()) {
             return;
         }
-        std::set<uint64_t> live;
+        std::set<uint64_t> live = files_writing_;
         vset_->AddLiveFiles(&live);
 
         std::vector<std::string> filenames;
@@ -795,10 +802,12 @@ namespace xdb {
                         break;
                     case KCurrentFile:
                     case KLockFile:
+                    case KLoggerFile:
                         keep = true;
                         break;
                 }
                 if (!keep) {
+                    Log(option_.logger, "Garbage Clean:%s\n", filename.data());
                     file_delete.push_back(filename);
                     if (type == KSSTableFile) {
                         table_cache_->Evict(number);
@@ -822,6 +831,7 @@ namespace xdb {
             s = state->builder->Finish();
         }
         const uint64_t file_size = state->builder->FileSize();
+        std::string file_name = SSTableFileName(name_, number);
         state->CurrOutput()->file_size = file_size;
         state->total_bytes += file_size;
         delete state->builder;
@@ -832,11 +842,24 @@ namespace xdb {
         if (s.ok()) {
             s = state->out_file->Close();
         }
+        uint64_t actual_size;
+        env_->FileSize(file_name, &actual_size);
+        assert(actual_size == file_size);
+        
         delete state->out_file;
         state->out_file = nullptr;
         if (s.ok() && num_entries > 0) {
-            Log(option_.logger, "Create SSTable #%llu: level:%llu, keys:%llu, bytes:%llu", 
-                    number, state->compaction->level(), num_entries, file_size);
+            Iterator* iter = table_cache_->NewIterator(ReadOption(), number, file_size);
+            s = iter->status();
+            delete iter;
+            if (s.ok()) {
+                Log(option_.logger, "Create SSTable #%llu: level:%llu, keys:%llu, bytes:%llu", 
+                        number, state->compaction->level(), num_entries, file_size);
+            } else {
+               Log(option_.logger, "Create SSTable #%llu: ERROR:%s", 
+                        number, s.ToString().data());
+            
+            }
         }
         return s;
     }

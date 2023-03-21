@@ -170,6 +170,12 @@ class Compaction {
  public:
     Compaction(const Option* option, int level);
 
+    ~Compaction() {
+      if (input_version_ != nullptr) {
+        input_version_->Unref();
+        input_version_ = nullptr;
+      }
+    }
     bool SingalMove() const;
 
     int level() {
@@ -203,6 +209,18 @@ class Compaction {
 
     void AddInputDeletions(VersionEdit* edit);
 
+    std::string InputToString(int which) {
+      std::string ret{"{"};
+      for (int i = 0; i < input_[which].size(); i++) {
+        ret += std::to_string(input_[which][i]->number);
+        if (i != input_[which].size() - 1) {
+          ret += ", ";
+        }
+        
+      }
+      ret.push_back('}');
+      return ret;
+    }
  private:
     friend class Version;
     friend class VersionSet;

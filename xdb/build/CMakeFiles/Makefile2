@@ -221,8 +221,8 @@ CMakeFiles/xdb.dir/clean:
 # Target rules for target CMakeFiles/sstable_test.dir
 
 # All Build rule for target.
-CMakeFiles/sstable_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/sstable_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/sstable_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/sstable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -281,8 +281,8 @@ CMakeFiles/murmur3.dir/clean:
 # Target rules for target CMakeFiles/block_test.dir
 
 # All Build rule for target.
-CMakeFiles/block_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/block_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/block_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -314,8 +314,8 @@ CMakeFiles/block_test.dir/clean:
 # Target rules for target CMakeFiles/cache_test.dir
 
 # All Build rule for target.
-CMakeFiles/cache_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/cache_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/cache_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/cache_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/cache_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/cache_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -347,8 +347,8 @@ CMakeFiles/cache_test.dir/clean:
 # Target rules for target CMakeFiles/coding_test.dir
 
 # All Build rule for target.
-CMakeFiles/coding_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/coding_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/coding_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/coding_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/coding_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/coding_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -380,8 +380,8 @@ CMakeFiles/coding_test.dir/clean:
 # Target rules for target CMakeFiles/db_test.dir
 
 # All Build rule for target.
-CMakeFiles/db_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/db_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/db_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/db_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/db_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/db_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -413,8 +413,8 @@ CMakeFiles/db_test.dir/clean:
 # Target rules for target CMakeFiles/env_test.dir
 
 # All Build rule for target.
-CMakeFiles/env_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/env_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/env_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/env_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/env_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/env_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -446,8 +446,8 @@ CMakeFiles/env_test.dir/clean:
 # Target rules for target CMakeFiles/sstable_write_test.dir
 
 # All Build rule for target.
-CMakeFiles/sstable_write_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/sstable_write_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/sstable_write_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/sstable_write_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -479,8 +479,8 @@ CMakeFiles/sstable_write_test.dir/clean:
 # Target rules for target CMakeFiles/example_test.dir
 
 # All Build rule for target.
-CMakeFiles/example_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/example_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/example_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/example_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/example_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/example_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -512,8 +512,8 @@ CMakeFiles/example_test.dir/clean:
 # Target rules for target CMakeFiles/filter_block_test.dir
 
 # All Build rule for target.
-CMakeFiles/filter_block_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/filter_block_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/filter_block_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/filter_block_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all
@@ -545,8 +545,8 @@ CMakeFiles/filter_block_test.dir/clean:
 # Target rules for target CMakeFiles/memtable_test.dir
 
 # All Build rule for target.
-CMakeFiles/memtable_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/memtable_test.dir/all: CMakeFiles/murmur3.dir/all
+CMakeFiles/memtable_test.dir/all: CMakeFiles/xdb.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/crc32c/CMakeFiles/crc32c.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/snappy/CMakeFiles/snappy.dir/all
 CMakeFiles/memtable_test.dir/all: third_party/googletest/googlemock/CMakeFiles/gmock_main.dir/all

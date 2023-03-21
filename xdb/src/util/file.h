@@ -164,7 +164,7 @@ class WritableFile {
             filename_(std::move(filename)),
             dirname_(Dirname(filename_)) {}
     ~WritableFile() {
-        if (fd_ > 0) {
+        if (fd_ >= 0) {
             ::close(fd_);
         }
     }

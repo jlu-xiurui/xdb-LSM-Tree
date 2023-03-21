@@ -1,0 +1,247 @@
+[
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/dbimpl.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/dbimpl.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/dbimpl.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/option.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/option.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/option.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/filter/filter_block.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/filter/filter_block.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/filter/filter_block.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/filter/bloom.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/filter/bloom.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/filter/bloom.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/format/internal_key.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/format/internal_key.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/format/internal_key.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/log/log_reader.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/log/log_reader.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/log/log_reader.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/log/log_writer.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/log/log_writer.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/log/log_writer.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/memtable/membuffer.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/memtable/membuffer.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/memtable/membuffer.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/memtable/memtable.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/memtable/memtable.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/memtable/memtable.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/sstable/block_builder.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/block_builder.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/block_builder.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/sstable/block_format.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/block_format.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/block_format.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/sstable/block_reader.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/block_reader.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/block_reader.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/sstable/sstable_builder.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_builder.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_builder.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/sstable/sstable_reader.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_reader.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/sstable_reader.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/table_cache.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/sstable/table_cache.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/version/merge.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/version/merge.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/version/version_edit.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version_edit.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version_edit.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/version/version.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/version/version.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/db/writebatch/writebatch.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/db/writebatch/writebatch.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/db/writebatch/writebatch.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/cache.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/cache.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/cache.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/coding.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/coding.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/coding.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/comparator.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/comparator.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/comparator.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/env.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/env.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/env.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/filename.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/filename.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/filename.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/iterator.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/iterator.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/iterator.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/xdb.dir/src/util/status.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/src/util/status.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/src/util/status.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/sstable_test.dir/test/sstable_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/sstable_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/sstable_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++  -Dmurmur3_EXPORTS  -g -fPIC   -std=gnu++11 -o CMakeFiles/murmur3.dir/third_party/murmur3/MurmurHash3.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/murmur3/MurmurHash3.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/murmur3/MurmurHash3.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/block_test.dir/test/block_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/block_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/block_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/cache_test.dir/test/cache_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/cache_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/cache_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/coding_test.dir/test/coding_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/coding_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/coding_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/db_test.dir/test/db_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/db_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/db_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/env_test.dir/test/env_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/env_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/env_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/sstable_write_test.dir/test/sstable_write_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/sstable_write_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/sstable_write_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/example_test.dir/test/example_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/example_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/example_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/filter_block_test.dir/test/filter_block_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/filter_block_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/filter_block_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/src -I/home/xiurui/xdb-LSM-Tree/xdb/third_party -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock  -g   -Werror -Wthread-safety -std=gnu++14 -o CMakeFiles/memtable_test.dir/test/memtable_test.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/test/memtable_test.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/test/memtable_test.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/crc32c.dir/src/crc32c_portable.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c_portable.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c_portable.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/include -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/include   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/crc32c.dir/src/crc32c.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/include   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -msse4.2 -std=gnu++11 -o CMakeFiles/crc32c_sse42.dir/src/crc32c_sse42.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c_sse42.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c_sse42.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/crc32c/include   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/crc32c_arm64.dir/src/crc32c_arm64.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c_arm64.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/crc32c/src/crc32c_arm64.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy",
+  "command": "/usr/bin/clang++  -DHAVE_CONFIG_H -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/snappy.dir/snappy-c.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy-c.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy-c.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy",
+  "command": "/usr/bin/clang++  -DHAVE_CONFIG_H -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/snappy.dir/snappy-sinksource.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy-sinksource.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy-sinksource.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy",
+  "command": "/usr/bin/clang++  -DHAVE_CONFIG_H -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/snappy.dir/snappy-stubs-internal.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy-stubs-internal.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy-stubs-internal.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy",
+  "command": "/usr/bin/clang++  -DHAVE_CONFIG_H -I/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/snappy -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy   -Wall -Wextra -Werror -fno-exceptions -fno-rtti -g   -std=gnu++11 -o CMakeFiles/snappy.dir/snappy.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/snappy/snappy.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googlemock",
+  "command": "/usr/bin/clang++   -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=1 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -std=c++14 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/src/gmock_main.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googlemock",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/include -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=1 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -std=c++14 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/src/gmock-all.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googletest",
+  "command": "/usr/bin/clang++   -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -isystem /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=1 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -std=c++14 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/src/gtest_main.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/src/gtest_main.cc"
+},
+{
+  "directory": "/home/xiurui/xdb-LSM-Tree/xdb/build/third_party/googletest/googletest",
+  "command": "/usr/bin/clang++   -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/include -I/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest  -g   -Wall -Wshadow -Wconversion -DGTEST_HAS_PTHREAD=1 -fexceptions -W -Wpointer-arith -Wreturn-type -Wcast-qual -Wwrite-strings -Wswitch -Wunused-parameter -Wcast-align -Wchar-subscripts -Winline -Wredundant-decls -std=c++14 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/src/gtest-all.cc",
+  "file": "/home/xiurui/xdb-LSM-Tree/xdb/third_party/googletest/googletest/src/gtest-all.cc"
+}
+]

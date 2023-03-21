@@ -40,6 +40,10 @@ Status BuildSSTable(const std::string name, const Option& option,
         meta->largest.DecodeFrom(key);
 
         s = builder->Finish();
+        if (s.ok()) {
+            meta->file_size = builder->FileSize();
+        }
+        delete builder;
 
         if (s.ok()) {
             s = file->Sync();
@@ -47,18 +51,8 @@ Status BuildSSTable(const std::string name, const Option& option,
         if (s.ok()) {
             s = file->Close();
         }
-        if (s.ok()) {
-            meta->file_size = builder->FileSize();
-        }
-        if (s.ok()) {
-            Iterator* it = table_cache->NewIterator(ReadOption(), 
-                    meta->number, meta->file_size);
-            s = it->status();
-            delete it;
-        }
-        delete builder;
         delete file;
-        
+        file = nullptr;  
     }
     if (!iter->status().ok()) {
         s = iter->status();
@@ -70,7 +64,8 @@ Status BuildSSTable(const std::string name, const Option& option,
 }
 struct SSTableBuilder::Rep {
     Rep(const Option& option,WritableFile* file)
-        : data_block_option_(option),
+        : closed_(false),
+          data_block_option_(option),
           index_block_option_(option),
           file_(file),
           data_block_builder_(&data_block_option_),

@@ -224,7 +224,7 @@ void LRUCache::Unref(LRUHandle* e) {
     if (e->refs == 0) {
         assert(!e->in_cache);
         (*e->deleter)(e->key(), e->value);
-        delete e;
+        free(e);
     } else if (e->in_cache && e->refs == 1) {
         LRU_Remove(e);
         LRU_Append(&lru_, e);
