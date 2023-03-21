@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "test/memtable_test"
+			"path" : "test/db_test"
 		}
 	],
 	"backtrace" : 1,
@@ -110,7 +110,7 @@
 	[
 		{
 			"backtrace" : 2,
-			"id" : "murmur3::@6890427a1f51a3e7e1df"
+			"id" : "crc32c::@0dc77f2dd386826ac503"
 		},
 		{
 			"backtrace" : 2,
@@ -118,7 +118,7 @@
 		},
 		{
 			"backtrace" : 2,
-			"id" : "crc32c::@0dc77f2dd386826ac503"
+			"id" : "murmur3::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 2,
@@ -137,7 +137,7 @@
 			"id" : "gtest::@90013eb1b481ea580f52"
 		}
 	],
-	"id" : "memtable_test::@6890427a1f51a3e7e1df",
+	"id" : "db_test::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -197,8 +197,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "memtable_test",
-	"nameOnDisk" : "memtable_test",
+	"name" : "db_test",
+	"nameOnDisk" : "db_test",
 	"paths" : 
 	{
 		"build" : ".",
@@ -237,7 +237,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test/memtable_test.cc",
+			"path" : "test/db_test.cc",
 			"sourceGroupIndex" : 0
 		},
 		{

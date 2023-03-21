@@ -183,6 +183,10 @@ class WritableFile {
             return Status::OK();
         }
 
+        Status s = Flush();
+        if (!s.ok()) {
+            return s;
+        }
         return WriteUnbuffer(write_data, write_size);
     }
 
@@ -227,6 +231,7 @@ class WritableFile {
         return status;
         
     }
+
  private:
     std::string Dirname(const std::string& filename) const {
         auto seperator_pos = filename.rfind('/');
@@ -262,7 +267,6 @@ class WritableFile {
 
     const std::string filename_;
     const std::string dirname_;
-
 
 };
 

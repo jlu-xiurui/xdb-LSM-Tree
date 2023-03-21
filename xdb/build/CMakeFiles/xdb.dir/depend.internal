@@ -11,6 +11,7 @@ CMakeFiles/xdb.dir/src/db/dbimpl.cc.o
  ../src/db/memtable/membuffer.h
  ../src/db/memtable/memtable.h
  ../src/db/memtable/skiplist.h
+ ../src/db/sstable/block_format.h
  ../src/db/sstable/table_cache.h
  ../src/db/version/version.h
  ../src/db/version/version_edit.h

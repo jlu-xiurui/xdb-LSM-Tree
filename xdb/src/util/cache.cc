@@ -70,12 +70,12 @@ class HandleTable {
         std::memset(new_list, 0, sizeof(new_list[0])*new_capacity);
 
         uint32_t count = 0;
-        for (int i = 0; i < capacity_; i++) {
+        for (uint32_t i = 0; i < capacity_; i++) {
             LRUHandle* h = list_[i];
             while(h != nullptr) {
                 LRUHandle* next = h->next_hash;
                 uint32_t hash = h->hash;
-                LRUHandle** ptr = &list_[hash % new_capacity];
+                LRUHandle** ptr = &list_[hash & (new_capacity - 1)];
                 h->next_hash = *ptr;
                 *ptr = h;
                 h = next;
@@ -90,7 +90,7 @@ class HandleTable {
     }
  private:
     LRUHandle** Find(const Slice& key, uint32_t hash) {
-        LRUHandle** ptr = &list_[hash % capacity_];
+        LRUHandle** ptr = &list_[hash & (capacity_ - 1)];
         while(*ptr != nullptr && ((*ptr)->hash != hash || (*ptr)->key() != key)) {
             ptr = &(*ptr)->next_hash;
         }
@@ -142,7 +142,7 @@ LRUCache::~LRUCache() {
         LRUHandle* next = e->next;
         assert(e->in_cache);
         e->in_cache = false;
-        usage_ -= e->charge;
+        assert(e->refs == 1);
         Unref(e);
         e = next;
     }

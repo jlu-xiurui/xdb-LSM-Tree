@@ -10,6 +10,7 @@ CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/log/log_writer.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/memtable/membuffer.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/memtable/memtable.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/memtable/skiplist.h
+CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/sstable/block_format.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/sstable/table_cache.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/version/version.h
 CMakeFiles/xdb.dir/src/db/dbimpl.cc.o: ../src/db/version/version_edit.h

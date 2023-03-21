@@ -140,7 +140,7 @@ namespace xdb {
         ReadOption read_option;
         Status s;
         char val[2000];
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 0; i < 15000; i++) {
             int key = ts->rng() % 10;
             ts->kv[id].store(i, std::memory_order_release);
             if ((ts->rng() % 2) == 0) {

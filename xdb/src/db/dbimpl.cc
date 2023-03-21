@@ -7,6 +7,7 @@
 #include "include/sstable_builder.h"
 #include "db/sstable/table_cache.h"
 #include "include/env.h"
+#include "db/sstable/block_format.h"
 
 namespace xdb {
 
@@ -583,7 +584,7 @@ namespace xdb {
                  state->compaction->InputToString(1).data());
         Iterator* input = vset_->MakeMergedIterator(state->compaction);
 
-        mu_.Unlock();
+        //mu_.Unlock();
         input->SeekToFirst();
         Status s;
         ParsedInternalKey ikey;
@@ -593,12 +594,12 @@ namespace xdb {
         const Comparator* ucmp = internal_comparator_.UserComparator();
         while(input->Valid() && !closed_.load(std::memory_order_acquire)) {
             if (has_imm_.load(std::memory_order_acquire)) {
-                mu_.Lock();
+                //mu_.Lock();
                 if (imm_ != nullptr) {
                     CompactionMemtable();
                     background_cv_.SignalAll();
                 }
-                mu_.Unlock();
+                //mu_.Unlock();
             }
             Slice key = input->Key();
             if (state->compaction->StopBefore(key) &&
@@ -661,7 +662,7 @@ namespace xdb {
         }
         delete input;
         input = nullptr;
-        mu_.Lock();
+        //mu_.Lock();
 
         if (s.ok()) {
             s = LogCompactionResult(state);
@@ -815,11 +816,11 @@ namespace xdb {
                 }
             }
         }
-        mu_.Unlock();
+        //mu_.Unlock();
         for (const std::string& filename : file_delete) {
             env_->RemoveFile(name_ + "/" + filename);
         }
-        mu_.Lock();
+        //mu_.Lock();
     }
 
     Status DBImpl::FinishCompactionSSTable(CompactionState* state, Iterator* input) {
@@ -845,7 +846,18 @@ namespace xdb {
         uint64_t actual_size;
         env_->FileSize(file_name, &actual_size);
         assert(actual_size == file_size);
-        
+        /*
+        {
+            RandomReadFile* file = nullptr;
+            s = env_->NewRamdomReadFile(file_name, &file);
+            char footer_buffer[Footer::KEncodeLength];
+            Slice footer_result;
+            Status s = file->Read(file_size - Footer::KEncodeLength, Footer::KEncodeLength
+                ,&footer_result,footer_buffer);
+            Footer footer;
+            s = footer.DecodeFrom(&footer_result);
+        }
+        */
         delete state->out_file;
         state->out_file = nullptr;
         if (s.ok() && num_entries > 0) {
@@ -864,12 +876,13 @@ namespace xdb {
         return s;
     }
 
-    Status DBImpl::OpenCompactionSSTable(CompactionState* state) {
+    Status DBImpl::OpenCompactionSSTable(CompactionState* state)  {
+        mu_.AssertHeld();
         assert(state != nullptr);
         assert(state->builder == nullptr);
         uint64_t number;
         {
-            mu_.Lock();
+            //mu_.Lock();
             number = vset_->NextFileNumber();
             CompactionState::Output output;
             output.number = number;
@@ -877,7 +890,7 @@ namespace xdb {
             output.smallest.Clear();
             output.largest.Clear();
             state->outputs.push_back(output);
-            mu_.Unlock();
+            //mu_.Unlock();
         }
         std::string filename = SSTableFileName(name_, number);
         Status s = env_->NewWritableFile(filename, &state->out_file);
