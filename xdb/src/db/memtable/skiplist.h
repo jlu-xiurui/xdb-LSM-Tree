@@ -151,7 +151,7 @@ SkipList<Key,Comparator>::FindLess(const Key& key) const {
     int height = GetMaxHeight() - 1;
     while(true) { 
         Node* next = ret->next_[height];
-        if (next != nullptr && cmp_(key, next->key_) < 0) {
+        if (next != nullptr && cmp_(key, next->key_) > 0) {
             ret = next;
         } else {
             if (height == 0) return ret;
