@@ -139,7 +139,6 @@ namespace xdb {
 
     void TwoLevelIterator::SetDataIterator(Iterator* data_iter) {
         if (data_iter_ != nullptr) {
-            data_iter_->Valid();
             SaveError(data_iter_->status());
         }
         delete data_iter_;
@@ -187,7 +186,7 @@ namespace xdb {
         SkipEmptyDataBlock(true);
     }
 
-        void TwoLevelIterator::Prev() {
+    void TwoLevelIterator::Prev() {
         assert(Valid());
         data_iter_->Prev();
         SkipEmptyDataBlock(false);

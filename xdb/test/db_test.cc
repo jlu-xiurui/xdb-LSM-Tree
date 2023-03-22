@@ -120,7 +120,7 @@ namespace xdb {
         }
         delete db;
     }
-    const int KthreadNum = 50;
+    const int KthreadNum = 30;
     struct TestState {
         TestState(DB* db) : db(db),rng(std::random_device{}()), done(0) {}
         DB* db;
@@ -140,7 +140,7 @@ namespace xdb {
         ReadOption read_option;
         Status s;
         char val[2000];
-        for (int i = 0; i < 15000; i++) {
+        for (int i = 0; i < 100000; i++) {
             int key = ts->rng() % 10;
             ts->kv[id].store(i, std::memory_order_release);
             if ((ts->rng() % 2) == 0) {

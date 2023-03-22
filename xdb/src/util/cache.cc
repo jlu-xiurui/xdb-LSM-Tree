@@ -75,7 +75,7 @@ class HandleTable {
             while(h != nullptr) {
                 LRUHandle* next = h->next_hash;
                 uint32_t hash = h->hash;
-                LRUHandle** ptr = &list_[hash & (new_capacity - 1)];
+                LRUHandle** ptr = &new_list[hash & (new_capacity - 1)];
                 h->next_hash = *ptr;
                 *ptr = h;
                 h = next;

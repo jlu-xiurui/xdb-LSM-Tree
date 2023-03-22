@@ -300,8 +300,12 @@ namespace xdb {
             }
             std::vector<FileMeta*>* files = &v->files_[level];
             if (level > 0 && !files->empty()) {
-                assert(vset_->icmp_.Compare((*files)[files->size() - 1]->largest,
+                if (vset_->icmp_.Compare((*files)[files->size() - 1]->largest,
+                        meta->smallest) >= 0) {
+                    assert(vset_->icmp_.Compare((*files)[files->size() - 1]->largest,
                         meta->smallest) < 0);
+                }
+                
             }
             meta->refs++;
             files->push_back(meta);
@@ -869,7 +873,9 @@ namespace xdb {
         }
 
         assert(idx <= space);
-        return NewMergedIterator(list, idx, &icmp_);
+        Iterator* ret =  NewMergedIterator(list, idx, &icmp_);
+        delete[] list;
+        return ret;
     }
     Compaction::Compaction(const Option* option, int level) : 
         level_(level),

@@ -1,34 +1,39 @@
 
 #include "db/version/merge.h"
+#include "db/version/iterator_wrapper.h"
 
 namespace xdb {
 
 class MergedIterator : public Iterator {
  public:
     MergedIterator(Iterator** list, size_t num, const Comparator* cmp) :
-            list_(list), num_(num), current_(nullptr), cmp_(cmp) {}
+            list_(new IteratorWrapper[num]),
+            num_(num),
+            current_(nullptr), 
+            cmp_(cmp) {
+                for (int i = 0; i < num; i++) {
+                    list_[i].Set(list[i]);
+                }
+            }
 
-    ~MergedIterator() {
-        for (int i = 0; i < num_; i++) {
-            delete list_[i];
-        }
+    ~MergedIterator() override {
         delete[] list_;
     }
     bool Valid() const override { return current_ != nullptr; }
 
     Slice Key() const override {
         assert(Valid());
-        return (*current_)->Key();
+        return current_->Key();
     }
 
     Slice Value() const override {
         assert(Valid());
-        return (*current_)->Value();
+        return current_->Value();
     }
 
     void Next() override {
         assert(Valid());
-        (*current_)->Next();
+        current_->Next();
         FindSmallest();
     }
 
@@ -36,14 +41,14 @@ class MergedIterator : public Iterator {
 
     void Seek(const Slice& key) override {
         for (int i = 0; i < num_; i++) {
-            list_[i]->Seek(key);
+            list_[i].Seek(key);
         }
         FindSmallest();
     }
 
     void SeekToFirst() override {
         for (int i = 0; i < num_; i++) {
-            list_[i]->SeekToFirst();
+            list_[i].SeekToFirst();
         }
         FindSmallest();
     }
@@ -52,7 +57,7 @@ class MergedIterator : public Iterator {
     Status status() override {
         Status status;
         for (int i = 0; i < num_; i++) {
-            status = list_[i]->status();
+            status = list_[i].status();
             if (!status.ok()) {
                 return status;
             }
@@ -61,18 +66,18 @@ class MergedIterator : public Iterator {
     }
  private:
     void FindSmallest();
-    Iterator** list_;
+    IteratorWrapper* list_;
     size_t num_;
-    Iterator** current_;
+    IteratorWrapper* current_;
     const Comparator* cmp_;
 };
 
 void MergedIterator::FindSmallest() {
-    Iterator** smallest = nullptr;
+    IteratorWrapper* smallest = nullptr;
     for (size_t i = 0; i < num_; i++) {
-        Iterator** ptr = &list_[i];
-        if ((*ptr)->Valid()) {
-            if (smallest == nullptr || cmp_->Compare((*ptr)->Key(), (*smallest)->Key()) < 0) {
+        IteratorWrapper* ptr = &list_[i];
+        if (ptr->Valid()) {
+            if (smallest == nullptr || cmp_->Compare(ptr->Key(), smallest->Key()) < 0) {
                 smallest = ptr;
             }
         }

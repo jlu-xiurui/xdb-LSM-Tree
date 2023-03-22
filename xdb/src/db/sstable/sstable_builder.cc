@@ -244,6 +244,7 @@ Status SSTableBuilder::Finish() {
         if (ok()) {
             rep_->offset_ += footer_encode.size();
         }
+         {}
     }
     return rep_->status_;
 }

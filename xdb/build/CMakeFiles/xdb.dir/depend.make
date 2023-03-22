@@ -190,6 +190,7 @@ CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o: ../src/util/mutex.h
 CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o: ../src/util/thread_annotations.h
 CMakeFiles/xdb.dir/src/db/sstable/table_cache.cc.o: ../src/db/sstable/table_cache.cc
 
+CMakeFiles/xdb.dir/src/db/version/merge.cc.o: ../src/db/version/iterator_wrapper.h
 CMakeFiles/xdb.dir/src/db/version/merge.cc.o: ../src/db/version/merge.h
 CMakeFiles/xdb.dir/src/db/version/merge.cc.o: ../src/include/comparator.h
 CMakeFiles/xdb.dir/src/db/version/merge.cc.o: ../src/include/iterator.h
