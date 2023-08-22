@@ -158,7 +158,7 @@ Status SSTableReader::InternalGet(const ReadOption& option, const Slice& key, vo
         BlockHandle handle;
         FilterBlockReader* filter = rep_->filter;
         if (filter != nullptr && handle.DecodeFrom(&handle_content).ok() 
-                && filter->KeyMayMatch(handle.GetOffset(), key)) {
+                && !filter->KeyMayMatch(handle.GetOffset(), key)) {
             // key is not found.
         } else {
             Iterator* block_iter = ReadBlockHandle(this, option, handle_content);
